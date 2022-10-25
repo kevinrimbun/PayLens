@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../Style/Layout/auth.css';
 // import BGAuth from '../../Assets/BGAuth.svg'
-import Wave from '../../Assets/Wave.svg';
+import Wave from '../../Assets/wave.svg';
 // import MaskGroup from '../../Assets'
 
 
