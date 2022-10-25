@@ -4,6 +4,9 @@ import Auth from '../../Layout/Auth';
 import Login from "../Login";
 import Register from '../Register';
 
+import Home from '../Home';
+
+
 const index = () => {
   return (
     <BrowserRouter>
@@ -11,6 +14,7 @@ const index = () => {
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
             <Route path='/layout' element={<Auth/>} />
+        <Route path='/' element={<Home/>} />
         </Routes>
     </BrowserRouter>
   )
