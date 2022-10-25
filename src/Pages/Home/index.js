@@ -14,38 +14,49 @@ import TransactionHistory from "../../Components/TransactionHistory";
 import Footer from "../../Components/Footer";
 
 // CSS
-import '../../'
 
 
 const Home = () => {
 
   return (
     <>
+      {/* Navbar Section */}
       <NavbarComp />
+
       <div className="App w-100">
         <Container className="w-100 m-5 p-5">
           <Row>
+
+            {/* Sidebar Section */}
             <Col sm={3} className=""><Sidebar /></Col>
+
+            {/* Balance, Chart, Transaction History Section */}
             <Col sm={9} className="">
+
               <Container>
                 <Row>
+                  {/* Balance Section */}
                   <Col><BalanceComp /></Col>
                 </Row>
               </Container>
+
               <Container classname=''>
                 <Row>
+                  {/* Chart Section */}
                   <Col sm={7} className=" mt-3">
                     <Chart />
                   </Col>
+                  {/* Transaction History Section */}
                   <Col sm={5} className=" mt-3" >
                     <TransactionHistory />
                   </Col>
                 </Row>
               </Container>
+
             </Col>
           </Row>
         </Container>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

@@ -17,17 +17,20 @@ import '../../'
 function BalanceComp() {
 
     return (
-        <Card className=' w-100 rounded shadow-lg Balance-Comp'>
+        <Card className='w-100 rounded shadow-lg Balance-Comp'>
             <Card.Body>
                 <Container>
+
+                    {/* Description Section */}
                     <Row className='d-flex justify-content-center align-items-center'>
                         <Col className='d-flex flex-column align-items-center'>
                             <p>Balance</p>
                             <h4>Rp 950.000</h4>
                             <p>+62 859 - 5158 - 6501</p>
                         </Col>
-                        <Col className='d-flex flex-column align-items-center'>
 
+                        {/* Button Section */}
+                        <Col className='d-flex flex-column align-items-center'>
                             <Button variant="outline-warning" className='m-2'>
                                 <Icon icon="akar-icons:arrow-down" vFlip={true} className='me-2' />Transfer</Button>
                             <Button variant="outline-warning" className='m-2'>
