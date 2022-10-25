@@ -5,6 +5,7 @@ import Login from "../Login";
 import Register from '../Register';
 
 import Home from '../Home';
+import Content from '../../Layout/Content';
 
 
 const index = () => {
@@ -14,7 +15,8 @@ const index = () => {
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
             <Route path='/layout' element={<Auth/>} />
-        <Route path='/' element={<Home/>} />
+            <Route path='/layout-content' element={<Content/>} />
+            <Route path='/' element={<Home/>} />
         </Routes>
     </BrowserRouter>
   )
