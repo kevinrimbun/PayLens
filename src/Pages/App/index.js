@@ -6,18 +6,19 @@ import Register from '../Register';
 import History from '../History';
 
 import Home from '../Home';
+import Content from '../../Layout/Content';
 
 
 const index = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/layout' element={<Auth />} />
-        <Route path='/' element={<Home />} />
-        <Route path='/history' element={<History />} />
-      </Routes>
+        <Routes>
+            <Route path='/login' element={<Login/>} />
+            <Route path='/register' element={<Register/>} />
+            <Route path='/layout' element={<Auth/>} />
+            <Route path='/layout-content' element={<Content/>} />
+            <Route path='/' element={<Home/>} />
+        </Routes>
     </BrowserRouter>
   )
 }
