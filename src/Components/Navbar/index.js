@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 
 // CSS
+import '../../Styles/Components/Navbar/Navbar.css'
 
 // Components
 import Navbar from 'react-bootstrap/Navbar';
@@ -17,11 +18,11 @@ import Navbar from 'react-bootstrap/Navbar';
 function NavbarComp() {
   return (
 
-    <Navbar bg="light" expand="lg" className="rounded-bottom border shadow-lg">
+    <Navbar bg="light" expand="lg" className="border shadow-lg Navbar-Section">
       <Container>
 
         {/* Logo Section */}
-        <Navbar.Brand href="#home" className="d-flex justify-content-center align-items-center">
+        <Navbar.Brand href="#home" className="d-flex justify-content-center align-items-center Logo-Section">
           <Icon icon="mdi:google-lens" width="30" height="30" />
           <h4>PayLens</h4>
         </Navbar.Brand>

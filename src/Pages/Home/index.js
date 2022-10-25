@@ -14,7 +14,7 @@ import TransactionHistory from "../../Components/TransactionHistory";
 import Footer from "../../Components/Footer";
 
 // CSS
-
+import '../../Styles/Pages/Home/Home.css'
 
 const Home = () => {
 
@@ -23,31 +23,32 @@ const Home = () => {
       {/* Navbar Section */}
       <NavbarComp />
 
-      <div className="App w-100">
-        <Container className="w-100 m-5 p-5">
+      <div className="App w-100 p-1">
+        <Container fluid className="w-100 p-5 Container-Section p-1">
           <Row>
 
             {/* Sidebar Section */}
-            <Col sm={3} className=""><Sidebar /></Col>
+            <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
             {/* Balance, Chart, Transaction History Section */}
-            <Col sm={9} className="">
+            <Col sm={9} className="Content-Section p-1">
 
-              <Container>
+              <Container fluid>
                 <Row>
                   {/* Balance Section */}
-                  <Col><BalanceComp /></Col>
+                  <Col className="Balance-Section p-1"><BalanceComp /></Col>
                 </Row>
               </Container>
 
-              <Container classname=''>
+              {/* Chart, History Section */}
+              <Container fluid classname='p-1'>
                 <Row>
                   {/* Chart Section */}
-                  <Col sm={7} className=" mt-3">
+                  <Col sm={7} className=" mt-3 Chart-Section p-1">
                     <Chart />
                   </Col>
                   {/* Transaction History Section */}
-                  <Col sm={5} className=" mt-3" >
+                  <Col sm={5} className=" mt-3 History-Section p-1" >
                     <TransactionHistory />
                   </Col>
                 </Row>
@@ -56,8 +57,8 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

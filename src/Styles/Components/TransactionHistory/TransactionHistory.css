@@ -3,18 +3,17 @@
   padding: 0px;
 }
 
-.Sidebar-Comp {
-  height: 100vh;
-  border-radius: 25px !important;
-  -webkit-border-radius: 25px !important;
-  -moz-border-radius: 25px !important;
-  -ms-border-radius: 25px !important;
-  -o-border-radius: 25px !important;
+.Transaction-Comp {
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
-.Navigation-Section {
+.Button-History {
   text-decoration: none;
-  color: black;
+  color: #0275d8 !important;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -22,8 +21,7 @@
   -o-transition: all 0.3s ease-in-out;
 }
 
-.Navigation-Section:hover {
+.Button-History:hover {
   color: #0275d8 !important;
   text-shadow: 4px 4px 15px rgba(2, 117, 216, 0.6);
-  font-weight: bolder !important;
 }

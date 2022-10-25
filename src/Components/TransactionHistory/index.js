@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/Col';
 import UserTranscation from "../../Components/User";
 
 // CSS
+import '../../Styles/Components/TransactionHistory/TransactionHistory.css'
 
 
 function TransactionHistory() {
@@ -44,24 +45,24 @@ function TransactionHistory() {
     ]
 
     return (
-        <Card className='w-100 rounded shadow-lg Transaction-Comp'>
+        <Card className='shadow-lg Transaction-Comp'>
             <Card.Body>
                 <Container>
 
                     {/* Title Section */}
-                    <Row>
+                    <Row className='Title-Section d-flex justify-content-center align-items-center'>
                         <Col>
                             <h6>Transaction History</h6>
                         </Col>
                         <Col>
-                            <Link to='/'>
+                            <Link to='/history' className='Button-History float-end'>
                                 <p>See All</p>
                             </Link>
                         </Col>
                     </Row>
 
                     {/* User Section */}
-                    <Row>
+                    <Row className='User-Section'>
                         <Col>
                             {listUsers.map(user => {
                                 return (
