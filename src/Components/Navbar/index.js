@@ -16,19 +16,27 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function NavbarComp() {
   return (
+
     <Navbar bg="light" expand="lg" className="rounded-bottom border shadow-lg">
       <Container>
+
+        {/* Logo Section */}
         <Navbar.Brand href="#home" className="d-flex justify-content-center align-items-center">
           <Icon icon="mdi:google-lens" width="30" height="30" />
           <h4>PayLens</h4>
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto me-auto p-1 d-flex justify-content-center align-items-center w-100">
             <Container fluid>
               <Row>
+
+                {/* Unused Col */}
                 <Col></Col>
                 <Col></Col>
+
+                {/* User Section */}
                 <Col className="d-flex justify-content-center align-items-center mt-3">
                   <img src="" className="rounded-circle me-2" alt="..." />
                   <div className="me-3">
@@ -37,6 +45,7 @@ function NavbarComp() {
                   </div>
                   <Icon icon="ei:bell" width="40" height="40" className="m-1"/>
                 </Col>
+
               </Row>
             </Container>
           </Nav>
