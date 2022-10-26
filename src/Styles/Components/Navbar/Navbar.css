@@ -4,22 +4,32 @@
 }
 
 .Navbar-Section {
-    border-radius: 0px 0px 25px 0px;
-    -webkit-border-radius: 0px 0px 25px 0px;
-    -moz-border-radius: 0px 0px 25px 0px;
-    -ms-border-radius: 0px 0px 25px 0px;
-    -o-border-radius: 0px 0px 25px 0px;
+  width: 100% !important;
+  border-radius: 0px 0px 25px 0px;
+  -webkit-border-radius: 0px 0px 25px 0px;
+  -moz-border-radius: 0px 0px 25px 0px;
+  -ms-border-radius: 0px 0px 25px 0px;
+  -o-border-radius: 0px 0px 25px 0px;
 }
 
 .Logo-Section {
-    color: #0275d8 !important;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
+  color: #0275d8 !important;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
 
 .Logo-Section:hover {
-    text-shadow: 4px 4px 15px rgba(2, 117, 216, 0.6);
+  text-shadow: 4px 4px 15px rgba(2, 117, 216, 0.6);
+}
+
+.UserNavbar-Section {
+  width: 100% !important;
+}
+
+.ImgUser-Navbar {
+  padding: 5px !important;
+  margin: 0px !important;
 }

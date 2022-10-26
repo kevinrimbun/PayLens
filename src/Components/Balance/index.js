@@ -17,7 +17,7 @@ import '../../Styles/Components/Balance/Balance.css'
 function BalanceComp() {
 
     return (
-        <Card className='w-100 rounded shadow-lg Balance-Comp bg-primary'>
+        <Card className='shadow-lg Balance-Comp bg-primary'>
             <Card.Body>
                 <Container fluid>
 
@@ -30,8 +30,8 @@ function BalanceComp() {
                         </Col>
 
                         {/* Button Section */}
-                        <Col className='d-flex flex-column justify-content-center Button-Section'>
-                            <Button variant="outline-light" className='m-2 Button-Balance float-end'>
+                        <Col className='d-flex flex-column justify-content-end Button-Section'>
+                            <Button variant="outline-light" className='m-2 Button-Balance'>
                                 <Icon icon="akar-icons:arrow-down" vFlip={true} className='me-2' />Transfer</Button>
                             <Button variant="outline-light" className='m-2 Button-Balance'>
                                 <Icon icon="akar-icons:plus" vFlip={true} className='me-2' />Top Up</Button>

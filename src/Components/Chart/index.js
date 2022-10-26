@@ -15,7 +15,7 @@ import '../../Styles/Components/Chart/Chart.css'
 function Chart() {
 
     return (
-        <Card className='w-100 shadow-lg Chart-Comp'>
+        <Card className='shadow-lg Chart-Comp'>
             <Card.Body>
                 <Container>
 

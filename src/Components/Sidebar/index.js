@@ -24,7 +24,7 @@ function Sidebar() {
                     <Row className='d-flex flex-column justify-content-center align-items-center'>
 
                         <Col>
-                            <Link to='/' className='d-flex align-items-center mt-4 Navigation-Section'>
+                            <Link to='/dashboard' className='d-flex align-items-center mt-4 Navigation-Section'>
                                 <Icon icon="akar-icons:dashboard" width="30" height="30" className=' m-3' />
                                 <h5>Dasboard</h5>
                             </Link>
