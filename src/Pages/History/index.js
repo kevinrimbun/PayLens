@@ -18,26 +18,26 @@ const History = () => {
   // Data Users
   const listUsers = [
     {
-      picture: 1,
-      name: "Kevin Rimbun",
+      picture: "https://i.pravatar.cc/50?img=3",
+      name: "Samuel Suhi",
       transaction: "Transfer",
       nominal: "+ Rp 50.000"
     },
     {
-      picture: 2,
+      picture: "https://i.pravatar.cc/50?img=4",
       name: "IntelliJ",
       transaction: "Subcription",
       nominal: "- Rp 80.000"
     },
     {
-      picture: 3,
-      name: "Aldy Fikhri",
+      picture: "https://i.pravatar.cc/50?img=1",
+      name: "Christine Mar...",
       transaction: "Transfer",
       nominal: "+ Rp 90.000"
     },
     {
-      picture: 4,
-      name: "Disney+",
+      picture: "https://i.pravatar.cc/50?img=2",
+      name: "Netflix",
       transaction: "Subcription",
       nominal: "+ Rp 30.000"
     }

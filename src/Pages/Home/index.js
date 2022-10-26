@@ -31,7 +31,7 @@ const Home = () => {
             <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
             {/* Balance, Chart, Transaction History Section */}
-            <Col sm={9} className="Content-Section p-1">
+            <Col sm={8} className="Content-Section p-1 ms-3">
 
               <Container fluid>
                 <Row>

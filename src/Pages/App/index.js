@@ -9,6 +9,7 @@ import Home from '../Home';
 import Content from '../../Layout/Content';
 import Transfer from '../Transfer';
 import TopUp from '../TopUp';
+import Profile from '../Profile';
 
 
 const index = () => {
@@ -24,6 +25,7 @@ const index = () => {
             <Route path='/history' element={<History/>} />
             <Route path='/transfer' element={<Transfer/>} />
             <Route path='/topup' element={<TopUp/>} />
+            <Route path='/profile' element={<Profile/>} />
         </Routes>
     </BrowserRouter>
   )

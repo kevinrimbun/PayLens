@@ -1,0 +1,10 @@
+* { margin: 0px;
+    padding: 0px;
+}
+
+.ProfileButton {
+    width: 25rem !important;
+    height: 4rem;
+    color: #E5E8ED !important;
+
+}

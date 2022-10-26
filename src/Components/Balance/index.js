@@ -31,10 +31,18 @@ function BalanceComp() {
 
                         {/* Button Section */}
                         <Col className='d-flex flex-column justify-content-end Button-Section'>
-                            <Button variant="outline-light" className='m-2 Button-Balance'>
-                                <Icon icon="akar-icons:arrow-down" vFlip={true} className='me-2' />Transfer</Button>
-                            <Button variant="outline-light" className='m-2 Button-Balance'>
-                                <Icon icon="akar-icons:plus" vFlip={true} className='me-2' />Top Up</Button>
+                            <Link to='/transfer'>
+                                <Button variant="outline-light" className='m-2 Button-Balance'>
+                                    <Icon icon="akar-icons:arrow-down" vFlip={true} className='me-2' />
+                                    Transfer
+                                </Button>
+                            </Link>
+                            <Link to='/topup'>
+                                <Button variant="outline-light" className='m-2 Button-Balance'>
+                                    <Icon icon="akar-icons:plus" vFlip={true} className='me-2' />
+                                    Top Up
+                                </Button>
+                            </Link>
                         </Col>
 
                     </Row>

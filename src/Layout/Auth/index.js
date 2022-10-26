@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../Style/Layout/auth.css';
-import wave from '../../Assets/wave.svg';
+// import wave from '../../Assets/wave.svg';
 import PhoneAuth from '../../Assets/PhoneAuth.svg';
 import PhoneAuth2 from '../../Assets/PhoneAuth2.svg';
 
@@ -17,7 +17,7 @@ const Auth = (props) => {
                 </div>
 
                 <div className='img-wave'>
-                    <img src={wave} alt='wave'/>
+                    {/* <img src={wave} alt='wave'/> */}
                 </div>
 
                 <div className='phone-wrapper'>

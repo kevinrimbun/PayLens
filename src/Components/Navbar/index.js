@@ -40,7 +40,7 @@ function NavbarComp() {
                 <Col className="d-flex align-items-center justify-content-end m-0 p-0 UserNavbar-Section">
                   <img src="https://i.pravatar.cc/50?img=3" className="me-2 ImgUser-Navbar" alt="Profile" />
                   <div className="me-3">
-                    <h6>Samuel Suhi</h6>
+                    <h6>Robert Chandler</h6>
                     <p>+62 859-5158-6501</p>
                   </div>
                   <Icon icon="ei:bell" width="40" height="40" className="m-1"/>
