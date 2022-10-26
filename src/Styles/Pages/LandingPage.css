@@ -6,34 +6,30 @@
     font-family: 'Nunito Sans', sans-serif !important;
 }
 
-p{
+.landingpage p{
     margin: 0 !important;
 }
 
-.Wrapper{
+.landingpage .Wrapper{
     display: flex;
     height: 100vh;
 }
 
-.leftside{
+.landingpage .leftside{
     width: 40%;
 }
 
-.logo{
+.landingpage .logo{
     color: #6379F4;
     font-weight: 550;
     font-size: 30px;
     margin: 0;
-    padding-left: 60px;
+    padding-left: 20%;
 }
 
-.rightside{
-    padding-top: 40px;
-}
-
-img {
-    margin-left: 120px;
-    padding: 0 0 100px 0;
+.landingpage img {
+    margin-left: 12%;
+    padding: 0 0 8% 0;
 }
 
 .logintab{
@@ -45,7 +41,7 @@ img {
     margin: 12px;
 }
 
-h1{
+.landingpage h1{
     font-size: 60px !important;
 }
 
@@ -57,18 +53,18 @@ h1{
     margin: 30px 0;
 }
 
-.logos{
+.landingpage .logos{
     width: 35px;
     height: 35px;
 }
 
-.phone{
+.landingpage .phone{
     position: absolute;
     width: 300px ;
     height: 90vh ;
 }
 
-.wave{
+.landingpage .wave{
     position: absolute;
     width: 250px ;
     height: 80vh ;
@@ -93,7 +89,7 @@ h1{
 
 
 /* About */
-h2{
+.landingpage h2{
     font-weight: 750 !important;
 }
 
@@ -130,6 +126,10 @@ h2{
 
 .Wrapper-feature img{
     margin-top: 10%;
+}
+
+.Wrapper-feature .rightside{
+    margin: auto;
 }
 
 
