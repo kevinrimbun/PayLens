@@ -41,7 +41,7 @@ const Home = () => {
               </Container>
 
               {/* Chart, History Section */}
-              <Container fluid classname='p-1'>
+              <Container fluid className='p-1'>
                 <Row>
                   {/* Chart Section */}
                   <Col sm={7} className=" mt-3 Chart-Section p-1">
