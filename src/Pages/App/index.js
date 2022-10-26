@@ -9,6 +9,8 @@ import History from '../History';
 import Home from '../Home';
 import Content from '../../Layout/Content';
 import Transfer from '../Transfer';
+import CreatePin from '../CreatePin';
+import SuccessPin from '../SuccessPin/SuccessPin';
 
 
 const index = () => {
@@ -23,6 +25,8 @@ const index = () => {
             <Route path='/dashboard' element={<Home/>} />
             <Route path='/transfer' element={<Transfer/>} />
             <Route path='/history' element={<History />} />
+            <Route path='/create-pin' element={<CreatePin/>} />
+            <Route path='/success-pin' element={<SuccessPin/>} />
         </Routes>
     </BrowserRouter>
   )

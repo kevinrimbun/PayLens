@@ -1,4 +1,5 @@
 // Components
+import { Link } from 'react-router-dom';
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -14,6 +15,7 @@ import '../../Styles/Components/Navbar/Navbar.css'
 
 // Components
 import Navbar from 'react-bootstrap/Navbar';
+import Samuel from  '../../Assets/account/samuelSuhi.svg'
 
 function NavbarComp() {
   return (
@@ -22,10 +24,12 @@ function NavbarComp() {
       <Container>
 
         {/* Logo Section */}
-        <Navbar.Brand href="#home" className="d-flex justify-content-center align-items-center Logo-Section">
-          <Icon icon="mdi:google-lens" width="30" height="30" />
-          <h4>PayLens</h4>
-        </Navbar.Brand>
+        <Link to='/dashboard' className='text-decoration-none'>
+          <Navbar.Brand  className="d-flex justify-content-center align-items-center Logo-Section">
+            <Icon icon="mdi:google-lens" width="30" height="30" />
+            <h4>PayLens</h4>
+          </Navbar.Brand>
+        </Link>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -39,7 +43,7 @@ function NavbarComp() {
 
                 {/* User Section */}
                 <Col className="d-flex justify-content-center align-items-center mt-3">
-                  <img src="" className="rounded-circle me-2" alt="..." />
+                  <img src={Samuel} className="rounded-circle me-2" alt="..." />
                   <div className="me-3">
                     <h6>Aldy Fikhri Muhammad</h6>
                     <p>+62 - 859 - 5158 - 6501</p>

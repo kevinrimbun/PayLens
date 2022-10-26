@@ -29,3 +29,7 @@
   text-shadow: 4px 4px 15px rgba(2, 117, 216, 0.6);
   font-weight: bolder !important;
 }
+
+.logout {
+  margin-top: 70%;
+}

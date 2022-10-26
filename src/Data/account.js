@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Samuel from '../../src/Assets/account/samuelSuhi.svg'
+import Samuel from '../Assets/account/samuelSuhi.svg'
 
 export const Account = () => {
     const listAccount = [
