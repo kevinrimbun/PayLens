@@ -4,13 +4,28 @@
 }
 
 h6 {
-    font-weight: bolder;
+    font-weight: bolder !important;
 }
 
 .UserTranscation-Comp {
+    width: 100% !important;
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
+}
+
+.Img-User {
+    width: 50px !important;
+    height: 50px !important;
+    margin: 0px !important;
+}
+
+.Data-User {
+    margin: 0px 25px;
+}
+
+.Nominal-User {
+
 }
