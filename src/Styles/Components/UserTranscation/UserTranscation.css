@@ -1,0 +1,16 @@
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+h6 {
+    font-weight: bolder;
+}
+
+.UserTranscation-Comp {
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}

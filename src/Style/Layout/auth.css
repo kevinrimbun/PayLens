@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap');
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 0;
+    padding: 0%;
+}
+.auth-wrapper {
+    display: flex;
+    height: 100vh;
+}
+.auth-wrapper .left-section {
+    width: 60%;
+    background-image: url(../../Assets/BGAuth.svg);
+    background-position: center;
+    background-size: cover;
+}
+.auth-wrapper .right-section {
+    flex: 1;
+}
+.img-wave img {
+    margin-top: 5%;
+    position: absolute;
+    /* background: linear-gradient(180.03deg, rgba(255, 255, 255, 0.1) 0.03%, rgba(255, 255, 255, 0) 94.46%) */
+}
+.title-left {
+    font-weight: 600;
+    font-size: 29px;
+    margin-left: 18%;
+    top: 13%;
+    color: white;
+    position: relative;
+}
