@@ -28,7 +28,11 @@ const Transfer = () => {
       </Row>
       <Row className='d-flex flex-column justify-content-center'>
         <Col>
-        <Card className='shadow-md'></Card>
+        <Card className='shadow-md'>
+          <Card.Body>
+            
+          </Card.Body>
+        </Card>
         </Col>
       </Row>
     </Container>
