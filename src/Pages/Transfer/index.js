@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Content from '../../Layout/Content'
+import listAccount from '../../Data/account'
 
 import { Icon } from "@iconify/react"
 
@@ -11,6 +12,7 @@ import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 
 const Transfer = () => {
+  const [accounts] = useState(listAccount)
   return <Content>
     <Container>
       <Row className='d-flex flex-column justify-content-center'>
@@ -26,15 +28,20 @@ const Transfer = () => {
         </InputGroup>
         </Col>
       </Row>
+      
       <Row className='d-flex flex-column justify-content-center'>
         <Col>
-        <Card className='shadow-md'>
+        {accounts.map(getAccount => {
+          return(
+          <Card>
           <Card.Body>
-            
+              <Card.Img src={getAccount.profilePic} />
           </Card.Body>
         </Card>
+        )})}
         </Col>
       </Row>
+      
     </Container>
   </Content>
 }
