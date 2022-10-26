@@ -8,6 +8,7 @@ import History from '../History';
 
 import Home from '../Home';
 import Content from '../../Layout/Content';
+import Transfer from '../Transfer';
 
 
 const index = () => {
@@ -20,6 +21,7 @@ const index = () => {
             <Route path='/layout' element={<Auth/>} />
             <Route path='/layout-content' element={<Content/>} />
             <Route path='/' element={<Home/>} />
+            <Route path='/transfer' element={<Transfer/>} />
         </Routes>
     </BrowserRouter>
   )
