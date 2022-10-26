@@ -18,25 +18,25 @@ function TransactionHistory() {
     // Data Users
     const listUsers = [
         {
-            picture: 1,
+            picture: "https://i.pravatar.cc/50?img=3",
             name: "Kevin Rimbun",
             transaction: "Transfer",
             nominal: "+ Rp 50.000"
         },
         {
-            picture: 2,
+            picture: "https://i.pravatar.cc/50?img=3",
             name: "IntelliJ",
             transaction: "Subcription",
             nominal: "- Rp 80.000"
         },
         {
-            picture: 3,
+            picture: "https://i.pravatar.cc/50?img=3",
             name: "Aldy Fikhri",
             transaction: "Transfer",
             nominal: "+ Rp 90.000"
         },
         {
-            picture: 4,
+            picture: "https://i.pravatar.cc/50?img=3",
             name: "Disney+",
             transaction: "Subcription",
             nominal: "+ Rp 30.000"

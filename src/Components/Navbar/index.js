@@ -38,7 +38,7 @@ function NavbarComp() {
 
                 {/* User Section */}
                 <Col className="d-flex align-items-center justify-content-end m-0 p-0 UserNavbar-Section">
-                  <img src="" className="me-2 ImgUser-Navbar" alt="Profile" />
+                  <img src="https://i.pravatar.cc/50?img=3" className="me-2 ImgUser-Navbar" alt="Profile" />
                   <div className="me-3">
                     <h6>Samuel Suhi</h6>
                     <p>+62 859-5158-6501</p>

@@ -32,4 +32,9 @@
 .ImgUser-Navbar {
   padding: 5px !important;
   margin: 0px !important;
+  border-radius: 10px !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -ms-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
 }

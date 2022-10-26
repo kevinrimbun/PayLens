@@ -12,7 +12,7 @@ function UserTranscation(props) {
     <Card className='UserTranscation-Comp mt-2'>
       <Card.Body className='d-flex align-items-center'>
 
-        <img src={picture} alt='Profile' className='Img-User' />
+        <img src={picture} alt='Profile' className='Img-User border ' />
         <div className='d-flex flex-column align-items-center Data-User'>
           <h6>{name}</h6>
           <p>{transaction}</p>
