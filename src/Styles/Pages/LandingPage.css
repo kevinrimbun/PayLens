@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+p{
+    margin: 0 !important;
+}
+
+.Wrapper{
+    display: flex;
+    height: 100vh;
+}
+
+.leftside{
+    width: 40%;
+}
+
+.logo{
+    color: #6379F4;
+    font-weight: 550;
+    font-size: 30px;
+    margin: 0;
+    padding-left: 60px;
+}
+
+.rightside{
+    padding-top: 40px;
+}
+
+img {
+    margin-left: 120px;
+    padding: 0 0 100px 0;
+}
+
+.logintab{
+    float: right;
+    margin-right: 30px ;
+}
+
+.logintab button{
+    margin: 12px;
+}
+
+h1{
+    font-size: 60px !important;
+}
+
+.blue{
+    color: #6379F4;
+}
+
+.try{
+    margin: 30px 0;
+}
+
+.logos{
+    width: 35px;
+    height: 35px;
+}
+
+.phone{
+    position: absolute;
+    width: 300px ;
+    height: 90vh ;
+}
+
+.wave{
+    position: absolute;
+    width: 250px ;
+    height: 80vh ;
+
+}
+
+
+/* logo */
+.merk{
+    margin: 0 auto;
+    height: 150px;
+    align-items: center;
+    background: rgba(71, 58, 209, 0.06);
+}
+
+.merk .logos{
+    margin: 0 30px;
+    color: grey;
+    width: 50px;
+    height: 50px;
+}
+
+
+/* About */
+h2{
+    font-weight: 750 !important;
+}
+
+.about .logos{
+    background: rgba(71, 58, 209, 0.1);
+    border-radius: 25px;
+    padding: 10px;
+    width: 45px;
+    height: 45px;
+}
+
+.about .mid{
+    box-shadow: 0px 4px 250px rgba(172, 172, 172, 0.15) !important;
+    background: white;
+    border-radius: 12px;
+}
+
+
+/* Feature */
+.Wrapper-feature{
+    height: 100vh;
+    background: rgba(71, 58, 209, 0.06);
+}
+
+.Wrapper-feature p{
+    font-weight: 700;
+    font-size: 15px;
+    width: 500px;
+    background-color: white;
+    border-radius: 12px;
+    line-height: 40px;
+    padding: 12px;
+}
+
+.Wrapper-feature img{
+    margin-top: 10%;
+}
+
+
+/* carousel */
+.Wrapper-carousel{
+    height: 60vh;
+}
+
+.carousel img{
+    margin: 60px auto;
+    width: 10%;
+    height: auto;
+}
+
+.carousel p, h3{
+    color: black;
+}
+
+.carousel-control-prev-icon{
+    border-radius: 25px;
+    background-color: black !important;
+}
+
+.carousel-control-next-icon{
+    border-radius: 25px;
+    background-color: black !important;
+}
+
+/*Copy Right*/
+.Wrapper-rights{
+    height: 50vh;
+    color: white;
+    background-color: #6379F4;
+}
+
+.Wrapper-rights h3{
+    color: white;
+}
+
+.Wrapper-rights p{
+    margin: 20px 0 !important;
+}

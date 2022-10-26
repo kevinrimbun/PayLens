@@ -10,12 +10,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 // CSS
-import '../../'
+import '../../Styles/Components/Chart/Chart.css'
 
 function Chart() {
 
     return (
-        <Card className='border w-100 rounded shadow-lg Sidebar-Comp'>
+        <Card className='w-100 shadow-lg Chart-Comp'>
             <Card.Body>
                 <Container>
 

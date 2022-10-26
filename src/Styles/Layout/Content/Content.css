@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.card-wrapper{
+    margin-left: 50px;
+    height: 100vh;
+    border-radius: 25px;
+}
