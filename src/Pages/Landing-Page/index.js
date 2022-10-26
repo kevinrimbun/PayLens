@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom'
 
 // import css
 import "../../Styles/Pages/LandingPage.css"
@@ -31,8 +32,12 @@ const LandingPage = () => {
             </Col>
             <Col lg={7}>
                 <div className="logintab">
-                    <Button variant="outline-primary">Login</Button>
-                    <Button variant="primary">Sign Up</Button>
+                    <Link to='/login'>
+                        <Button variant="outline-primary">Login</Button>
+                    </Link>
+                    <Link to='/register'>
+                        <Button variant="primary">Sign Up</Button>
+                    </Link>
                 </div>
             </Col>
         </Row>
