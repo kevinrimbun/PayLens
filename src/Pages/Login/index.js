@@ -16,7 +16,7 @@ const Login = () => {
         if (email.length === 0 || password.length === 0) {
             setError(true)
         } else if (email === "kevin@mail.com" && password === "kevin123") {
-            window.location.replace("/register")
+            window.location.replace("/dashboard")
         } else {
             setError(true)
         }
@@ -43,7 +43,7 @@ const Login = () => {
                     {/* Email */}
                     <div className='mt-4 d-flex form-email'>
                         <BsEnvelope className='bi envelope-icon' />
-                        <input autoComplete='off' type="email" className="form-control" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
+                        <input  type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className='error-message'>
                         {error && email.length <= 0 ?
@@ -53,7 +53,7 @@ const Login = () => {
                     {/* Password */}
                     <div className='mt-4 d-flex form-password'>
                         <CiLock className='bi lock-icon'/>
-                        <input autoComplete='off' type="password" className="form-control passsword" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                        <input  type="password" className="form-control form-auth passsword" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
                         <i className="bi bi-eye" id='togglePassword'/> : <i class="bi bi-eye-slash"></i>
                     </div>
                     <div className='error-message'>

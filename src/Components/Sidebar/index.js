@@ -52,7 +52,7 @@ function Sidebar() {
                         </Col>
 
                         <Col>
-                            <Link to='/login' id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 py-4 Navigation-Section'>
+                            <Link to='/' id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 py-4 Navigation-Section'>
                                 <Icon icon="material-symbols:logout-rounded" width="30" height="30" className='m-3' />
                                 <h5>Log Out</h5>
                             </Link>

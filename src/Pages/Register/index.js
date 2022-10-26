@@ -43,7 +43,7 @@ const Register = () => {
                     {/* Username */}
                     <div className='mt-4 d-flex form-username'>
                         <BsPerson className='bi' />
-                        <input autoComplete='off' type="email" className="form-control" id="email" placeholder="Enter your username" name="email" onChange={(e) => setUsername(e.target.value)} />
+                        <input autoComplete='off' type="email" className="form-control form-auth" id="email" placeholder="Enter your username" name="email" onChange={(e) => setUsername(e.target.value)} />
                     </div>
                     <div className='error-message'>
                         {error && username.length <= 0 ?
@@ -53,7 +53,7 @@ const Register = () => {
                     {/* Email */}
                     <div className='mt-4 d-flex form-email'>
                         <BsEnvelope className='bi' />
-                        <input autoComplete='off' type="email" className="form-control" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
+                        <input autoComplete='off' type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className='error-message'>
                         {error && email.length <= 0 ?
@@ -63,7 +63,7 @@ const Register = () => {
                     {/* Password */}
                     <div className='mt-4 d-flex form-password'>
                         <CiLock className='bi lock-icon'/>
-                        <input autoComplete='off' type="password" className="form-control passsword" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                        <input autoComplete='off' type="password" className="form-control password form-auth" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
                         <i className="bi bi-eye" id='togglePassword'/> : <i class="bi bi-eye-slash"></i>
                     </div>
                     <div className='error-message'>
