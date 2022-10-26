@@ -33,36 +33,32 @@ const LandingPage = () => {
                 </Col>
                 <Col lg={7}>
                     <div className="logintab">
-                        <Button variant="outline-primary">Login</Button>
-                        <Button variant="primary">Sign Up</Button>
-                    </div>
-                </Col>
-            </Row>
-            <Col lg={5}>
-                <img src={wave} alt="" className='wave' />
-                <img src={phonee} alt="" className='phone'/>
-            </Col>
-            <Col lg={7}>
-                <div className="logintab">
                     <Link to='/login'>
                         <Button variant="outline-primary">Login</Button>
                     </Link>
                     <Link to='/register'>
                         <Button variant="primary">Sign Up</Button>
                     </Link>
-                </div>
-            </Col>
-            <Col lg={7} className='rightside'>
-                
-                <h1>Awesome App <br /> For Saving  <span className='blue'>Time</span>. </h1>
-                <p>we bring you a mobile app banking for fix <br /> your any problem and struggle</p>
-                <Button variant="primary" className='try'>Try it for free</Button>
-                <p>Available on :</p>
-                <div>
-                <AiFillApple className="logos"/>
-                <AiFillApple className="logos"/>
-                </div>
-            </Col>
+                    </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col lg={5}>
+                    <img src={wave} alt="" className='wave' />
+                    <img src={phonee} alt="" className='phone'/>
+                </Col>
+                <Col lg={7} className='rightside'>
+                    
+                    <h1>Awesome App <br /> For Saving  <span className='blue'>Time</span>. </h1>
+                    <p>we bring you a mobile app banking for fix <br /> your any problem and struggle</p>
+                    <Button variant="primary" className='try'>Try it for free</Button>
+                    <p>Available on :</p>
+                    <div>
+                    <AiFillApple className="logos"/>
+                    <AiFillApple className="logos"/>
+                    </div>
+                </Col>
+            </Row>
         </Row>
 
         {/* merek */}
