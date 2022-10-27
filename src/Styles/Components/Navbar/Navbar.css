@@ -38,3 +38,8 @@
   -ms-border-radius: 10px !important;
   -o-border-radius: 10px !important;
 }
+
+.img-navbar {
+  margin-top: -5%;
+  width: 10%;
+}

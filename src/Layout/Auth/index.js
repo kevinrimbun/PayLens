@@ -17,7 +17,7 @@ const Auth = (props) => {
                 </div>
 
                 <div className='img-wave'>
-                    {/* <img src={wave} alt='wave'/> */}
+                    <img src={wave} alt='wave'/>
                 </div>
 
                 <div className='phone-wrapper'>

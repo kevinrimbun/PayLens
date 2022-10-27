@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Iconify
 import { Icon } from "@iconify/react";
@@ -14,6 +14,17 @@ import Col from 'react-bootstrap/Col';
 import '../../Styles/Components/Sidebar/Sidebar.css'
 
 function Sidebar() {
+    const navigate = useNavigate()
+
+    const deleteAll = (e) => {
+        e.preventDefault();
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
+        if (localStorage.getItem("username") === '' && localStorage.getItem("email") === '' &&localStorage.getItem("password") === '') {
+            navigate('/', { replace : true })
+        }
+    };
 
     return (
         <Card className='shadow-lg Sidebar-Comp'>
@@ -52,7 +63,7 @@ function Sidebar() {
                         </Col>
 
                         <Col>
-                            <Link to='/' id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 py-4 Navigation-Section logout'>
+                            <Link  onClick={(e) => deleteAll(e)} id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 py-4 Navigation-Section logout'>
                                 <Icon icon="material-symbols:logout-rounded" width="30" height="30" className='m-3' />
                                 <h5>Log Out</h5>
                             </Link>

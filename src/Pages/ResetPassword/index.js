@@ -1,6 +1,6 @@
 import React from 'react';
 import Auth from '../../Layout/Auth';
-import '../../Style/Pages/auth.css';
+import '../../Styles/Pages/auth.css';
 import {BsEnvelope} from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 // import { Button } from '@chakra-ui/react';

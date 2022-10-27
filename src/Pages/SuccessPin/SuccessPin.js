@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../Layout/Auth';
-import '../../Style/Pages/auth.css';
+import '../../Styles/Pages/auth.css';
 
 const SuccessPin = () => {
   return <Auth>
