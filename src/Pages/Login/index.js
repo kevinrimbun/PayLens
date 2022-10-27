@@ -34,6 +34,22 @@ const Login = () => {
 
     return <Auth>
         <div className='title-right-wrapper'>
+            
+            {/* For Responsive */}
+            <div className='logo-mobile'>
+                PayLens
+            </div>
+
+            <div className='title-wrapper'>
+                <div className='title-mobile'>
+                    Login
+                </div>
+                <div className='subtitle-mobile'>
+                    Login to your existing account to access all the features in PayLens
+                </div>
+            </div>
+            {/* ----BATAS---- */}
+
 
             <div className='title-top-right'>
                 Start Accessing Banking Needs With All Devices and All Platform With 30.000+ Users
@@ -62,7 +78,7 @@ const Login = () => {
                     </div>
 
                     <div className='forgot-password mt-2'>
-                        <Link>
+                        <Link to='/reset-password'>
                             Forgot Your Password?
                         </Link>
                     </div>

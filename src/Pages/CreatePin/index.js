@@ -44,9 +44,8 @@ const CreatePin = () => {
                 Create 6 digits pin to secure all your money and your data in PayLens app. Keep it secret and don't tell anyone about your PayLens password and the PIN.
             </div>
 
-
-
         </div>
+
         <div className='pin-wrapper'>
             <form onSubmit={handleSubmit}>
                 <PinInput className='d-flex pin-input' >
@@ -62,6 +61,7 @@ const CreatePin = () => {
                     <label>Input cannot be empty !</label>:""}
                 </div>
                 <button className="btn-auth" id='submit' type="submit" value="Enter">Confirm</button>
+                {/* <input type='submit'>Confirm</input> */}
             </form>
         </div>
 
