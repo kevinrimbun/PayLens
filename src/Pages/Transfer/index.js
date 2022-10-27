@@ -17,7 +17,7 @@ const Transfer = () => {
     <Container>
       <Row className='d-flex flex-column justify-content-center'>
         <Col>
-        <h4 className=''>Search Receiver</h4>
+        <h4>Search Receiver</h4>
         </Col>
       </Row>
       <Row className='d-flex flex-column justify-content-center'>
@@ -33,9 +33,21 @@ const Transfer = () => {
         <Col>
         {accounts.map(getAccount => {
           return(
-          <Card>
+          <Card key={getAccount.id}>
           <Card.Body>
-              <Card.Img src={getAccount.profilePic} />
+            <Container>
+              <Row>
+                <Col sm={2}>
+                <Card.Img style={{height: '70px', width:'70px'}} src={getAccount.profilePic} />
+                </Col>
+                <Col sm={2}>
+                <Card.Text>{getAccount.name}</Card.Text>
+                <Card.Text>{getAccount.phone}</Card.Text>
+                </Col>
+                <Col>
+                </Col>
+              </Row>
+            </Container>
           </Card.Body>
         </Card>
         )})}
