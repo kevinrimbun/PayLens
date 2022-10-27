@@ -13,12 +13,13 @@ import Carousel from 'react-bootstrap/Carousel';
 
 
 // import gambar, icon
+
 import profile1 from  "../../Assets/1.svg"
 import profile2 from  "../../Assets/2.svg"
 import wave from "../../Assets/wavephone.svg"
 import phonee from "../../Assets/phonee.svg"
 import phone2 from "../../Assets/phone2.svg"
-import {AiFillApple, AiFillFacebook,AiFillLock, AiFillAndroid, AiFillGithub, AiFillGooglePlusCircle, AiOutlineDownload} from "react-icons/ai"
+import {AiFillApple, AiFillFacebook,AiFillLock, AiFillGithub, AiFillGooglePlusCircle, AiOutlineDownload, AiFillAndroid} from "react-icons/ai"
 import {BsMicrosoft, BsTelephoneFill} from "react-icons/bs"
 
 
@@ -55,7 +56,7 @@ const LandingPage = () => {
                     <p>Available on :</p>
                     <div>
                     <AiFillApple className="logos"/>
-                    <AiFillApple className="logos"/>
+                    <AiFillAndroid className="logos"/>
                     </div>
                 </Col>
             </Row>

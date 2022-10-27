@@ -12,7 +12,7 @@
 }
 .auth-wrapper .left-section {
     width: 59%;
-    background-image: url(../../Assets/BGAuth.svg);
+    background-image: url(../../../Assets/BGAuth.svg);
     background-position: center;
     background-size: cover;
 }

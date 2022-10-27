@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../Style/Layout/auth.css';
-// import wave from '../../Assets/wave.svg';
+import '../../Styles/Layout/Auth/auth.css';
+import wave from '../../Assets/wave.svg';
 import PhoneAuth from '../../Assets/PhoneAuth.svg';
 import PhoneAuth2 from '../../Assets/PhoneAuth2.svg';
 

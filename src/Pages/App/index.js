@@ -14,6 +14,7 @@ import CreatePin from '../CreatePin';
 import SuccessPin from '../SuccessPin/SuccessPin';
 import ResetPass from '../ResetPassword';
 import NewPassword from '../NewPassword';
+import ChangePassword from '../ChangePassword';
 
 
 const index = () => {
@@ -35,6 +36,7 @@ const index = () => {
             <Route path='/success-pin' element={<SuccessPin/>} />
             <Route path='/reset-password' element={<ResetPass/>} />
             <Route path='/new-password' element={<NewPassword/>} />
+            <Route path='/changepassword' element={<ChangePassword/>} />
         </Routes>
     </BrowserRouter>
   )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../../Layout/Auth';
-import '../../Style/Pages/auth.css';
+import '../../Styles/Layout/Auth/auth.css';
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
 import { Button } from '@chakra-ui/react';
