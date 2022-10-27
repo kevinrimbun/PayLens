@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../../Layout/Auth';
 import '../../Style/Pages/auth.css';
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
+import { Button } from '@chakra-ui/react';
 
 const Login = () => {
+
+    const [show, setShow] = React.useState(false)
+    const handleClick = () => setShow(!show)
+
+    // let history = useHistory();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +23,8 @@ const Login = () => {
         if (email.length === 0 || password.length === 0) {
             setError(true)
         } else if (email === "kevin@mail.com" && password === "kevin123") {
-            window.location.replace("/dashboard")
+            // window.location.replace("/dashboard")
+            navigate("/dashboard", { replace: true })
         } else {
             setError(true)
         }
@@ -24,10 +32,24 @@ const Login = () => {
         console.log(Object.fromEntries(data.entries()));
     }
 
-
-
     return <Auth>
         <div className='title-right-wrapper'>
+            
+            {/* For Responsive */}
+            <div className='logo-mobile'>
+                PayLens
+            </div>
+
+            <div className='title-wrapper'>
+                <div className='title-mobile'>
+                    Login
+                </div>
+                <div className='subtitle-mobile'>
+                    Login to your existing account to access all the features in PayLens
+                </div>
+            </div>
+            {/* ----BATAS---- */}
+
 
             <div className='title-top-right'>
                 Start Accessing Banking Needs With All Devices and All Platform With 30.000+ Users
@@ -45,30 +67,24 @@ const Login = () => {
                         <BsEnvelope className='bi envelope-icon' />
                         <input  type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
-                    <div className='error-message'>
-                        {error && email.length <= 0 ?
-                        <label>Email cannot be empty !</label>:""}
-                    </div>
 
                     {/* Password */}
                     <div className='mt-4 d-flex form-password'>
                         <CiLock className='bi lock-icon'/>
-                        <input  type="password" className="form-control form-auth passsword" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
-                        <i className="bi bi-eye" id='togglePassword'/> : <i class="bi bi-eye-slash"></i>
-                    </div>
-                    <div className='error-message'>
-                        {error && password.length <= 0 ?
-                        <label>Password cannot be empty !</label>:""}
+                        <input type={show ? 'text' : 'password'} className="form-control form-auth passsword" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                        <Button className='btn-visibility' h='1.75rem' size='sm' onClick={handleClick}>
+                            {show ? 'Hide' : 'Show'}
+                        </Button>
                     </div>
 
                     <div className='forgot-password mt-2'>
-                        <Link>
+                        <Link to='/reset-password'>
                             Forgot Your Password?
                         </Link>
                     </div>
                     
                     <div className='error-message'>
-                        {error && email !== "kevin@mail.com" && password !== "kevin123" ?
+                        {error && email !== "kevin@mail.com" && password !== "kevin123" && email.length <= 0 && password.length <= 0 ?
                         <label>Email or Password Invalid !</label>:""}
                     </div>
 

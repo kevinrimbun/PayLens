@@ -62,3 +62,12 @@
     text-align: justify;
     padding-right: 10%;
 }
+
+
+/* Responsive */
+/* Mobile */
+@media (max-width: 425px) {
+    .auth-wrapper .left-section {
+        display: none;
+    }
+}

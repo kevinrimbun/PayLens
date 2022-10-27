@@ -10,6 +10,10 @@ import Content from '../../Layout/Content';
 import Transfer from '../Transfer';
 import TopUp from '../TopUp';
 import Profile from '../Profile';
+import CreatePin from '../CreatePin';
+import SuccessPin from '../SuccessPin/SuccessPin';
+import ResetPass from '../ResetPassword';
+import NewPassword from '../NewPassword';
 
 
 const index = () => {
@@ -26,6 +30,11 @@ const index = () => {
             <Route path='/transfer' element={<Transfer/>} />
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />
+            <Route path='/history' element={<History />} />
+            <Route path='/create-pin' element={<CreatePin/>} />
+            <Route path='/success-pin' element={<SuccessPin/>} />
+            <Route path='/reset-password' element={<ResetPass/>} />
+            <Route path='/new-password' element={<NewPassword/>} />
         </Routes>
     </BrowserRouter>
   )

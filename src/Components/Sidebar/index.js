@@ -26,7 +26,7 @@ function Sidebar() {
                         <Col>
                             <Link to='/dashboard' className='d-flex align-items-center mt-4 Navigation-Section'>
                                 <Icon icon="akar-icons:dashboard" width="30" height="30" className=' m-3' />
-                                <h5>Dasboard</h5>
+                                <h5>Dashboard</h5>
                             </Link>
                         </Col>
 
@@ -52,7 +52,7 @@ function Sidebar() {
                         </Col>
 
                         <Col>
-                            <Link to='/' id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 py-4 Navigation-Section'>
+                            <Link to='/' id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 py-4 Navigation-Section logout'>
                                 <Icon icon="material-symbols:logout-rounded" width="30" height="30" className='m-3' />
                                 <h5>Log Out</h5>
                             </Link>
