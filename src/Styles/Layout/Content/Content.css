@@ -6,7 +6,11 @@
 }
 
 .card-wrapper{
-    margin-left: 50px;
     height: 100vh;
-    border-radius: 25px;
+    border: none !important;
+    border-radius: 25px !important;
+    -webkit-border-radius: 25px !important;
+    -moz-border-radius: 25px !important;
+    -ms-border-radius: 25px !important;
+    -o-border-radius: 25px !important;
 }
