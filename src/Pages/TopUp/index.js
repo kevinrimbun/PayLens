@@ -64,9 +64,9 @@ const TopUp = () => {
                         {/* Sidebar Section */}
                         <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
-                        {/* Topup Section */}
-                        <Col sm={8} className="Topup-Section p-4 ms-3 shadow-lg">
-                            <h3>How To Top Up</h3>
+                        {/* History Section */}
+                        <Col sm={8} className="History-Section p-4 ms-3 border shadow-lg">
+                            <h4>How To Top Up</h4>
 
                             <Row className='User-Section'>
                                 <Col>

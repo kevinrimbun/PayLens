@@ -9,6 +9,9 @@
 .User-Section p {
     margin-top: 7px;
 }
+.History-Section h4 {
+    font-weight: bolder;
+    margin-left: 1.5%;
 
 .TopUpInstruction-Comp {
     border: none !important;

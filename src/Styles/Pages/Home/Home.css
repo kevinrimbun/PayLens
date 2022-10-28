@@ -13,13 +13,17 @@ body {
 .App {
     
 }
-
+.container-home {
+    /* border: 2px solid red; */
+}
 .Container-Section{
     
 }
+.history-wrapper {
 
+}
 .Sidebar-Section {
-    
+
 }
 
 .Content-Section {

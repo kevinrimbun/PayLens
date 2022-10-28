@@ -1,0 +1,22 @@
+.addnum-title p{
+    color: #7A7886;
+    font-weight:400;
+    margin: 20px;
+}
+
+.addnum-title h4{
+    margin: 20px;
+}
+
+.addnum-body{
+    height: 50%;
+}
+
+.addnum-body button{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.addnum-body input{
+    border: none;
+}
