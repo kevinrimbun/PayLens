@@ -57,3 +57,30 @@
 .infouser-nav p {
   padding-bottom: 20%;
 }
+
+.Dropdown-History {
+  margin: 0px !important;
+  padding: 0px !important;
+  background-color: transparent !important;
+}
+
+.Dropdown-Toggle {
+  margin: 0px !important;
+  padding: 0px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #4D4B57;
+}
+
+.Dropdown-Menu {
+  border: none !important;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+
+.Text-Dropdown {
+  font-weight: lighter !important;
+}
