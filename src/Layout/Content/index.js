@@ -21,7 +21,7 @@ const Content = (props) => {
             <Col sm={3} className="sidebar-wrapper p-1">
               <Sidebar />
             </Col>
-            <Col sm={9} className="p-1">
+            <Col sm={8} className="p-1 ms-2">
               <Card className="shadow-lg card-wrapper">
                 <Card.Body>
                   {children}

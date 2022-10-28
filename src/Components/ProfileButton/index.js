@@ -8,8 +8,9 @@ function ProfileButton(props) {
   // Props Data Button
   const { text, icon } = props;
   return (
-      <Button variant="secondary" className='mt-3 ProfileButton d-flex justify-content-space-between align-items-center'>
-        {text}{icon}
+      <Button className='mt-3 ProfileButton d-flex align-items-center'>
+        <span className='float-start'>{text}</span>
+        <span className='float-end Icon-Button'>{icon}</span>
       </Button>
   );
 }

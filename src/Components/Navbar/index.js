@@ -26,7 +26,7 @@ function NavbarComp() {
         {/* Logo Section */}
         <Link to='/dashboard' className='text-decoration-none'>
           <Navbar.Brand  className="d-flex justify-content-center align-items-center Logo-Section">
-            <Icon icon="mdi:google-lens" width="30" height="30" />
+            {/* <Icon icon="mdi:google-lens" width="30" height="30" /> */}
             <h4>PayLens</h4>
           </Navbar.Brand>
         </Link>
@@ -41,10 +41,10 @@ function NavbarComp() {
                 <Col className="m-0 p-0"></Col>
 
                 {/* User Section */}
-                <Col className="d-flex justify-content-center align-items-center mt-3">
+                <Col className="d-flex justify-content-center align-items-center mt-3 ms-5">
                   <img src={Samuel} className="img-navbar rounded me-2" alt="..." />
                   <div className="me-3">
-                    <h6>{localStorage.getItem("username")}</h6>
+                    <h6>{localStorage.getItem("username")}Samuel Suhi</h6>
                     <p>+62 859-5158-6501</p>
                   </div>
                   <Icon icon="ei:bell" width="40" height="40" className="m-1"/>

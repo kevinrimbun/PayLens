@@ -12,6 +12,9 @@ import Col from 'react-bootstrap/Col';
 // CSS
 import '../../Styles/Components/Chart/Chart.css'
 
+// Assets
+import ChartPic from '../../Assets/graphic.svg'
+
 function Chart() {
 
     return (
@@ -34,6 +37,9 @@ function Chart() {
                     </Row>
 
                     {/* Lower Section */}
+                    <div className='d-flex justify-content-center align-items-center mt-5 mb-4'>
+                        <img src={ChartPic} className="rounded" alt="Chart" />
+                    </div>
 
                 </Container>
             </Card.Body>

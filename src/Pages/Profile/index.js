@@ -22,15 +22,15 @@ const Profile = () => {
     const listButtons = [
         {
             text: "Personal Information",
-            icon: <Icon icon="akar-icons:arrow-right" color="#eee" width="25" height="25" />
+            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />
         },
         {
             text: "Change Password",
-            icon: <Icon icon="akar-icons:arrow-right" color="#eee" width="25" height="25" />
+            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />
         },
         {
             text: "Change PIN",
-            icon: <Icon icon="akar-icons:arrow-right" color="#eee" width="25" height="25" />
+            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />
         },
         {
             text: "Logout",
@@ -56,15 +56,16 @@ const Profile = () => {
                         <Col sm={8} className="Profile-Section p-4 ms-3 border shadow-lg d-flex flex-column justify-content-center align-items-center">
                             <img src="https://i.pravatar.cc/100?img=3" className="ImgUser-Profile rounded" alt="Profile" />
                             <p className='mt-3 mb-3'><Icon icon="ep:edit-pen" color="#7A7886" width="20" height="20"/>Edit</p>
-                            <h3 className='mt-1 mb-3'>{localStorage.getItem("username")}</h3>
+                            <h3 className='mt-1 mb-3'>{localStorage.getItem("username")}Samuel Suhi</h3>
                             <h5 className='mb-4'>+62 859-5158-6501</h5>
                             {/* Button Profile Section */}
                             <Row className='ButtonProfile-Section'>
                                 <Col className='d-flex flex-column'>
                                     {listButtons.map(button => {
                                         return (
-                                            <ProfileButton text={button.text}
-                                                icon={button.icon}
+                                            <ProfileButton
+                                            text={button.text}
+                                            icon={button.icon}
                                             />
                                         )
                                     }
