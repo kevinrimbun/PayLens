@@ -20,9 +20,11 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        localStorage.getItem("email")
+        localStorage.getItem("password")
         if (email.length === 0 || password.length === 0) {
             setError(true)
-        } else if (email === "kevin@mail.com" && password === "kevin123") {
+        } else if (email === localStorage.getItem("email") && password === localStorage.getItem("password")) {
             // window.location.replace("/dashboard")
             navigate("/dashboard", { replace: true })
         } else {
@@ -84,7 +86,7 @@ const Login = () => {
                     </div>
                     
                     <div className='error-message'>
-                        {error && email !== "kevin@mail.com" && password !== "kevin123" && email.length <= 0 && password.length <= 0 ?
+                        {error && email !== localStorage.getItem("email") && password !== localStorage.getItem("password") ?
                         <label>Email or Password Invalid !</label>:""}
                     </div>
 

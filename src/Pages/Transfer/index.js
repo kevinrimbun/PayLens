@@ -31,18 +31,18 @@ const Transfer = () => {
       </Row>
       
       <Row className='d-flex flex-column justify-content-center'>
-        <Col>
+        <Col className='card-receiver'>
         {accounts.map(getAccount => {
           return(
-          <Card key={getAccount.id}>
-          <Card.Body>
+          <Card className='my-2 ' key={getAccount.id}>
+          <Card.Body >
           <Link to={'/DetailTransfer/' + getAccount.id} className="text-decoration-none text-dark">
             <Container>
-              <Row>
-                <Col sm={2}>
+              <Row >
+                <Col lg={2}>
                 <Card.Img style={{height: '70px', width:'70px'}} src={getAccount.profilePic} />
                 </Col>
-                <Col sm={2}>
+                <Col >
                 <Card.Text>{getAccount.name}</Card.Text>
                 <Card.Text>{getAccount.phone}</Card.Text>
                 </Col>

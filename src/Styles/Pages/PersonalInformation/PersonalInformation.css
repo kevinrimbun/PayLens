@@ -1,0 +1,16 @@
+.Information-User {
+  font-weight: bolder !important;
+}
+
+.Manage-Button {
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.Manage-Button:hover {
+  color: #0275d8 !important;
+  text-shadow: 4px 4px 15px rgba(2, 117, 216, 0.6);
+}

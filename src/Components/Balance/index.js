@@ -26,19 +26,19 @@ function BalanceComp() {
                         <Col className='d-flex flex-column justify-content-center Description-Section'>
                             <p className='text-start mt-1'>Balance</p>
                             <h4 className='text-start'>Rp 950.000</h4>
-                            <p className='text-start mb-1'>+62 859 - 5158 - 6501</p>
+                            <p className='text-start mb-1'>+62 {localStorage.getItem('number')}</p>
                         </Col>
 
                         {/* Button Section */}
                         <Col className='d-flex flex-column justify-content-end Button-Section'>
                             <Link to='/transfer'>
-                                <Button variant="outline-light" className='m-2 Button-Balance'>
+                                <Button variant="outline-light" className='m-2 Button-Balance float-end'>
                                     <Icon icon="akar-icons:arrow-down" vFlip={true} className='me-2' />
                                     Transfer
                                 </Button>
                             </Link>
                             <Link to='/topup'>
-                                <Button variant="outline-light" className='m-2 Button-Balance'>
+                                <Button variant="outline-light" className='m-2 Button-Balance float-end'>
                                     <Icon icon="akar-icons:plus" vFlip={true} className='me-2' />
                                     Top Up
                                 </Button>

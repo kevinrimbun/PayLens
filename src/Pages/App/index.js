@@ -10,6 +10,8 @@ import Content from '../../Layout/Content';
 import Transfer from '../Transfer';
 import TopUp from '../TopUp';
 import Profile from '../Profile';
+import PersonalInformation from '../PersonalInformation';
+import ManagePhone from '../ManagePhone';
 import CreatePin from '../CreatePin';
 import SuccessPin from '../SuccessPin/SuccessPin';
 import ResetPass from '../ResetPassword';
@@ -17,6 +19,8 @@ import NewPassword from '../NewPassword';
 import ChangePassword from '../ChangePassword';
 import DetailTransfer from '../DetailTransfer';
 import TransferConfirmation from '../TransferConfirmation';
+import AddPhoneNum from '../AddPhoneNum';
+import ManagePhoneNum from '../ManagePhoneNum';
 
 
 const index = () => {
@@ -35,12 +39,16 @@ const index = () => {
             <Route path='/DetailTransfer/:id' element={<DetailTransfer/>} />
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />
+            <Route path='/information' element={<PersonalInformation/>} />
+            <Route path='/managephone' element={<ManagePhone/>} />
             <Route path='/history' element={<History />} />
             <Route path='/create-pin' element={<CreatePin/>} />
             <Route path='/success-pin' element={<SuccessPin/>} />
             <Route path='/reset-password' element={<ResetPass/>} />
             <Route path='/new-password' element={<NewPassword/>} />
             <Route path='/changepassword' element={<ChangePassword/>} />
+            <Route path='/addphonenum' element={<AddPhoneNum/>} />
+            <Route path='/managephonenum' element={<ManagePhoneNum/>} />
         </Routes>
     </BrowserRouter>
   )

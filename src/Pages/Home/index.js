@@ -24,7 +24,7 @@ const Home = () => {
       <NavbarComp />
 
       <div className="App w-100 p-1">
-        <Container fluid className="w-100 p-5 Container-Section p-1">
+        <Container fluid className="container-home p-5 Container-Section p-1">
           <Row>
 
             {/* Sidebar Section */}
@@ -36,12 +36,14 @@ const Home = () => {
               <Container fluid>
                 <Row>
                   {/* Balance Section */}
-                  <Col className="Balance-Section p-1"><BalanceComp /></Col>
+                  <Col className="Balance-Section">
+                    <BalanceComp />
+                  </Col>
                 </Row>
               </Container>
 
               {/* Chart, History Section */}
-              <Container fluid className='p-1'>
+              <Container fluid className='history-wrapper'>
                 <Row>
                   {/* Chart Section */}
                   <Col sm={7} className=" mt-3 Chart-Section p-1">

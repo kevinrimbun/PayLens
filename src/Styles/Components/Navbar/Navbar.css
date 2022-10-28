@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap");
+
 * {
-  margin: 0px;
-  padding: 0px;
+    font-family: "Nunito Sans", sans-serif !important;
+    margin: 0px;
+    padding: 0px;
 }
 
 .Navbar-Section {
@@ -37,4 +40,20 @@
   -moz-border-radius: 10px !important;
   -ms-border-radius: 10px !important;
   -o-border-radius: 10px !important;
+}
+.usernav-wrapper {
+  margin-left: 15%;
+}
+.img-navbar {
+  margin-top: -5%;
+  width: 10%;
+}
+.bell-navbar {
+  margin-top: -5%;
+}
+.infouser-nav h6{
+  padding-top: 15%;
+}
+.infouser-nav p {
+  padding-bottom: 20%;
 }

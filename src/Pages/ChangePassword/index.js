@@ -14,7 +14,6 @@ const ChangePassword = () => {
   const [passwordShown1, setPasswordShown1] = useState(false);
   const [passwordShown2, setPasswordShown2] = useState(false);
   const [passwordShown3, setPasswordShown3] = useState(false);
-  const [hide , setHide] = useState("");
 
   const togglePasswordVisiblity1 = () => {
     setPasswordShown1(passwordShown1 ? false : true);

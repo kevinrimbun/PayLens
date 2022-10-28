@@ -18,6 +18,9 @@ const Register = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        localStorage.setItem("username", username);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
         if (username.length === 0  || email.length === 0 || password.length === 0) {
             setError(true)
         } else if  (username.length !== 0  || email.length !== 0 || password.length !== 0) {

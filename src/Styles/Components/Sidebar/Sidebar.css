@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap");
 
 * {
-  margin: 0px;
-  padding: 0px;
+    font-family: "Nunito Sans", sans-serif !important;
+    margin: 0px;
+    padding: 0px;
 }
 
 .Sidebar-Comp {
+  border: none !important;
   width: 100% !important;
   height: 100vh !important;
   border-radius: 25px !important;
@@ -31,6 +33,9 @@
   font-weight: bolder !important;
 }
 
+.Navigation-Section h5 {
+  margin-top: 3%;
+}
 .logout {
   margin-top: 70%;
 }
