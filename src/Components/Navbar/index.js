@@ -45,7 +45,7 @@ function NavbarComp() {
                   <img src={Samuel} className="rounded-circle me-2" alt="..." />
                   <div className="me-3">
                     <h6>Robert Chandler</h6>
-                    <p>+62 859-5158-6501</p>
+                    <p>+62 {localStorage.getItem('number')}</p>
                   </div>
                   <Icon icon="ei:bell" width="40" height="40" className="m-1"/>
                 </Col>

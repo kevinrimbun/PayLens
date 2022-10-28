@@ -1,0 +1,9 @@
+.managenum-body{
+    margin-left: 20px;
+    justify-content: space-between;
+}
+
+.managenum-body i{
+    font-size: 22px;
+    cursor: pointer;
+}
