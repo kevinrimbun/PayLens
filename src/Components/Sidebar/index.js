@@ -14,7 +14,7 @@ import Col from 'react-bootstrap/Col';
 import '../../Styles/Components/Sidebar/Sidebar.css'
 
 function Sidebar() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const deleteAll = (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ function Sidebar() {
         localStorage.removeItem("email");
         localStorage.removeItem("password");
         if (localStorage.getItem("username") === '' && localStorage.getItem("email") === '' &&localStorage.getItem("password") === '') {
-            navigate('/', { replace : true })
+            navigate("/", { replace: true })
         }
     };
 

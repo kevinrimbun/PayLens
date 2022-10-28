@@ -8,7 +8,7 @@ function ProfileButton(props) {
   // Props Data Button
   const { text, icon } = props;
   return (
-      <Button variant="secondary" className='mt-3 ProfileButton d-flex justify-content-space-between align-items-center'>
+      <Button variant="secondary" className='mt-3 ProfileButton d-flex justify-content-between align-items-center'>
         {text}{icon}
       </Button>
   );

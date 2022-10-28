@@ -41,13 +41,13 @@ function NavbarComp() {
                 <Col className="m-0 p-0"></Col>
 
                 {/* User Section */}
-                <Col className="d-flex justify-content-center align-items-center mt-3">
+                <Col className="usernav-wrapper d-flex justify-content-center align-items-center">
                   <img src={Samuel} className="img-navbar rounded me-2" alt="..." />
-                  <div className="me-3">
+                  <div className="infouser-nav me-3">
                     <h6>{localStorage.getItem("username")}</h6>
                     <p>+62 859-5158-6501</p>
                   </div>
-                  <Icon icon="ei:bell" width="40" height="40" className="m-1"/>
+                  <Icon icon="ei:bell" width="40" height="40" className="m-1 bell-navbar"/>
                 </Col>
 
               </Row>
