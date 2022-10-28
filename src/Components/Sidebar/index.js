@@ -22,6 +22,7 @@ function Sidebar() {
         localStorage.removeItem("username");
         localStorage.removeItem("email");
         localStorage.removeItem("password");
+        localStorage.removeItem("number");
         console.log(localStorage.getItem("username"))
         if (localStorage.getItem("username") === null && localStorage.getItem("email") === null && localStorage.getItem("password") === null) {
             navigate("/", { replace: true })
