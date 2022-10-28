@@ -45,14 +45,14 @@ function TransactionHistory() {
     ]
 
     return (
-        <Card className='shadow-lg Transaction-Comp'>
-            <Card.Body>
+        <Card className='shadow-lg Transaction-Comp transaction-card'>
+            <Card.Body className='transaction-wrapper '>
                 <Container>
 
                     {/* Title Section */}
                     <Row className='Title-Section d-flex justify-content-center align-items-center'>
-                        <Col>
-                            <h6>Transaction History</h6>
+                        <Col className='transaction-title'>
+                            <p>Transaction History</p>
                         </Col>
                         <Col>
                             <Link to='/history' className='Button-History float-end'>

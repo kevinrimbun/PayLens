@@ -38,10 +38,10 @@ function NavbarComp() {
               <Row>
 
                 {/* Unused Col */}
-                <Col className="m-0 p-0"></Col>
+                <Col className="usernav-wrapper ms-5 p-0"></Col>
 
                 {/* User Section */}
-                <Col className="usernav-wrapper d-flex justify-content-center align-items-center">
+                <Col className=" ms-5 d-flex justify-content-center align-items-center">
                   <img src={Samuel} className="img-navbar rounded me-2" alt="..." />
                   <div className="infouser-nav me-3">
                     <h6>{localStorage.getItem("username")}</h6>

@@ -66,7 +66,7 @@ const TopUp = () => {
 
                         {/* History Section */}
                         <Col sm={8} className="History-Section p-4 ms-3 border shadow-lg">
-                            <h3>How To Top Up</h3>
+                            <h4>How To Top Up</h4>
 
                             <Row className='User-Section'>
                                 <Col>

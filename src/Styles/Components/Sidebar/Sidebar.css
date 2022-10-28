@@ -31,6 +31,9 @@
   font-weight: bolder !important;
 }
 
+.Navigation-Section h5 {
+  margin-top: 3%;
+}
 .logout {
   margin-top: 70%;
 }

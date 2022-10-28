@@ -4,7 +4,7 @@
 }
 
 .Transaction-Comp {
-  width: 100% !important;
+  width: 110% !important;
   border-radius: 25px !important;
   -webkit-border-radius: 25px !important;
   -moz-border-radius: 25px !important;
@@ -25,4 +25,12 @@
 .Button-History:hover {
   color: #0275d8 !important;
   text-shadow: 4px 4px 15px rgba(2, 117, 216, 0.6);
+}
+ 
+.Button-History {
+  /* margin-right: 5%; */
+  text-align: right;
+}
+.transaction-wrapper {
+  /* margin-right: -8% ; */
 }

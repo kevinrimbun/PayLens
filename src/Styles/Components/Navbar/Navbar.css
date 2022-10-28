@@ -38,7 +38,9 @@
   -ms-border-radius: 10px !important;
   -o-border-radius: 10px !important;
 }
-
+.usernav-wrapper {
+  margin-left: 15%;
+}
 .img-navbar {
   margin-top: -5%;
   width: 10%;
