@@ -59,7 +59,7 @@ const Profile = () => {
                             <img src="https://i.pravatar.cc/100?img=3" className="ImgUser-Profile rounded" alt="Profile" />
                             <p className='mt-3 mb-3'><Icon icon="ep:edit-pen" color="#7A7886" width="20" height="20" />Edit</p>
                             <h3 className='mt-1 mb-3'>{localStorage.getItem("username")}</h3>
-                            <h5 className='mb-4'>+62 859-5158-6501</h5>
+                            <h5 className='mb-4'>+62 {localStorage.getItem('number')}</h5>
                             {/* Button Profile Section */}
                             <Row className='ButtonProfile-Section'>
                                 <Col className='d-flex flex-column'>
