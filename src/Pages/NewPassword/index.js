@@ -14,7 +14,7 @@ const NewPassword = () => {
         <div className='title-right-wrapper'>
 
 
-                        {/* For Responsive */}
+            {/* For Responsive */}
             <div className='logo-mobile'>
                 PayLens
             </div>

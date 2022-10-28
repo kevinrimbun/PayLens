@@ -45,6 +45,7 @@ const index = () => {
             <Route path='/changepassword' element={<ChangePassword/>} />
             <Route path='/addphonenum' element={<AddPhoneNum/>} />
             <Route path='/managephonenum' element={<ManagePhoneNum/>} />
+            {/* <Route path='success-change-password' */}
         </Routes>
     </BrowserRouter>
   )

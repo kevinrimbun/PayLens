@@ -52,7 +52,7 @@ function TransactionHistory() {
                     {/* Title Section */}
                     <Row className='Title-Section d-flex justify-content-center align-items-center'>
                         <Col className='transaction-title'>
-                            <p>Transaction History</p>
+                            <div>Transaction History</div>
                         </Col>
                         <Col>
                             <Link to='/history' className='Button-History float-end'>

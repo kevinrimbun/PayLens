@@ -9,7 +9,7 @@
 .Sidebar-Comp {
   border: none !important;
   width: 100% !important;
-  height: 100vh !important;
+  height: 106vh !important;
   border-radius: 25px !important;
   -webkit-border-radius: 25px !important;
   -moz-border-radius: 25px !important;
@@ -19,12 +19,13 @@
 
 .Navigation-Section {
   text-decoration: none;
-  color: black;
+  color: rgba(58, 61, 66, 0.8);
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
+  margin-top: 5%;
 }
 
 .Navigation-Section:hover {
@@ -34,8 +35,8 @@
 }
 
 .Navigation-Section h5 {
-  margin-top: 3%;
+  margin-top: 5%;
 }
 .logout {
-  margin-top: 70%;
+  margin-top: 95%;
 }

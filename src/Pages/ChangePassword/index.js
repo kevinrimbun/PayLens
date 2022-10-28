@@ -11,6 +11,7 @@ const ChangePassword = () => {
   const [password, setPassword] = useState("");
   const [newPassword1, setnewPassword1] = useState("");
   const [newPassword2, setnewPassword2] = useState("");
+  const [error, setError] = useState(false)
   const [passwordShown1, setPasswordShown1] = useState(false);
   const [passwordShown2, setPasswordShown2] = useState(false);
   const [passwordShown3, setPasswordShown3] = useState(false);
@@ -27,35 +28,18 @@ const ChangePassword = () => {
     setPasswordShown3(passwordShown3 ? false : true);
   };
 
-  const passwordChange1 = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setPassword(e.target.value);
-  };
 
-  const passwordChange2 = (e) => {
-    e.preventDefault();
-    setnewPassword1(e.target.value);
-  };
-
-  const passwordChange3 = (e) => {
-    e.preventDefault();
-    setnewPassword2(e.target.value);
-  };
-
-  const checkUser = (e) => {
-    e.preventDefault();
-    if (newPassword1.length !== 0 || password.length !== 0 ){
-        if (password === "kevin1234") {
-            if (newPassword1 === newPassword2) {
-              alert("Success!");
-            } else {
-              alert("Password tidak sama, silahkan ulangi!");
-            }
-          } else {
-            alert("password lama salah silahkan ulangi");
-          }
-    }else{
-        alert("password kosong silahkan ulangi")
+    if(password !== localStorage.getItem("password")) {
+      setError(true)
+    } else if (newPassword1 === localStorage.getItem("password")) {
+      setError(true)
+    } else if (newPassword2 !== newPassword1) {
+      setError(true)
+    } else {
+      alert("Are you sure?")
+      localStorage.setItem("password", newPassword2);
     }
     
   };
@@ -68,31 +52,45 @@ const ChangePassword = () => {
             </Container>
 
             <div className="">
-                <form>
-                <Container className='text-center form-changeP mt-5'>
-                    <div className="">
-                    <AiFillLock/>
-                    <input type={passwordShown1 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Masukan Password lama' onChange={(e) => passwordChange1(e)} secureTextEntry/>
-                    <i onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
+                <form onSubmit={handleSubmit}>
+                  <Container className='text-center form-changeP mt-5'>
+                      <div className="">
+                      <AiFillLock/>
+                      <input type={passwordShown1 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Masukan Password lama' onChange={(e) => setPassword(e.target.value)} secureTextEntry/>
+                      <i onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
+                      </div>
+                    <div className='error-message'>
+                      {error && password !== localStorage.getItem("password") ?
+                      <label>Password Invalid !</label>:""}
                     </div>
-                </Container>
+                  </Container>
 
-                <Container className='text-center form-changeP mt-5'>
-                    <AiFillLock/>
-                    <input type={passwordShown2 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Masukan Password Baru' onChange={(e) => passwordChange2(e)}/>
-                    <i onClick={togglePasswordVisiblity2}>{passwordShown2 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
-                </Container>
 
-                <Container className='text-center form-changeP mt-5'>
-                    <AiFillLock/>
-                    <input type={passwordShown3 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder=' Masukan Password lagi' onChange={(e) => passwordChange3(e)}/>
-                    <i onClick={togglePasswordVisiblity3}>{passwordShown3 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
-                </Container>
+                  <Container className='text-center form-changeP mt-5'>
+                      <AiFillLock/>
+                      <input type={passwordShown2 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Masukan Password Baru' onChange={(e) => setnewPassword1(e.target.value)}/>
+                      <i onClick={togglePasswordVisiblity2}>{passwordShown2 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
+                      <div className='error-message'>
+                      {error && newPassword1 === localStorage.getItem("password") ?
+                      <label>New Password must be different!</label>:""}
+                    </div>
+                  </Container>
 
-                <Container className='text-center form-changeP mt-5'>
-                    <Button variant="secondary" type='submit' value="Enter" onClick={(e) => checkUser(e)}>Change Password</Button>
-                    
-                </Container>
+                  <Container className='text-center form-changeP mt-5'>
+                      <AiFillLock/>
+                      <input type={passwordShown3 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder=' Masukan Password lagi' onChange={(e) => setnewPassword2(e.target.value)}/>
+                      <i onClick={togglePasswordVisiblity3}>{passwordShown3 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
+                      <div className='error-message'>
+                      {error && newPassword2 !== newPassword1 ?
+                      <label>New Password do not match!</label>:""}
+                    </div>
+                  </Container>
+
+                  <Container className='text-center form-changeP mt-5'>
+                      <Button variant="secondary" type='submit' value="Enter">Change Password</Button>
+                      {/* <Modal2 buttonName='Change Password'></Modal2> */}
+                      
+                  </Container>
                 </form>
             </div>
             

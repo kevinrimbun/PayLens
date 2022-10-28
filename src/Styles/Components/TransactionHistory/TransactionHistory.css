@@ -7,12 +7,21 @@
 }
 
 .Transaction-Comp {
-  width: 110% !important;
+  width: 120% !important;
   border-radius: 25px !important;
   -webkit-border-radius: 25px !important;
   -moz-border-radius: 25px !important;
   -ms-border-radius: 25px !important;
   -o-border-radius: 25px !important;
+  margin-left: 5%;
+  margin-bottom: 5% !important;
+  /* height: 90% !important; */
+}
+.Img-User {
+  border-radius: 5px;
+}
+.Data-User {
+  align-items: flex-start !important;
 }
 
 .Button-History {
@@ -23,17 +32,15 @@
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
+  padding-top: 10%;
 }
 
 .Button-History:hover {
   color: #0275d8 !important;
   text-shadow: 4px 4px 15px rgba(2, 117, 216, 0.6);
 }
- 
-.Button-History {
-  /* margin-right: 5%; */
-  text-align: right;
-}
-.transaction-wrapper {
-  /* margin-right: -8% ; */
+
+.transaction-title div {
+  font-size: 17px;
+  font-weight: bolder;
 }

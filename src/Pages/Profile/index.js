@@ -22,19 +22,23 @@ const Profile = () => {
     const listButtons = [
         {
             text: "Personal Information",
-            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />
+            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />,
+            link: '/information'
         },
         {
             text: "Change Password",
-            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />
+            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />,
+            link: '/changepassword'
         },
         {
             text: "Change PIN",
-            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />
+            icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />,
+            link: ''
         },
         {
             text: "Logout",
-            icon: ""
+            icon: "",
+            link: '/'
         },
 
 
@@ -61,11 +65,13 @@ const Profile = () => {
                             {/* Button Profile Section */}
                             <Row className='ButtonProfile-Section'>
                                 <Col className='d-flex flex-column'>
+
                                     {listButtons.map(button => {
                                         return (
                                             <ProfileButton
                                             text={button.text}
                                             icon={button.icon}
+                                            link={button.link}
                                             />
                                         )
                                     }

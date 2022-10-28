@@ -15,3 +15,6 @@
   -ms-border-radius: 25px !important;
   -o-border-radius: 25px !important;
 }
+.img-chart img {
+  margin-top: 13% !important;
+}

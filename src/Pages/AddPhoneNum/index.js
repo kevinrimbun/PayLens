@@ -26,7 +26,7 @@ const AddPhoneNum = () => {
         <div className='d-flex align-items-center justify-content-center addnum-body'>
           <form onSubmit={handlesubmit}>
             <div className="">
-              <BsTelephone/> <label htmlFor="">+62</label> <input type="text" onChange={(e) => setNumber(e.target.value)} style={{outlineStyle: 'none' }} placeholder='Masukan nomor disini' />
+              <BsTelephone/> <label htmlFor="">+62</label> <input type="number" onChange={(e) => setNumber(e.target.value)} style={{outlineStyle: 'none' }} placeholder='Masukan nomor disini' />
               <hr />
               <Button variant="secondary" type='submit'>Add Number</Button>
             </div>

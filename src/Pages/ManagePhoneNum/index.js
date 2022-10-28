@@ -8,6 +8,7 @@ const ManagePhoneNum = () => {
   const navigate = useNavigate();
   const dibuang = () => {
     alert("Dibuang seperti mantan");
+    localStorage.removeItem("number")
     navigate('/addphonenum')
   }
 

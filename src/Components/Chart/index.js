@@ -37,7 +37,7 @@ function Chart() {
                     </Row>
 
                     {/* Lower Section */}
-                    <div className='d-flex justify-content-center align-items-center mt-5 mb-4'>
+                    <div className='img-chart d-flex justify-content-center align-items-center mt-5 mb-4'>
                         <img src={ChartPic} className="rounded" alt="Chart" />
                     </div>
 

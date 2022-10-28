@@ -64,18 +64,18 @@ const PersonalInformation = () => {
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Verified E-mail</Card.Subtitle>
                                             <Card.Text>
-                                                <h5 className="Information-User">pewdiepie1@gmail.com</h5>
+                                                <h5 className="Information-User">{localStorage.getItem("email")}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
                                     <Card style={{ width: '100%', border: 'none' }} className='shadow mt-3'>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Phone Number</Card.Subtitle>
-                                            <Link to='/managephone'>
+                                            <Link to='/managephonenum'>
                                                 <Card.Subtitle className="text-primary float-end Manage-Button"><p>Manage</p></Card.Subtitle>
                                             </Link>
                                             <Card.Text>
-                                                <h5 className="Information-User">+62 813-9387-7946</h5>
+                                                <h5 className="Information-User">+62 {localStorage.getItem("number")}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
