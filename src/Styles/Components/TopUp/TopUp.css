@@ -1,7 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap");
+
+* {
+    font-family: "Nunito Sans", sans-serif !important;
+    margin: 0px;
+    padding: 0px;
+}
+
 .User-Section p {
     margin-top: 7px;
 }
 .History-Section h4 {
     font-weight: bolder;
     margin-left: 1.5%;
+
+.TopUpInstruction-Comp {
+    border: none !important;
 }

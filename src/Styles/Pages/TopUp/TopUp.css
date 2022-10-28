@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap");
+
+* {
+  font-family: "Nunito Sans", sans-serif !important;
+  margin: 0px;
+  padding: 0px;
+}
+
+.Topup-Section {
+  border: none !important;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}

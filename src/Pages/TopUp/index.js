@@ -61,7 +61,7 @@ const TopUp = () => {
                 <Container fluid className="w-100 p-5 Container-Section p-1">
                     <Row>
 
-                        {/* Instruction Section */}
+                        {/* Sidebar Section */}
                         <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
                         {/* History Section */}
