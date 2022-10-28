@@ -52,7 +52,7 @@ const ManagePhone = () => {
                                             </Card.Subtitle>
                                             <Card.Text>
                                                 <h5 className="Phone-User">
-                                                    +62 813-9387-7946
+                                                    +62 {localStorage.getItem('number')}
                                                 </h5>
                                             </Card.Text>
                                         </Card.Body>
