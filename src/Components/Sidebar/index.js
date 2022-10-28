@@ -63,7 +63,7 @@ function Sidebar() {
                         </Col>
 
                         <Col>
-                            <Link to='/' onClick={(e) => deleteAll(e)} id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 Navigation-Section logout'>
+                            <Link to='/' id="sticky-footer" className='d-flex align-items-center d-flex-shrink-0 Navigation-Section logout'>
                                 <Icon icon="material-symbols:logout-rounded" width="30" height="30" className='m-3' />
                                 <h5>Log Out</h5>
                             </Link>

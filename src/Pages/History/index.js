@@ -57,7 +57,7 @@ const History = () => {
             <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
             {/* History Section */}
-            <Col sm={8} className="History-Section p-4 ms-3 border shadow-lg">
+            <Col sm={8} className="History-Section p-4 ms-3 shadow-lg">
               <h4>Transaction History</h4>
               <h5 className="mt-3">This Week</h5>
               {/* User Section */}

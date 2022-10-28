@@ -44,7 +44,7 @@ const PersonalInformation = () => {
                             {/* Data User Section */}
                             <Row>
                                 <Col className='d-flex flex-column'>
-                                    <Card style={{ width: '100%' }} className='shadow mt-3'>
+                                    <Card style={{ width: '100%', border: 'none' }} className='shadow mt-3'>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">First Name</Card.Subtitle>
                                             <Card.Text>
@@ -52,7 +52,7 @@ const PersonalInformation = () => {
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
-                                    <Card style={{ width: '100%' }} className='shadow mt-3'>
+                                    <Card style={{ width: '100%', border: 'none' }} className='shadow mt-3'>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Last Name</Card.Subtitle>
                                             <Card.Text>
@@ -60,7 +60,7 @@ const PersonalInformation = () => {
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
-                                    <Card style={{ width: '100%' }} className='shadow mt-3'>
+                                    <Card style={{ width: '100%', border: 'none' }} className='shadow mt-3'>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Verified E-mail</Card.Subtitle>
                                             <Card.Text>
@@ -68,10 +68,10 @@ const PersonalInformation = () => {
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
-                                    <Card style={{ width: '100%' }} className='shadow mt-3'>
+                                    <Card style={{ width: '100%', border: 'none' }} className='shadow mt-3'>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Phone Number</Card.Subtitle>
-                                            <Link to='/'>
+                                            <Link to='/managephone'>
                                                 <Card.Subtitle className="text-primary float-end Manage-Button"><p>Manage</p></Card.Subtitle>
                                             </Link>
                                             <Card.Text>

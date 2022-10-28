@@ -11,6 +11,7 @@ h6 {
 }
 
 .UserTranscation-Comp {
+    border: none !important;
     width: 100% !important;
     border-radius: 25px;
     -webkit-border-radius: 25px;

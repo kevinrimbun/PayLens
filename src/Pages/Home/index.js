@@ -36,7 +36,9 @@ const Home = () => {
               <Container fluid>
                 <Row>
                   {/* Balance Section */}
-                  <Col className="Balance-Section p-1"><BalanceComp /></Col>
+                  <Col className="Balance-Section">
+                    <BalanceComp />
+                  </Col>
                 </Row>
               </Container>
 

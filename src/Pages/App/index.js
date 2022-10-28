@@ -11,6 +11,7 @@ import Transfer from '../Transfer';
 import TopUp from '../TopUp';
 import Profile from '../Profile';
 import PersonalInformation from '../PersonalInformation';
+import ManagePhone from '../ManagePhone';
 import CreatePin from '../CreatePin';
 import SuccessPin from '../SuccessPin/SuccessPin';
 import ResetPass from '../ResetPassword';
@@ -33,6 +34,7 @@ const index = () => {
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/information' element={<PersonalInformation/>} />
+            <Route path='/managephone' element={<ManagePhone/>} />
             <Route path='/history' element={<History />} />
             <Route path='/create-pin' element={<CreatePin/>} />
             <Route path='/success-pin' element={<SuccessPin/>} />

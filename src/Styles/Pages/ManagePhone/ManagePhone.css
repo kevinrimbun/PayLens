@@ -1,0 +1,11 @@
+.ManagePhone-Section {
+    border-radius: 25px !important;
+    -webkit-border-radius: 25px !important;
+    -moz-border-radius: 25px !important;
+    -ms-border-radius: 25px !important;
+    -o-border-radius: 25px !important;
+}
+
+.CardPhone {
+    border: none !important;
+}
