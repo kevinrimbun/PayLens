@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import Content from "../../Layout/Content";
+import React, { useState } from 'react'
 import listAccount from "../../Data/account";
 
 import Container from "react-bootstrap/Container";
@@ -10,18 +8,17 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from 'react-bootstrap/Button';
+import { Link, useParams } from 'react-router-dom';
+import Content from '../../Layout/Content';
 
-import { Icon } from "@iconify/react";
-
-const DetailTransfer = () => {
-  const { id } = useParams();
+const TransferConfirmation = () => {
+    const { id } = useParams();
   const [account] = useState(listAccount[id - 1]);
-  return (
-    <Content>
-      <Container>
+  return <Content>
+    <Container>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-            <h4>Transfer Money</h4>
+            <h4>Transfer to</h4>
           </Col>
         </Row>
         <Row className="d-flex flex-column justify-content-center">
@@ -57,7 +54,7 @@ const DetailTransfer = () => {
         </Row>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-            <Link to={"/transfer-confirmation/" + account.id} >
+            <Link to="/transfer-confirmation">
               <Button variant="outline-light" className="m-2" style={{background: '#6379F4'}}>
                 Continue
               </Button>
@@ -65,8 +62,7 @@ const DetailTransfer = () => {
           </Col>
         </Row>
       </Container>
-    </Content>
-  );
-};
+  </Content>
+}
 
-export default DetailTransfer;
+export default TransferConfirmation

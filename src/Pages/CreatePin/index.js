@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PinInput, PinInputField } from '@chakra-ui/react';
 import Auth from '../../Layout/Auth';
-import '../../Style/Pages/auth.css';
+import '../../Styles/Pages/auth.css';
 // import { CiLock } from 'react-icons/ci';
 // import {BsEnvelope} from 'react-icons/bs';
 

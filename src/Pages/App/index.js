@@ -15,6 +15,8 @@ import SuccessPin from '../SuccessPin/SuccessPin';
 import ResetPass from '../ResetPassword';
 import NewPassword from '../NewPassword';
 import ChangePassword from '../ChangePassword';
+import DetailTransfer from '../DetailTransfer';
+import TransferConfirmation from '../TransferConfirmation';
 
 
 const index = () => {
@@ -29,6 +31,8 @@ const index = () => {
             <Route path='/dashboard' element={<Home/>} />
             <Route path='/history' element={<History/>} />
             <Route path='/transfer' element={<Transfer/>} />
+            <Route path='/transfer-confirmation/:id' element={<TransferConfirmation/>} />
+            <Route path='/DetailTransfer/:id' element={<DetailTransfer/>} />
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/history' element={<History />} />
