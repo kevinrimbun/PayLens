@@ -17,6 +17,8 @@ import NewPassword from '../NewPassword';
 import ChangePassword from '../ChangePassword';
 import AddPhoneNum from '../AddPhoneNum';
 import ManagePhoneNum from '../ManagePhoneNum';
+import ChangePin from '../ChangePin';
+import ChangePinAfter from '../ChangePinAfter';
 
 
 const index = () => {
@@ -41,6 +43,8 @@ const index = () => {
             <Route path='/changepassword' element={<ChangePassword/>} />
             <Route path='/addphonenum' element={<AddPhoneNum/>} />
             <Route path='/managephonenum' element={<ManagePhoneNum/>} />
+            <Route path='/changepin' element={<ChangePin/>} />
+            <Route path='/changepinafter' element={<ChangePinAfter/>} />
         </Routes>
     </BrowserRouter>
   )
