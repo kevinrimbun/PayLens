@@ -56,7 +56,6 @@ const Transfer = () => {
         )})}
         </Col>
       </Row>
-      
     </Container>
   </Content>
 }

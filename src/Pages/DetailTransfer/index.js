@@ -57,6 +57,17 @@ const DetailTransfer = () => {
         </Row>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
+            <Form.Control className="border-0" type="number" style={{width: "150px", alignItems: "center"}}
+            placeholder="0.00"/>
+          </Col>
+        </Row>
+        <Row className="d-flex flex-column justify-content-center">
+          <Col>
+          <p>Rp 950.000 avaliable</p>
+          </Col>
+        </Row>
+        <Row className="d-flex flex-column justify-content-center">
+          <Col>
             <Link to={"/transfer-confirmation/" + account.id} >
               <Button variant="outline-light" className="m-2" style={{background: '#6379F4'}}>
                 Continue

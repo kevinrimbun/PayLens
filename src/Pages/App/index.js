@@ -7,6 +7,7 @@ import Register from '../Register';
 import History from '../History';
 import Home from '../Home';
 import Content from '../../Layout/Content';
+import Status from '../../Layout/Status';
 import Transfer from '../Transfer';
 import TopUp from '../TopUp';
 import Profile from '../Profile';
@@ -21,6 +22,7 @@ import DetailTransfer from '../DetailTransfer';
 import TransferConfirmation from '../TransferConfirmation';
 import AddPhoneNum from '../AddPhoneNum';
 import ManagePhoneNum from '../ManagePhoneNum';
+import StatusBerhasil from '../StatusBerhasil';
 
 
 const index = () => {
@@ -49,6 +51,8 @@ const index = () => {
             <Route path='/changepassword' element={<ChangePassword/>} />
             <Route path='/addphonenum' element={<AddPhoneNum/>} />
             <Route path='/managephonenum' element={<ManagePhoneNum/>} />
+            <Route path='/layout-status' element={<Status />} />
+            <Route path='/transfer-berhasil/:id' element={<StatusBerhasil />} />
         </Routes>
     </BrowserRouter>
   )
