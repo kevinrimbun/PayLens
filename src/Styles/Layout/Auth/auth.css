@@ -16,6 +16,15 @@
     background-position: center;
     background-size: cover;
 }
+.title-top-right {
+    font-size: 23px;
+    font-weight: bolder;
+    margin-bottom: 6%;
+}
+.subtitle-bottom-right {
+    color: rgba(58, 61, 66, 0.6);
+    /* margin-top: -2%; */
+}
 .auth-wrapper .right-section {
     flex: 1;
 }
@@ -58,9 +67,10 @@
     font-size: 30px;
     font-weight: 600;
 }
-.text-auth p {
+.text-auth h5 {
     text-align: justify;
     padding-right: 10%;
+    color: white;
 }
 
 

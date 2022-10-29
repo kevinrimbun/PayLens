@@ -16,9 +16,9 @@ const Auth = (props) => {
                     PayLens
                 </div>
 
-                <div className='img-wave'>
+                {/* <div className='img-wave'>
                     <img src={wave} alt='wave'/>
-                </div>
+                </div> */}
 
                 <div className='phone-wrapper'>
                     <div className='phone-1'>
@@ -30,8 +30,8 @@ const Auth = (props) => {
                 </div>
 
                 <div className='text-auth'>
-                    <div className='title-bottom'>App that Covering Banking Needs</div><br />
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever sin</p>
+                    <div className='title-bottom'>App that Covering Banking Needs</div>
+                    <h5>Managing finances has never been this easy</h5>
                 </div>
 
             </div>
