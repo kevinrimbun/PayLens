@@ -14,9 +14,14 @@
   -ms-border-radius: 0px 0px 25px 0px;
   -o-border-radius: 0px 0px 25px 0px;
 }
+.logo-paylens {
+  width: 5%;
+  margin-left: -90%;
+}
 
 .Logo-Section {
   color: #0275d8 !important;
+  margin-right: -100% !important;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -41,12 +46,18 @@
   -ms-border-radius: 10px !important;
   -o-border-radius: 10px !important;
 }
+.user-nav {
+  margin-left: -15% !important;
+}
+.logo-navbar{
+  padding-right: 10%;
+}
 .usernav-wrapper {
   margin-left: 15%;
 }
 .img-navbar {
   margin-top: -5%;
-  width: 10%;
+  width: 20%;
 }
 .bell-navbar {
   margin-top: -5%;

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 // Iconify
 import { Icon } from '@iconify/react';
+// IMG
+import PaylensLogo from '../../Assets/paylens1.png'
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
@@ -28,7 +30,7 @@ function NavbarComp() {
         {/* Logo Section */}
         <Link to='/dashboard' className='text-decoration-none'>
           <Navbar.Brand className="d-flex justify-content-center align-items-center Logo-Section">
-            {/* <Icon icon="mdi:google-lens" width="30" height="30" /> */}
+            <img src={PaylensLogo} className='logo-paylens' />
             <h4>PayLens</h4>
           </Navbar.Brand>
         </Link>
@@ -43,7 +45,7 @@ function NavbarComp() {
                 <Col className="m-0 p-0 me-5"></Col>
 
                 {/* User Section */}
-                <Col className="d-flex justify-content-center align-items-center mt-3 ms-5 float-end">
+                <Col className="d-flex justify-content-center user-nav align-items-center mt-3  float-end">
                   <img src={Samuel} className="img-navbar rounded me-2" alt="..." />
                   <div className="infouser-nav me-3">
                     <h6>{localStorage.getItem("username")}</h6>
