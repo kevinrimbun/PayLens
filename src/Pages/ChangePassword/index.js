@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import Content from '../../Layout/Content'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Content from '../../Layout/Content';
 import Container from 'react-bootstrap/Container';
 import "../../Styles/Pages/ChangePassword/changepassword.css";
 import Button from 'react-bootstrap/Button';
@@ -8,6 +9,7 @@ const eye = <AiOutlineEye/>
 const eyeClose = <AiOutlineEyeInvisible/>
 
 const ChangePassword = () => {
+  const navigate = useNavigate()
   const [password, setPassword] = useState("");
   const [newPassword1, setnewPassword1] = useState("");
   const [newPassword2, setnewPassword2] = useState("");
@@ -40,6 +42,7 @@ const ChangePassword = () => {
     } else {
       alert("Are you sure?")
       localStorage.setItem("password", newPassword2);
+      navigate('/profile', {replace : true})
     }
     
   };
