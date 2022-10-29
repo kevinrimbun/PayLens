@@ -9,13 +9,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Card from 'react-bootstrap/Card';
 
 // CSS
 import '../../Styles/Components/Navbar/Navbar.css'
 
 // Components
 import Navbar from 'react-bootstrap/Navbar';
-import Samuel from  '../../Assets/account/samuelSuhi.svg'
+import Samuel from '../../Assets/account/samuelSuhi.svg'
 
 function NavbarComp() {
   return (
@@ -25,7 +27,7 @@ function NavbarComp() {
 
         {/* Logo Section */}
         <Link to='/dashboard' className='text-decoration-none'>
-          <Navbar.Brand  className="d-flex justify-content-center align-items-center Logo-Section">
+          <Navbar.Brand className="d-flex justify-content-center align-items-center Logo-Section">
             {/* <Icon icon="mdi:google-lens" width="30" height="30" /> */}
             <h4>PayLens</h4>
           </Navbar.Brand>
@@ -47,7 +49,71 @@ function NavbarComp() {
                     <h6>{localStorage.getItem("username")}</h6>
                     <p>+62 {localStorage.getItem('number')}</p>
                   </div>
-                  <Icon icon="ei:bell" width="40" height="40" className="m-1 bell-navbar"/>
+                  <Dropdown className='Dropdown-History'>
+                    <Dropdown.Toggle className='Dropdown-Toggle'>
+                      <Icon icon="ei:bell" width="30" height="30" color='#4D4B57' className="mx-1 bell-navbar" id="dropdown-basic" />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu className='shadow Dropdown-Menu'>
+                      <Dropdown.Item>
+                        <Card.Subtitle className="mb-3 text-muted"><h6>Today</h6></Card.Subtitle>
+
+                        <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-down" color="green" width="25" height="25" className='' />
+                              <div>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">Transfered from Joshua Lee</Card.Subtitle>
+                                <p className='Text-Dropdown'>Rp 220.000</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+
+                        <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-down" color="red" width="25" height="25" className='' />
+                              <div>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">Netflix subscription</Card.Subtitle>
+                                <p className='Text-Dropdown'>Rp 149.000</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+
+                        <Card.Subtitle className="mb-3 mt-3 text-muted"><h6>This Week</h6></Card.Subtitle>
+
+                        <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-up" color="red" width="25" height="25" className='' />
+                              <div>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">Transfer to Jessica Lee</Card.Subtitle>
+                                <p className='Text-Dropdown'>Rp 100.000</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+
+                        <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-down" color="green" width="25" height="25" className='' />
+                              <div>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">Top up from BNI E-Banking</Card.Subtitle>
+                                <p className='Text-Dropdown'>Rp 300.000</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+
+
+
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
                 </Col>
 
               </Row>
