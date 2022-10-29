@@ -4,14 +4,17 @@ import Auth from '../../Layout/Auth';
 import '../../Styles/Layout/Auth/auth.css';
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
-import { Button } from '@chakra-ui/react';
+import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
+const eye = <AiOutlineEye/>
+const eyeClose = <AiOutlineEyeInvisible/>
 
 const Login = () => {
 
-    const [show, setShow] = React.useState(false)
-    const handleClick = () => setShow(!show)
+    const [passwordShown1, setPasswordShown1] = useState(false);
+    const togglePasswordVisiblity1 = () => {
+        setPasswordShown1(passwordShown1 ? false : true);
+    };
 
-    // let history = useHistory();
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -73,10 +76,8 @@ const Login = () => {
                     {/* Password */}
                     <div className='mt-4 d-flex form-password'>
                         <CiLock className='bi lock-icon'/>
-                        <input type={show ? 'text' : 'password'} className="form-control form-auth passsword" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
-                        <Button className='btn-visibility' h='1.75rem' size='sm' onClick={handleClick}>
-                            {show ? 'Hide' : 'Show'}
-                        </Button>
+                        <input type={passwordShown1 ? "text" : "password"} className="form-control form-auth passsword" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                        <i onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
                     </div>
 
                     <div className='forgot-password mt-2'>

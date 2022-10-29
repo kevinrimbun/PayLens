@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Iconify
-import { Icon } from '@iconify/react';
+// import { Icon } from '@iconify/react';
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
@@ -20,6 +20,10 @@ import Footer from "../../Components/Footer";
 import '../../Styles/Pages/PersonalInformation/PersonalInformation.css'
 
 const PersonalInformation = () => {
+    
+    const splitName = localStorage.getItem('username').split(' ');
+    const first = splitName[0];
+    const last = splitName[1];
 
     return (
         <>
@@ -48,7 +52,7 @@ const PersonalInformation = () => {
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">First Name</Card.Subtitle>
                                             <Card.Text>
-                                                <h5 className="Information-User">Robert</h5>
+                                                <h5 className="Information-User">{first}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
@@ -56,7 +60,7 @@ const PersonalInformation = () => {
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Last Name</Card.Subtitle>
                                             <Card.Text>
-                                                <h5 className="Information-User">Chandler</h5>
+                                                <h5 className="Information-User">{last}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>

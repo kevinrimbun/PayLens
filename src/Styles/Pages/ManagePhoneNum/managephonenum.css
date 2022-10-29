@@ -1,9 +1,20 @@
 .managenum-body{
-    margin-left: 20px;
+    margin-left: -10px;
     justify-content: space-between;
 }
-
+.Delete-Button i {
+    cursor: pointer;
+}
 .managenum-body i{
     font-size: 22px;
     cursor: pointer;
+}
+.btn-addphone {
+    border-radius: 12px;
+    background: #DADADA;
+    border-color: transparent;
+    color: #88888F;
+    width: 300px;
+    height: 57px;
+    margin-left: 2%;
 }

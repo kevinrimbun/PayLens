@@ -8,22 +8,22 @@ import "../../Styles/Pages/ChangePin/changepin.css"
 const ChangePin = () => {
     const navigate = useNavigate();
 
-    const [pin1, setInput1] = useState("");
-    const [pin2, setInput2] = useState("");
-    const [pin3, setInput3] = useState("");
-    const [pin4, setInput4] = useState("");
-    const [pin5, setInput5] = useState("");
-    const [pin6, setInput6] = useState("");
+    const [pin1, setPin1] = useState("");
+    const [pin2, setPin2] = useState("");
+    const [pin3, setPin3] = useState("");
+    const [pin4, setPin4] = useState("");
+    const [pin5, setPin5] = useState("");
+    const [pin6, setPin6] = useState("");
     const [error, setError] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (pin1.length === 0 || pin2.length === 0 || pin3.length === 0 || pin4.length === 0 || pin5.length === 0 || pin6.length === 0) {
+        if (pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0) {
             setError(true)
-        } else if ( pin1.length === 1 && pin2.length === 1 && pin3.length === 1 && pin4.length === 1 && pin5.length === 1 && pin6.length === 1) {
-            navigate("/changepinafter", { replace: true })
+        } else if ( pin1 !== localStorage.getItem("pin1") && pin2 !== localStorage.getItem("pin2") && pin3 !== localStorage.getItem("pin3") && pin4 !== localStorage.getItem("pin4") && pin5 !== localStorage.getItem("pin5") && pin6 !== localStorage.getItem("pin6")) {
+            setError(true)
         } else {
-            setError(true)
+            navigate('/changepinafter', {replace : true})
         }
         const data = new FormData(e.target)
         console.log(Object.fromEntries(data.entries()));
@@ -45,16 +45,20 @@ const ChangePin = () => {
         <div className='ChangePin-wrapper'>
             <form onSubmit={handleSubmit}>
                 <PinInput className='d-flex pin-input' size='sm' >
-                    <PinInputField className='pin-input text-center' name='pin1' onChange={(e) => setInput1(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin2' onChange={(e) => setInput2(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin3' onChange={(e) => setInput3(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin4' onChange={(e) => setInput4(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin5' onChange={(e) => setInput5(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin6' onChange={(e) => setInput6(e.target.value)} />
+                    <PinInputField className='pin-input text-center' onChange={(e) => setPin1(e.target.value)} name='pin1'  />
+                    <PinInputField className='pin-input text-center' onChange={(e) => setPin2(e.target.value)} name='pin2'  />
+                    <PinInputField className='pin-input text-center' onChange={(e) => setPin3(e.target.value)} name='pin3'  />
+                    <PinInputField className='pin-input text-center' onChange={(e) => setPin4(e.target.value)} name='pin4'  />
+                    <PinInputField className='pin-input text-center' onChange={(e) => setPin5(e.target.value)} name='pin5'  />
+                    <PinInputField className='pin-input text-center' onChange={(e) => setPin6(e.target.value)} name='pin6'  />
                 </PinInput>
                 <div className='error-message'>
                     {error && pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ?
                     <label>Input cannot be empty !</label>:""}
+                </div>
+                <div className='error-message'>
+                    {error && pin1 !== localStorage.getItem("pin1") && pin2 !== localStorage.getItem("pin2") && pin3 !== localStorage.getItem("pin3") && pin4 !== localStorage.getItem("pin4") && pin5 !== localStorage.getItem("pin5") && pin6 !== localStorage.getItem("pin6") ?
+                    <label>PIN Invalid !</label>:""}
                 </div>
                 <button className="btn-auth" id='submit' type="submit" value="Enter">Continue</button>
             </form>

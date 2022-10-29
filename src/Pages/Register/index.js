@@ -5,11 +5,18 @@ import '../../Styles/Layout/Auth/auth.css';
 import { BsPerson } from 'react-icons/bs'
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
-import { Button } from '@chakra-ui/react';
+import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
+const eye = <AiOutlineEye/>
+const eyeClose = <AiOutlineEyeInvisible/>
 
 const Register = () => {
     
     const navigate = useNavigate()
+
+    const [passwordShown1, setPasswordShown1] = useState(false);
+    const togglePasswordVisiblity1 = () => {
+        setPasswordShown1(passwordShown1 ? false : true);
+    };
     
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
@@ -29,9 +36,6 @@ const Register = () => {
         const data = new FormData(e.target)
         console.log(Object.fromEntries(data.entries()));
     }
-
-    const [show, setShow] = React.useState(false)
-    const handleClick = () => setShow(!show)
 
     return <Auth>
         <div className='title-right-wrapper'>
@@ -70,10 +74,8 @@ const Register = () => {
                     {/* Password */}
                     <div className='mt-4 d-flex form-password'>
                         <CiLock className='bi lock-icon'/>
-                        <input autoComplete='off' type={show ? 'text' : 'password'} className="form-control password form-auth" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
-                        <Button className='btn-visibility' h='1.75rem' size='sm' onClick={handleClick}>
-                            {show ? 'Hide' : 'Show'}
-                        </Button>
+                        <input autoComplete='off' type={passwordShown1 ? "text" : "password"} className="form-control password form-auth" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                        <i onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
                     </div>
                     <div className='error-message'>
                         {error && password.length <= 0 ?

@@ -3,14 +3,15 @@ import { Row, Col } from 'react-bootstrap'
 import Content from '../../Layout/Content'
 import { BiTrashAlt } from "react-icons/bi"
 import "../../Styles/Pages/ManagePhoneNum/managephonenum.css"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
+
+
+
 const ManagePhoneNum = () => {
-  const navigate = useNavigate();
   const dibuang = () => {
     alert("Dibuang seperti mantan");
     localStorage.removeItem("number")
-    navigate('/addphonenum')
   }
 
   return <Content>
@@ -34,6 +35,10 @@ const ManagePhoneNum = () => {
         </Card.Body>
       </Card>
     </Row>
+    <Link to='/addphonenum'>
+    
+      <button className="btn-addphone mt-2" id='submit' type="submit" value="Enter">Add Phone Number</button>
+    </Link>
 
 
 

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Content from '../../Layout/Content'
 import Container from 'react-bootstrap/Container';
 import "../../Styles/Pages/ChangePassword/changepassword.css";
-import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 import Button from 'react-bootstrap/Button';
+import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 const eye = <AiOutlineEye/>
 const eyeClose = <AiOutlineEyeInvisible/>
 
@@ -31,7 +31,7 @@ const ChangePassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(password !== localStorage.getItem("password")) {
+    if (password !== localStorage.getItem("password")) {
       setError(true)
     } else if (newPassword1 === localStorage.getItem("password")) {
       setError(true)
@@ -56,7 +56,7 @@ const ChangePassword = () => {
                   <Container className='text-center form-changeP mt-5'>
                       <div className="">
                       <AiFillLock/>
-                      <input type={passwordShown1 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Masukan Password lama' onChange={(e) => setPassword(e.target.value)} secureTextEntry/>
+                      <input type={passwordShown1 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Input Current Password' onChange={(e) => setPassword(e.target.value)} secureTextEntry/>
                       <i onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
                       </div>
                     <div className='error-message'>
@@ -71,7 +71,7 @@ const ChangePassword = () => {
                       <input type={passwordShown2 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Masukan Password Baru' onChange={(e) => setnewPassword1(e.target.value)}/>
                       <i onClick={togglePasswordVisiblity2}>{passwordShown2 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
                       <div className='error-message'>
-                      {error && newPassword1 === localStorage.getItem("password") ?
+                        {error && newPassword1 === localStorage.getItem("password") ?
                       <label>New Password must be different!</label>:""}
                     </div>
                   </Container>
@@ -81,7 +81,7 @@ const ChangePassword = () => {
                       <input type={passwordShown3 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder=' Masukan Password lagi' onChange={(e) => setnewPassword2(e.target.value)}/>
                       <i onClick={togglePasswordVisiblity3}>{passwordShown3 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
                       <div className='error-message'>
-                      {error && newPassword2 !== newPassword1 ?
+                        {error && newPassword2 !== newPassword1 ?
                       <label>New Password do not match!</label>:""}
                     </div>
                   </Container>

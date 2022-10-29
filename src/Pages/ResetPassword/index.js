@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Auth from '../../Layout/Auth';
 import '../../Styles/Pages/auth.css';
 import {BsEnvelope} from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { Button } from '@chakra-ui/react';
 
 const ResetPass = () => {
+
+    const navigate = useNavigate()
+
+    
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        localStorage.getItem("email")
+        if (email.length === 0) {
+            setError(true)
+        } else if (email === localStorage.getItem("email")) {
+            // window.location.replace("/dashboard")
+            navigate("/new-password", { replace: true })
+        } else if (email != localStorage.getItem("email")){
+            setError(true)
+        } else {
+            setError(true)
+        }
+    }
 
     return <Auth>
         <div className='title-right-wrapper'>
@@ -34,16 +55,25 @@ const ResetPass = () => {
 
             <div className='form-right'>
 
-                <form>
+                <form onSubmit={handleSubmit}>
+
                     {/* Email */}
                     <div className='mt-4 d-flex form-email'>
                         <BsEnvelope className='bi envelope-icon' />
-                        <input  type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" />
+                        <input  type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
-                    <Link to='/new-password'>
-                        <button className="btn-auth" id='submit' type="submit" value="Enter">Confirm</button>
-                    </Link>
+                    <div className='error-message'>
+                        {error && email !== localStorage.getItem("email") ?
+                        <label>Email Invalid !</label>:""}
+                    </div>
+
+                    <div className='error-message'>
+                        {error && email.length === 0 ?
+                        <label>Input cannot be empty !</label>:""}
+                    </div>
+
+                    <button className="btn-auth" id='submit' type="submit" value="Enter">Confirm</button>
 
                 </form>
 

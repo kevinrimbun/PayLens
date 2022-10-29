@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -25,7 +25,7 @@ const Profile = () => {
         {
             text: "Personal Information",
             icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />,
-            link: '/information'
+            link: "/information"
         },
         {
             text: "Change Password",
@@ -35,18 +35,26 @@ const Profile = () => {
         {
             text: "Change PIN",
             icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />,
-            link: ''
-        },
-        {
-            text: "Logout",
-            icon: "",
-            link: '/'
-        },
-
-
+            link: '/changepin'
+        }
     ]
 
+    const navigate = useNavigate();
+    
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
+        localStorage.removeItem("number");
+        console.log(localStorage.getItem("username"))
+        if (localStorage.getItem("username") === null && localStorage.getItem("email") === null && localStorage.getItem("password") === null) {
+            navigate("/", { replace: true })
+        }
+    }
+
     return (
+
         <>
             {/* Navbar Section */}
             <NavbarComp />
@@ -78,30 +86,11 @@ const Profile = () => {
                                         )
                                     }
                                     )}
-                                    <Link to='/information'>
-                                        <Button className='mt-3 ProfileButton d-flex align-items-center justify-content-between'>
-                                            <span className='float-start'>Personal Information</span>
-                                            <span className='float-end Icon-Button'><Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" /></span>
-                                        </Button>
-                                    </Link>
-                                    <Link to='/changepassword'>
-                                        <Button className='mt-3 ProfileButton d-flex align-items-center justify-content-between'>
-                                            <span className='float-start'>Change Password</span>
-                                            <span className='float-end Icon-Button'><Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" /></span>
-                                        </Button>
-                                    </Link>
-                                    <Link to='/changepin'>
-                                        <Button className='mt-3 ProfileButton d-flex align-items-center justify-content-between'>
-                                            <span className='float-start'>Change PIN</span>
-                                            <span className='float-end Icon-Button'><Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" /></span>
-                                        </Button>
-                                    </Link>
-                                    <Link to='/'>
+                                    <Link to='/changepassword' onClick={logout}>
                                         <Button className='mt-3 ProfileButton d-flex align-items-center justify-content-between'>
                                             <span className='float-start'>Logout</span>
                                         </Button>
                                     </Link>
-
                                 </Col>
                             </Row>
                         </Col>

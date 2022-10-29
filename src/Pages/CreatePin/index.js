@@ -21,16 +21,17 @@ const CreatePin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (pin1.length === 0 || pin2.length === 0 || pin3.length === 0 || pin4.length === 0 || pin5.length === 0 || pin6.length === 0) {
+        if (pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ) {
             setError(true)
-        } else if ( pin1.length === 1 && pin2.length === 1 && pin3.length === 1 && pin4.length === 1 && pin5.length === 1 && pin6.length === 1) {
-            // window.location.replace("/dashboard")
-            navigate("/success-pin", { replace: true })
         } else {
-            setError(true)
+            localStorage.setItem("pin1", pin1)
+            localStorage.setItem("pin2", pin2)
+            localStorage.setItem("pin3", pin3)
+            localStorage.setItem("pin4", pin4)
+            localStorage.setItem("pin5", pin5)
+            localStorage.setItem("pin6", pin6)
+            navigate('/success-pin',{ replace : true })
         }
-        const data = new FormData(e.target)
-        console.log(Object.fromEntries(data.entries()));
     }
 
 
