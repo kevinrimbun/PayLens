@@ -25,6 +25,7 @@ import ManagePhoneNum from '../ManagePhoneNum';
 import ChangePin from '../ChangePin';
 import ChangePinAfter from '../ChangePinAfter';
 import StatusBerhasil from '../StatusBerhasil';
+import StatusGagal from '../StatusGagal';
 
 
 const index = () => {
@@ -57,6 +58,7 @@ const index = () => {
             <Route path='/changepinafter' element={<ChangePinAfter/>} />
             <Route path='/layout-status' element={<Status />} />
             <Route path='/transfer-berhasil/:id' element={<StatusBerhasil />} />
+            <Route path='/transfer-gagal/:id' element={<StatusGagal />} />
         </Routes>
     </BrowserRouter>
   )

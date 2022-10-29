@@ -12,6 +12,7 @@ const StatusBerhasil = () => {
   return (
     <Status>
       <Image src={Success}/>
+      <h4>Transfer Success</h4>
     </Status>
   );
 };

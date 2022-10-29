@@ -13,9 +13,8 @@ import Col from 'react-bootstrap/Col';
 
 // CSS
 import '../../Styles/Components/Balance/Balance.css'
-
+localStorage.setItem("balance", 950000)
 function BalanceComp() {
-
     return (
         <Card className='shadow-lg Balance-Comp bg-primary'>
             <Card.Body>

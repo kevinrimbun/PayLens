@@ -115,18 +115,6 @@ const Status = (props) => {
                     </Row>
                     <Row className="d-flex flex-column justify-content-center">
                       <Col>
-                        <Button
-                          variant="outline-light"
-                          onClick={handleToHome}
-                          className="m-2"
-                          style={{ background: "#6379F4" }}
-                        >
-                          Continue
-                        </Button>
-                      </Col>
-                    </Row>
-                    <Row className="d-flex flex-column justify-content-center">
-                      <Col>
                         <h4>Transfer to</h4>
                       </Col>
                     </Row>
@@ -151,6 +139,18 @@ const Status = (props) => {
                             </Container>
                           </Card.Body>
                         </Card>
+                      </Col>
+                    </Row>
+                    <Row className="d-flex flex-column justify-content-center">
+                      <Col>
+                        <Button
+                          variant="outline-light"
+                          onClick={handleToHome}
+                          className="m-2"
+                          style={{ background: "#6379F4" }}
+                        >
+                          Back to Dashboard
+                        </Button>
                       </Col>
                     </Row>
                   </Container>
