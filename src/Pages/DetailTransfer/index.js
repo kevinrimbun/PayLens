@@ -27,7 +27,7 @@ const DetailTransfer = () => {
     <Content>
       <Container>
         <Row className="d-flex flex-column justify-content-center">
-          <Col>
+          <Col >
             <h4>Transfer Money</h4>
           </Col>
         </Row>
@@ -43,11 +43,10 @@ const DetailTransfer = () => {
                         src={account.profilePic}
                       />
                     </Col>
-                    <Col sm={2}>
+                    <Col sm={4}>
                       <Card.Text>{account.name}</Card.Text>
                       <Card.Text>{account.phone}</Card.Text>
                     </Col>
-                    <Col></Col>
                   </Row>
                 </Container>
               </Card.Body>
@@ -55,7 +54,7 @@ const DetailTransfer = () => {
           </Col>
         </Row>
         <Row className="d-flex flex-column justify-content-center">
-          <Col>
+          <Col className="mt-4">
             <p>
               Type the amount you want to transfer and then <br />
               press continue to the next steps
@@ -70,12 +69,12 @@ const DetailTransfer = () => {
         </Row>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-          <p>Rp {localStorage.getItem("balance")} avaliable</p>
+          <p>Rp {localStorage.getItem("balance")} available</p>
           </Col>
         </Row>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-            <Button onClick={handleTransfer} variant="outline-light" className="m-2" style={{background: '#6379F4'}} />
+            <Button onClick={handleTransfer} variant="outline-light" className="rounded-3 py-2 px-5" style={{background: '#6379F4'}} >Continue</Button>
           </Col>
         </Row>
       </Container>

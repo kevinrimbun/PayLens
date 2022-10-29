@@ -16,7 +16,7 @@ import '../../Styles/Components/Balance/Balance.css'
 localStorage.setItem("balance", 950000)
 function BalanceComp() {
     return (
-        <Card className='shadow-lg Balance-Comp bg-primary'>
+        <Card className='shadow-lg Balance-Comp'>
             <Card.Body>
                 <Container fluid>
 

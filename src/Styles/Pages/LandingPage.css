@@ -16,6 +16,11 @@
     height: 100vh;
 }
 
+.btn-signup, .try {
+    background-color: #6379F4 !important;
+    border-color: none !important;
+}
+
 .landingpage .leftside{
     width: 40%;
 }

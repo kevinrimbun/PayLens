@@ -84,12 +84,17 @@
 }
 
 .Dropdown-Menu {
+  /* padding-right: 130% !important; */
   border: none !important;
   border-radius: 25px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
+}
+.dropdown-menu[data-bs-popper] {
+  left: -500% !important;
+  top: 156% !important;
 }
 
 .Text-Dropdown {

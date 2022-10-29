@@ -51,11 +51,11 @@
 .btn-auth {
     margin-top: 10%;
     border-radius: 12px;
-    background: #DADADA;
+    background: #6379F4;
     width: 390px;
     height: 57px;
     border-color: transparent;
-    color: #88888F;
+    color: white;
 }
 .btn-visibility {
     border: none;

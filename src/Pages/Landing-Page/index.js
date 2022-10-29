@@ -35,10 +35,10 @@ const LandingPage = () => {
                 <Col lg={7}>
                     <div className="logintab">
                     <Link to='/login'>
-                        <Button variant="outline-primary">Login</Button>
+                        <Button variant="outline-primary" className='btn-login'>Login</Button>
                     </Link>
                     <Link to='/register'>
-                        <Button variant="primary">Sign Up</Button>
+                        <Button className='btn-signup'>Sign Up</Button>
                     </Link>
                     </div>
                 </Col>
@@ -52,7 +52,7 @@ const LandingPage = () => {
                     
                     <h1>Awesome App <br /> For Saving  <span className='blue'>Time</span>. </h1>
                     <p>we bring you a mobile app banking for fix <br /> your any problem and struggle</p>
-                    <Button variant="primary" className='try'>Try it for free</Button>
+                    <Button className='try'>Try it for free</Button>
                     <p>Available on :</p>
                     <div>
                     <AiFillApple className="logos"/>
@@ -96,7 +96,7 @@ const LandingPage = () => {
                 <Col>
                     <AiOutlineDownload className='logos mb-4 mt-4'/>
                     <h4>Download</h4>
-                    <p className='mb-4'>Zwallet is 100% totally free to use it’s now available on Google Play Store and App Store.</p>
+                    <p className='mb-4'>Zwallet is 100% totally free to use it's now available on Google Play Store and App Store.</p>
                 </Col>
             </Row>
         </Row>
@@ -152,7 +152,7 @@ const LandingPage = () => {
 
                     <Carousel.Caption className='description'>
                         <h3>Robert Chandler</h3>
-                        <p>“I use Zwallet to manage all financial needs. <br /> It’s super easy to use and it’s 100% free app”</p>
+                        <p>“I use PayLens to manage all financial needs. <br /> It’s super easy to use and it’s 100% free app”</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

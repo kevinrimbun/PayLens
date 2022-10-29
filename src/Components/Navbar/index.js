@@ -51,6 +51,12 @@ function NavbarComp() {
                     <h6>{localStorage.getItem("username")}</h6>
                     <p>+62 {localStorage.getItem('number')}</p>
                   </div>
+
+
+                </Col>
+
+              </Row>
+            </Container>
                   <Dropdown className='Dropdown-History'>
                     <Dropdown.Toggle className='Dropdown-Toggle'>
                       <Icon icon="ei:bell" width="30" height="30" color='#4D4B57' className="mx-1 bell-navbar" id="dropdown-basic" />
@@ -115,11 +121,6 @@ function NavbarComp() {
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-
-                </Col>
-
-              </Row>
-            </Container>
           </Nav>
         </Navbar.Collapse>
       </Container>
