@@ -1,0 +1,14 @@
+.ChangePin-title{
+    margin-top: 10px;
+}
+
+.ChangePin-wrapper{
+    height: 70%;
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+
+.ChangePin-title .title-top-right{
+    margin-bottom: 20px;
+}
