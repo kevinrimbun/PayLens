@@ -40,7 +40,6 @@ const ChangePassword = () => {
     } else if (newPassword2 !== newPassword1) {
       setError(true)
     } else {
-      alert("Are you sure?")
       localStorage.setItem("password", newPassword2);
       navigate('/profile', {replace : true})
     }
