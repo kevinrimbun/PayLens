@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
+import { Link } from 'react-router-dom'
 
 const Transfer = () => {
   const [accounts] = useState(listAccount)
@@ -35,6 +36,7 @@ const Transfer = () => {
           return(
           <Card className='my-2 ' key={getAccount.id}>
           <Card.Body >
+          <Link to={'/DetailTransfer/' + getAccount.id} className="text-decoration-none text-dark">
             <Container>
               <Row >
                 <Col lg={2}>
@@ -48,12 +50,12 @@ const Transfer = () => {
                 </Col>
               </Row>
             </Container>
+            </Link>
           </Card.Body>
         </Card>
         )})}
         </Col>
       </Row>
-      
     </Container>
   </Content>
 }

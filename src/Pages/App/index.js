@@ -7,6 +7,7 @@ import Register from '../Register';
 import History from '../History';
 import Home from '../Home';
 import Content from '../../Layout/Content';
+import Status from '../../Layout/Status';
 import Transfer from '../Transfer';
 import TopUp from '../TopUp';
 import Profile from '../Profile';
@@ -17,10 +18,13 @@ import SuccessPin from '../SuccessPin/SuccessPin';
 import ResetPass from '../ResetPassword';
 import NewPassword from '../NewPassword';
 import ChangePassword from '../ChangePassword';
+import DetailTransfer from '../DetailTransfer';
+import TransferConfirmation from '../TransferConfirmation';
 import AddPhoneNum from '../AddPhoneNum';
 import ManagePhoneNum from '../ManagePhoneNum';
 import ChangePin from '../ChangePin';
 import ChangePinAfter from '../ChangePinAfter';
+import StatusBerhasil from '../StatusBerhasil';
 
 
 const index = () => {
@@ -35,6 +39,8 @@ const index = () => {
             <Route path='/dashboard' element={<Home/>} />
             <Route path='/history' element={<History/>} />
             <Route path='/transfer' element={<Transfer/>} />
+            <Route path='/transfer-confirmation/:id' element={<TransferConfirmation/>} />
+            <Route path='/DetailTransfer/:id' element={<DetailTransfer/>} />
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/information' element={<PersonalInformation/>} />
@@ -49,6 +55,8 @@ const index = () => {
             <Route path='/managephonenum' element={<ManagePhoneNum/>} />
             <Route path='/changepin' element={<ChangePin/>} />
             <Route path='/changepinafter' element={<ChangePinAfter/>} />
+            <Route path='/layout-status' element={<Status />} />
+            <Route path='/transfer-berhasil/:id' element={<StatusBerhasil />} />
         </Routes>
     </BrowserRouter>
   )
