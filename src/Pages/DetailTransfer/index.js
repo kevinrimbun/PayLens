@@ -16,6 +16,13 @@ import { Icon } from "@iconify/react";
 const DetailTransfer = () => {
   const { id } = useParams();
   const [account] = useState(listAccount[id - 1]);
+  const [amount, setAmount] = useState()
+
+  const handleTransfer = (e) => {
+    e.preventDefault();
+    localStorage.setItem("amount", amount)
+    window.location.replace("/transfer-confirmation/" + account.id);
+  };
   return (
     <Content>
       <Container>
@@ -57,22 +64,18 @@ const DetailTransfer = () => {
         </Row>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-            <Form.Control className="border-0" type="number" style={{width: "150px", alignItems: "center"}}
-            placeholder="0.00"/>
+            <Form.Control id="amount" className="border-0" type="number" style={{width: "150px", alignItems: "center"}}
+            placeholder="0.00" name="amount" onChange={(e) => setAmount(e.target.value)}/>
           </Col>
         </Row>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-          <p>Rp 950.000 avaliable</p>
+          <p>Rp {localStorage.getItem("balance")} avaliable</p>
           </Col>
         </Row>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-            <Link to={"/transfer-confirmation/" + account.id} >
-              <Button variant="outline-light" className="m-2" style={{background: '#6379F4'}}>
-                Continue
-              </Button>
-            </Link>
+            <Button onClick={handleTransfer} variant="outline-light" className="m-2" style={{background: '#6379F4'}} />
           </Col>
         </Row>
       </Container>

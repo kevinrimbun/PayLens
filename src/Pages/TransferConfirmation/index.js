@@ -11,10 +11,12 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Component } from "react-router-dom";
 import Content from "../../Layout/Content";
 
 const TransferConfirmation = () => {
+  const date = Date().toLocaleString()
+
   const [pin1, setInput1] = useState("");
   const [pin2, setInput2] = useState("");
   const [pin3, setInput3] = useState("");
@@ -22,6 +24,13 @@ const TransferConfirmation = () => {
   const [pin5, setInput5] = useState("");
   const [pin6, setInput6] = useState("");
   const [error, setError] = useState(false);
+
+  const pinn1 = localStorage.getItem("pin1")
+  const pinn2 = localStorage.getItem("pin2")
+  const pinn3 = localStorage.getItem("pin3")
+  const pinn4 = localStorage.getItem("pin4")
+  const pinn5 = localStorage.getItem("pin5")
+  const pinn6 = localStorage.getItem("pin6")
 
   const [showModal, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -31,7 +40,17 @@ const TransferConfirmation = () => {
 
   const handleSuccess = (e) => {
     e.preventDefault();
-    window.location.replace("/transfer-berhasil/" + account.id);
+    if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
+      window.location.replace("/transfer-berhasil/" + account.id);
+    }
+    if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
+      alert("PIN salah, silakkan masukkan ulang")
+    }
+  };
+
+  const handleFailed = (e) => {
+    e.preventDefault();
+    window.location.replace("/transfer-gagal/" + account.id);
   };
 
   return (
@@ -78,7 +97,7 @@ const TransferConfirmation = () => {
                   <Row>
                     <Col>
                       <Card.Text>Amount</Card.Text>
-                      <Card.Text></Card.Text>
+                      <Card.Text>{localStorage.getItem("amount")}</Card.Text>
                     </Col>
                   </Row>
                 </Container>
@@ -110,7 +129,7 @@ const TransferConfirmation = () => {
                   <Row>
                     <Col>
                       <Card.Text>Date & Time</Card.Text>
-                      <Card.Text></Card.Text>
+                      <Card.Text>{date}</Card.Text>
                     </Col>
                   </Row>
                 </Container>
@@ -192,7 +211,7 @@ const TransferConfirmation = () => {
         <Modal.Footer>
           <Button
             variant="outline-light"
-            onClick={handleClose}
+            onClick={handleFailed}
             className="m-2"
             style={{ background: "#6379F4" }}
           >
