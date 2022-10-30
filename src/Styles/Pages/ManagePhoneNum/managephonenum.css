@@ -11,10 +11,13 @@
 }
 .btn-addphone {
     border-radius: 12px;
-    background: #DADADA;
+    background: #6379F4;
     border-color: transparent;
-    color: #88888F;
+    color: white;
     width: 300px;
     height: 57px;
     margin-left: 2%;
+}
+.btn-addphonee {
+    background: #6379F4 !important;
 }

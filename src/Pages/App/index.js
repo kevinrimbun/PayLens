@@ -12,7 +12,6 @@ import Transfer from '../Transfer';
 import TopUp from '../TopUp';
 import Profile from '../Profile';
 import PersonalInformation from '../PersonalInformation';
-import ManagePhone from '../ManagePhone';
 import CreatePin from '../CreatePin';
 import SuccessPin from '../SuccessPin/SuccessPin';
 import ResetPass from '../ResetPassword';
@@ -41,24 +40,23 @@ const index = () => {
             <Route path='/history' element={<History/>} />
             <Route path='/transfer' element={<Transfer/>} />
             <Route path='/transfer-confirmation/:id' element={<TransferConfirmation/>} />
-            <Route path='/DetailTransfer/:id' element={<DetailTransfer/>} />
+            <Route path='/transfer-detail/:id' element={<DetailTransfer/>} />
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/information' element={<PersonalInformation/>} />
-            <Route path='/managephone' element={<ManagePhone/>} />
             <Route path='/history' element={<History />} />
             <Route path='/create-pin' element={<CreatePin/>} />
             <Route path='/success-pin' element={<SuccessPin/>} />
             <Route path='/reset-password' element={<ResetPass/>} />
             <Route path='/new-password' element={<NewPassword/>} />
-            <Route path='/changepassword' element={<ChangePassword/>} />
-            <Route path='/addphonenum' element={<AddPhoneNum/>} />
-            <Route path='/managephonenum' element={<ManagePhoneNum/>} />
-            <Route path='/changepin' element={<ChangePin/>} />
-            <Route path='/changepinafter' element={<ChangePinAfter/>} />
+            <Route path='/change-password' element={<ChangePassword/>} />
+            <Route path='/add-phone' element={<AddPhoneNum/>} />
+            <Route path='/manage-phone' element={<ManagePhoneNum/>} />
+            <Route path='/change-pin' element={<ChangePin/>} />
+            <Route path='/new-pin' element={<ChangePinAfter/>} />
             <Route path='/layout-status' element={<Status />} />
-            <Route path='/transfer-berhasil/:id' element={<StatusBerhasil />} />
-            <Route path='/transfer-gagal/:id' element={<StatusGagal />} />
+            <Route path='/success-transfer/:id' element={<StatusBerhasil />} />
+            <Route path='/failed-transfer/:id' element={<StatusGagal />} />
         </Routes>
     </BrowserRouter>
   )

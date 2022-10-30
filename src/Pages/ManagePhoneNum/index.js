@@ -35,7 +35,7 @@ const ManagePhoneNum = () => {
         </Card.Body>
       </Card>
     </Row>
-    <Link to='/addphonenum'>
+    <Link to='/add-phone'>
     
       <button className="btn-addphone mt-2" id='submit' type="submit" value="Enter">Add Phone Number</button>
     </Link>

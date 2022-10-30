@@ -75,7 +75,7 @@ const PersonalInformation = () => {
                                     <Card style={{ width: '100%', border: 'none' }} className='shadow mt-3'>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Phone Number</Card.Subtitle>
-                                            <Link to='/managephonenum'>
+                                            <Link to='/manage-phone'>
                                                 <Card.Subtitle className="text-primary float-end Manage-Button"><p>Manage</p></Card.Subtitle>
                                             </Link>
                                             <Card.Text>

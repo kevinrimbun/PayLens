@@ -15,7 +15,7 @@ const AddPhoneNum = () => {
     e.preventDefault();
     localStorage.setItem('number', number)
     alert("added succes")
-    navigate('/managephonenum')
+    navigate('/manage-phone')
     console.log(number);
   }
   return <Content>
@@ -28,7 +28,7 @@ const AddPhoneNum = () => {
             <div className="">
               <BsTelephone/> <label htmlFor="">+62</label> <input type="number" onChange={(e) => setNumber(e.target.value)} style={{outlineStyle: 'none' }} placeholder='Masukan nomor disini' />
               <hr />
-              <Button variant="secondary" type='submit'>Add Number</Button>
+              <Button className='btn-addphonee' type='submit'>Add Number</Button>
             </div>
           </form>
         </div>

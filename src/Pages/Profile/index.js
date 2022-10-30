@@ -30,12 +30,12 @@ const Profile = () => {
         {
             text: "Change Password",
             icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />,
-            link: '/changepassword'
+            link: '/change-password'
         },
         {
             text: "Change PIN",
             icon: <Icon icon="akar-icons:arrow-right" color="#4D4B57" width="25" height="25" />,
-            link: '/changepin'
+            link: '/change-pin'
         }
     ]
 
@@ -86,7 +86,7 @@ const Profile = () => {
                                         )
                                     }
                                     )}
-                                    <Link to='/changepassword' onClick={logout}>
+                                    <Link to='/change-password' onClick={logout}>
                                         <Button className='mt-3 ProfileButton d-flex align-items-center justify-content-between'>
                                             <span className='float-start'>Logout</span>
                                         </Button>
