@@ -21,6 +21,8 @@ const ChangePinAfter = () => {
         e.preventDefault();
         if (newPin1.length === 0 || newPin2.length === 0 || newPin3.length === 0 || newPin4.length === 0 || newPin5.length === 0 || newPin6.length === 0) {
             setError(true)
+        } else if (newPin1 === localStorage.getItem("pin1") || newPin2 === localStorage.getItem("pin2") || newPin3 === localStorage.getItem("pin3") || newPin4 === localStorage.getItem("pin4") || newPin5 === localStorage.getItem("pin5") || newPin6 === localStorage.getItem("pin6")) {
+            setError(true)
         } else {
             localStorage.setItem("pin1", newPin1)
             localStorage.setItem("pin2", newPin2)
@@ -30,6 +32,7 @@ const ChangePinAfter = () => {
             localStorage.setItem("pin6", newPin6)
             navigate('/profile', {replace : true})
         }
+
         const data = new FormData(e.target)
         console.log(Object.fromEntries(data.entries()));
     }
@@ -60,6 +63,10 @@ const ChangePinAfter = () => {
                 <div className='error-message'>
                     {error && newPin1.length === 0 && newPin2.length === 0 && newPin3.length === 0 && newPin4.length === 0 && newPin5.length === 0 && newPin6.length === 0 ?
                     <label>Input cannot be empty !</label>:""}
+                </div>
+                <div className='error-message'>
+                    {error && newPin1 === localStorage.getItem("pin1") && newPin2 === localStorage.getItem("pin2") && newPin3 === localStorage.getItem("pin3") && newPin4 === localStorage.getItem("pin4") && newPin5 === localStorage.getItem("pin5") && newPin6 === localStorage.getItem("pin6") ?
+                    <label>PIN must be different !</label>:""}
                 </div>
                 <button className="btn-auth" id='submit' type="submit" value="Enter">Change Pin</button>
             </form>

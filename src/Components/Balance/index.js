@@ -13,8 +13,12 @@ import Col from 'react-bootstrap/Col';
 
 // CSS
 import '../../Styles/Components/Balance/Balance.css'
-localStorage.setItem("balance", 950000)
+
 function BalanceComp() {
+    localStorage.setItem("balance", 950000)
+    var amount = localStorage.getItem("amount")
+    var balance = localStorage.getItem("balance")
+    const  result = balance - amount
     return (
         <Card className='shadow-lg Balance-Comp'>
             <Card.Body>
@@ -24,7 +28,7 @@ function BalanceComp() {
                     <Row className='d-flex justify-content-center'>
                         <Col className='d-flex flex-column justify-content-center Description-Section'>
                             <p className='text-start mt-1'>Balance</p>
-                            <h4 className='text-start'>Rp 950.000</h4>
+                            <h4 className='text-start'>Rp. {result}</h4>
                             <p className='text-start mb-1'>+62 {localStorage.getItem('number')}</p>
                         </Col>
 

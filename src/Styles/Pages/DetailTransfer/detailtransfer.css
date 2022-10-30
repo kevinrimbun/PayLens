@@ -1,0 +1,20 @@
+.add-amount {
+    margin-left: 40%;
+    margin-top: 15%;
+}
+.add-amount #amount {
+    box-shadow: none !important;
+    margin-left: 10%;
+    width: 50%;
+}
+.btn-addamount {
+    margin-top: 25%;
+    margin-left: 70%;
+}
+.notes {
+    margin: 0 25%;
+}
+.notes input {
+    border: none;
+    box-shadow: none !important;
+}

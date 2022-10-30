@@ -23,7 +23,7 @@ const ChangePin = () => {
         } else if ( pin1 !== localStorage.getItem("pin1") && pin2 !== localStorage.getItem("pin2") && pin3 !== localStorage.getItem("pin3") && pin4 !== localStorage.getItem("pin4") && pin5 !== localStorage.getItem("pin5") && pin6 !== localStorage.getItem("pin6")) {
             setError(true)
         } else {
-            navigate('/changepinafter', {replace : true})
+            navigate('/new-pin', {replace : true})
         }
         const data = new FormData(e.target)
         console.log(Object.fromEntries(data.entries()));

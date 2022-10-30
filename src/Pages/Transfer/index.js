@@ -24,7 +24,7 @@ const Transfer = () => {
       <Row className='d-flex flex-column justify-content-center'>
         <Col>
         <InputGroup className='sm-3'>
-        <InputGroup.Text id='search'><Icon icon="ant-design:search-outlined" width="20" height="20" className='m-3'/></InputGroup.Text>
+        <InputGroup.Text id='search'><Icon icon="ant-design:search-outlined" width="20" height="15" className='m-3'/></InputGroup.Text>
         <Form.Control placeholder='Search receiver here' aria-label='Search receiver here' aria-describedby='search'/>
         </InputGroup>
         </Col>
@@ -36,7 +36,7 @@ const Transfer = () => {
           return(
           <Card className='my-2 ' key={getAccount.id}>
           <Card.Body >
-          <Link to={'/DetailTransfer/' + getAccount.id} className="text-decoration-none text-dark">
+          <Link to={'/transfer-detail/' + getAccount.id} className="text-decoration-none text-dark">
             <Container>
               <Row >
                 <Col lg={2}>

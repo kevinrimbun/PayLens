@@ -11,10 +11,16 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
-import { Link, useParams, Component } from "react-router-dom";
+import { Link, useParams, Component, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
 
 const TransferConfirmation = () => {
+
+  var amounts = localStorage.getItem("amount")
+  var balances = localStorage.getItem("balance")
+  const  result = balances - amounts
+
+  const navigate = useNavigate()
   const date = Date().toLocaleString()
 
   const [pin1, setInput1] = useState("");
@@ -41,7 +47,7 @@ const TransferConfirmation = () => {
   const handleSuccess = (e) => {
     e.preventDefault();
     if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
-      window.location.replace("/transfer-berhasil/" + account.id);
+      navigate("/success-transfer/" + account.id);
     }
     if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
       alert("PIN salah, silakkan masukkan ulang")
@@ -50,7 +56,7 @@ const TransferConfirmation = () => {
 
   const handleFailed = (e) => {
     e.preventDefault();
-    window.location.replace("/transfer-gagal/" + account.id);
+    navigate("/failed-transfer/" + account.id);
   };
 
   return (
@@ -89,7 +95,7 @@ const TransferConfirmation = () => {
             <h4>Details</h4>
           </Col>
         </Row>
-        <Row className="d-flex flex-column justify-content-center">
+        <Row className="d-flex flex-column justify-content-center mt-2">
           <Col>
             <Card>
               <Card.Body>
@@ -97,7 +103,7 @@ const TransferConfirmation = () => {
                   <Row>
                     <Col>
                       <Card.Text>Amount</Card.Text>
-                      <Card.Text>{localStorage.getItem("amount")}</Card.Text>
+                      <Card.Text>Rp. {localStorage.getItem("amount")}</Card.Text>
                     </Col>
                   </Row>
                 </Container>
@@ -105,7 +111,7 @@ const TransferConfirmation = () => {
             </Card>
           </Col>
         </Row>
-        <Row className="d-flex flex-column justify-content-center">
+        <Row className="d-flex flex-column justify-content-center mt-2">
           <Col>
             <Card>
               <Card.Body>
@@ -113,7 +119,7 @@ const TransferConfirmation = () => {
                   <Row>
                     <Col>
                       <Card.Text>Balance left</Card.Text>
-                      <Card.Text></Card.Text>
+                      <Card.Text>{result}</Card.Text>
                     </Col>
                   </Row>
                 </Container>
@@ -121,7 +127,7 @@ const TransferConfirmation = () => {
             </Card>
           </Col>
         </Row>
-        <Row className="d-flex flex-column justify-content-center">
+        <Row className="d-flex flex-column justify-content-center mt-2">
           <Col>
             <Card>
               <Card.Body>
@@ -137,7 +143,7 @@ const TransferConfirmation = () => {
             </Card>
           </Col>
         </Row>
-        <Row className="d-flex flex-column justify-content-center">
+        <Row className="d-flex flex-column justify-content-center mt-2">
           <Col>
             <Card>
               <Card.Body>
@@ -145,7 +151,7 @@ const TransferConfirmation = () => {
                   <Row>
                     <Col>
                       <Card.Text>Notes</Card.Text>
-                      <Card.Text></Card.Text>
+                      <Card.Text>{localStorage.getItem("notes")}</Card.Text>
                     </Col>
                   </Row>
                 </Container>
@@ -153,7 +159,7 @@ const TransferConfirmation = () => {
             </Card>
           </Col>
         </Row>
-        <Row className="d-flex flex-column justify-content-center">
+        <Row className="d-flex flex-column justify-content-center mt-2">
           <Col>
             <Button
               variant="outline-light"
