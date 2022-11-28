@@ -11,8 +11,6 @@
 }
 
 .landingpage .Wrapper{
-    display: flex;
-
     height: 100vh;
 }
 
@@ -134,14 +132,15 @@
     margin-top: 10%;
 }
 
-.Wrapper-feature .rightside{
+.Wrapper-feature .rightside-feature{
+    overflow: hidden;
     margin: auto;
 }
 
 
 /* carousel */
 .Wrapper-carousel{
-    height: 60vh;
+    height: 80vh;
 }
 
 .carousel img{
@@ -177,4 +176,70 @@
 
 .Wrapper-rights p{
     margin: 20px 0 !important;
+}
+
+@media screen and (max-width: 476px) {
+    .landingpage img{
+        display: none;
+    }
+
+    .landingpage h1{
+        font-size: 45px !important;
+    }
+    
+}
+
+@media screen and (max-width: 770px) {
+    .landingpage .rightside{
+        margin: 21% 0 5% 0;
+    }
+
+    .landingpage .leftside{
+        margin-left: -6%;
+    }
+
+    .landingpage .Wrapper{
+        height: 85vh;
+    }
+
+    .landingpage .downside{
+        margin-top: -12%;
+    }
+
+    .landingpage .Wrapper-feature img{
+        margin: 0;
+        position: relative;
+        width: 300px;
+        height: 450px;
+        padding: 0;
+    }
+
+    .landingpage .Wrapper-feature .foto{
+        display: flex;
+        justify-content: center;
+        height: 10%;
+    }
+
+    .landingpage .Wrapper-feature .rightside-feature{
+        justify-content: center;
+        display: grid;
+        margin: auto;
+    }
+
+    .landingpage .Wrapper-carousel{
+        height: 50vh;
+    }
+
+    .landingpage .Wrapper-carousel .row-carousel{
+        height: 76%;
+    }
+
+    .landingpage .Wrapper-carousel .col-carousel{
+        margin: auto;
+    }
+
+    .landingpage .Wrapper-carousel .carousel img{
+        margin: 16% auto;
+    }
+
 }

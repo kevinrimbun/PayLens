@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 // Components
 import NavbarComp from "../../Components/Navbar";
@@ -13,8 +15,29 @@ import TopUpInstruction from "../../Components/TopUp";
 
 // CSS
 import '../../Styles/Pages/TopUp/TopUp.css'
+import { topUpService } from "../../services/topUp";
+import { Input } from "@chakra-ui/react";
 
 const TopUp = () => {
+    const [amount , setAmount] = useState("");
+    const [pin , setPin] = useState("");
+    const [userId , setUserId] = useState("");
+
+    const topUp = async () => {
+        const userid = {userId}
+        const data = {
+            amount,
+            pin
+        }
+        const response = await topUpService(data);
+        console.log(response);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        topUp();
+    }
+
     // Data Users
     const listParagraph = [
         {
@@ -54,9 +77,10 @@ const TopUp = () => {
 
     return (
         <>
+
             {/* Navbar Section */}
             <NavbarComp />
-
+                
             <div className="App w-100 p-1">
                 <Container fluid className="w-100 p-5 Container-Section p-1">
                     <Row>
@@ -66,21 +90,29 @@ const TopUp = () => {
 
                         {/* History Section */}
                         <Col sm={8} className="Topup-Section p-4 ms-3 shadow-lg">
-                            <h4>How To Top Up</h4>
-
-                            <Row className='User-Section'>
-                                <Col>
-                                    {listParagraph.map(topup => {
-                                        return (
-                                            <TopUpInstruction id={topup.id}
-                                                paragraph={topup.paragraph}
-                                            />
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                How to Top Up
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">{listParagraph.map(topup => {
+                                    return (
+                                    <TopUpInstruction id={topup.id}
+                                        paragraph={topup.paragraph}
+                                        />
                                         )
                                     }
-                                    )}
-
+                                )}</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                            <Row className='User-Section'>
+                                <Col>
+                                <input type="text" name="amount" id="amount" onChange={e => setAmount(e.target.value)}/>
+                                <button onClick={(e) => handleSubmit(e)}>SEND</button>
                                 </Col>
                             </Row>
+                    
+                            
                         </Col>
                     </Row>
                 </Container>
