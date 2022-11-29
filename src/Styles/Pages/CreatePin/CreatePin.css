@@ -1,0 +1,31 @@
+.pin-field {
+    font-size: small !important;
+    margin: 2px;
+    width: 60px;
+    height: 50px;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.form-pin {
+    display: inline-flex;
+    margin-bottom: -15%;
+}
+
+.btn-pin {
+    /* width: 350px; */
+    /* margin-left: -12%; */
+    margin-top: 10%;
+}
+
+.btn-clear {
+    position: relative;
+    margin-top: 5%;
+    margin-bottom: 5px;
+    width: 50px;
+    height: 40px;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    border-color: transparent;
+}

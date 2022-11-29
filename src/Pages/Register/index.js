@@ -28,8 +28,11 @@ const Register = () => {
         const response = await registerService(data);
             console.log(response);
             if (response.status === 201) {
-            // alert(response.data.message);
+            alert(response.data.message);
             navigate('/create-pin', { replace : true })
+            localStorage.setItem("detailUserId", (response.data.data.detailUserId))
+            localStorage.setItem("userId", (response.data.data.userId))
+
         }
     };
 
@@ -38,7 +41,6 @@ const Register = () => {
             if (username.length === 0  || email.length === 0 || password.length === 0) {
                 setError(true)
             }
-        localStorage.setItem("")
         register();
     }
 

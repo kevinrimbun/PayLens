@@ -9,7 +9,7 @@ export const registerService = async (data) => {
 };
 
 export const createPinService = async (data, detailUserId) => {
-    const url = `${ROOT_API_PAYLENS}/users/register/${detailUserId}`;
+    const url = `${ROOT_API_PAYLENS}/users/register/pin/${detailUserId}`;
     const response = await fetchAPI({ url, method: "POST", data });
     return response;
 };
