@@ -19,6 +19,7 @@ import NewPassword from '../NewPassword';
 import ChangePassword from '../ChangePassword';
 import DetailTransfer from '../DetailTransfer';
 import TransferConfirmation from '../TransferConfirmation';
+import TopUpConfirmation from '../TopUpConfirmation';
 import AddPhoneNum from '../AddPhoneNum';
 import ManagePhoneNum from '../ManagePhoneNum';
 import ChangePin from '../ChangePin';
@@ -40,6 +41,7 @@ const index = () => {
             <Route path='/history' element={<History/>} />
             <Route path='/transfer' element={<Transfer/>} />
             <Route path='/transfer-confirmation/:id' element={<TransferConfirmation/>} />
+            <Route path='/topup-confirmation' element={<TopUpConfirmation/>} />
             <Route path='/transfer-detail/:id' element={<DetailTransfer/>} />
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />

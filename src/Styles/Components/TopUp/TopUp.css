@@ -6,13 +6,10 @@
     padding: 0px;
 }
 
-.User-Section p {
-    margin-top: 7px;
+.dropdown-instructions {
+    border: none !important;
 }
-.History-Section h4 {
-    font-weight: bolder;
-    margin-left: 1.5%;
-}
-.TopUpInstruction-Comp {
+
+.card-intsructions{
     border: none !important;
 }

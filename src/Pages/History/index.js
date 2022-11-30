@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { getHistoryService } from "../../Services/history";
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';

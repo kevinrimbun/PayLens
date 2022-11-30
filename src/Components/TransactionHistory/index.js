@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useCallback } from "react";
+import axios from "axios";
+import { getHistoryService } from "../../Services/history";
 import { Link } from "react-router-dom";
 
 // Bootstrap
@@ -15,6 +17,23 @@ import '../../Styles/Components/TransactionHistory/TransactionHistory.css'
 
 
 function TransactionHistory() {
+
+    const HistoryManagement = () => {
+        const [userName, setUserName] = useState("");
+        const [amount, setAmount] = useState("");
+        const [topAmount, setTopAmount] = useState("");
+        // const [] = useState([]);
+        // const [] = useState([]);
+      
+        const getHistory = useCallback(async () => {
+          const response = await getHistoryService();
+          console.log(response, "response axios");
+          const data = response.data.data;
+          setUserName(data);
+        }, []);
+    }
+
+
     // Data Users
     const listUsers = [
         {
