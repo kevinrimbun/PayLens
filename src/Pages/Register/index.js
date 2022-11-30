@@ -28,7 +28,7 @@ const Register = () => {
         const response = await registerService(data);
             console.log(response);
             if (response.status === 201) {
-            // alert(response.data.message);
+            alert(response.data.message);
             navigate('/create-pin', { replace : true })
         }
     };

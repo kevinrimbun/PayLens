@@ -13,20 +13,28 @@ const ResetPass = () => {
     const [email, setEmail] = useState("");
     const [error, setError] = useState(false)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const changePassword = async () => {
         localStorage.getItem("email")
-        if (email.length === 0) {
-            setError(true)
-        } else if (email === localStorage.getItem("email")) {
-            // window.location.replace("/dashboard")
-            navigate("/new-password", { replace: true })
-        } else if (email != localStorage.getItem("email")){
-            setError(true)
-        } else {
-            setError(true)
+        const data ={
+            email
         }
+        const response = await changePasswordService(data);
     }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     localStorage.getItem("email")
+    //     if (email.length === 0) {
+    //         setError(true)
+    //     } else if (email === localStorage.getItem("email")) {
+    //         // window.location.replace("/dashboard")
+    //         navigate("/new-password", { replace: true })
+    //     } else if (email != localStorage.getItem("email")){
+    //         setError(true)
+    //     } else {
+    //         setError(true)
+    //     }
+    // }
 
     return <Auth>
         <div className='title-right-wrapper'>
