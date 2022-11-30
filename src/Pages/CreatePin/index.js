@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../Layout/Auth';
+import { PinInput, PinInputField } from '@chakra-ui/react';
 import '../../Styles/Pages/auth.css';
 import { createPinService } from '../../services/auth';
 import '../../Styles/Pages/CreatePin/CreatePin.css'
@@ -9,18 +10,24 @@ import '../../Styles/Pages/CreatePin/CreatePin.css'
 const CreatePin = () => {
     const[pin, setPin] = useState(new Array(6).fill(""))
     const navigate = useNavigate();
+    const [pin1, setInput1] = useState("");
+    const [pin2, setInput2] = useState("");
+    const [pin3, setInput3] = useState("");
+    const [pin4, setInput4] = useState("");
+    const [pin5, setInput5] = useState("");
+    const [pin6, setInput6] = useState("");
 
     const [error, setError] = useState(false);
 
-    const handleChange = (element, index) => {
-        if (isNaN(element.value)) return false;
+    // const handleChange = (element, index) => {
+    //     if (isNaN(element.value)) return false;
                 
-        setPin([...pin.map((d, idx) => (idx === index) ? element.value : d)]);
+    //     setPin([...pin.map((d, idx) => (idx === index) ? element.value : d)]);
 
-        if (element.nextSibling) {
-            element.nextSibling.focus();
-        }
-    }
+    //     if (element.nextSibling) {
+    //         element.nextSibling.focus();
+    //     }
+    // }
 
         const detailUserId = `${response.id}`;
 
@@ -28,7 +35,7 @@ const CreatePin = () => {
     const createPin = async () => {
         const detailUserId = localStorage.getItem("detailUserId") ;
         const data = {
-            pin: pin.join("")
+            pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
         };
 
         const response = await createPinService(data, +detailUserId);
@@ -41,11 +48,10 @@ const CreatePin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (pin[0] === null ) {
-            setError(true)
-        } 
+        // if (pin[0] === null ) {
+        //     setError(true)
+        // } 
         createPin();
-        navigate('/success-pin',{ replace : true })
     }
 
     return <Auth>
@@ -62,8 +68,21 @@ const CreatePin = () => {
 
         <div className='pin-wrapper'>
             <form onSubmit={handleSubmit}>
+                <PinInput className='d-flex pin-input' >
+                    <PinInputField className='pin-input text-center' name='pin1' onChange={(e) => setInput1(e.target.value)} />
+                    <PinInputField className='pin-input text-center' name='pin2' onChange={(e) => setInput2(e.target.value)} />
+                    <PinInputField className='pin-input text-center' name='pin3' onChange={(e) => setInput3(e.target.value)} />
+                    <PinInputField className='pin-input text-center' name='pin4' onChange={(e) => setInput4(e.target.value)} />
+                    <PinInputField className='pin-input text-center' name='pin5' onChange={(e) => setInput5(e.target.value)} />
+                    <PinInputField className='pin-input text-center' name='pin6' onChange={(e) => setInput6(e.target.value)} />
+                </PinInput>
+                <div className='error-message'>
+                    {error && pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ?
+                    <label>Input cannot be empty !</label>:""}
+                </div>
+                {/* <input type='submit'>Confirm</input> */}
 
-                {pin.map((data, index) => {
+                {/* {pin.map((data, index) => {
                     return (
                         <input
                             className='pin-field'
@@ -76,19 +95,14 @@ const CreatePin = () => {
                             onFocus={e => e.target.select()}
                         />
                     )
-                })}
+                })} */}
 
                 <div className='error-message'>
                     {error && pin[0] === null ?
                     <label>Input cannot be empty !</label>:""}
                 </div>
-                <div className='form-pin'>
-                    <button className="btn-auth btn-pin" id='submit' type="submit" value="Enter" >Confirm</button>
-                </div>
+                    <button className="btn-auth" id='submit' type="submit" value="Enter" >Confirm</button>
             </form>
-            <button className="btn-clear" value="Enter" onClick={e => setPin([...pin.map(v => "")])}>
-                Clear
-            </button>
         </div>
 
   </Auth>
