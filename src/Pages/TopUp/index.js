@@ -22,20 +22,33 @@ const TopUp = () => {
     const [amount , setAmount] = useState("");
     const [pin , setPin] = useState("");
     const [userId , setUserId] = useState("");
+    const [pin1, setInput1] = useState("");
+    const [pin2, setInput2] = useState("");
+    const [pin3, setInput3] = useState("");
+    const [pin4, setInput4] = useState("");
+    const [pin5, setInput5] = useState("");
+    const [pin6, setInput6] = useState("");
+    const [error, setError] = useState(false)
 
     const topUp = async () => {
-        const userid = {userId}
+        const userId = localStorage.getItem;
         const data = {
             amount,
             pin
         }
-        const response = await topUpService(data);
+        const response = await topUpService(data, +userId);
         console.log(response);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         topUp();
+        localStorage.setItem("pin1", pin1)
+        localStorage.setItem("pin2", pin2)
+        localStorage.setItem("pin3", pin3)
+        localStorage.setItem("pin4", pin4)
+        localStorage.setItem("pin5", pin5)
+        localStorage.setItem("pin6", pin6)
     }
 
     // Data Users
@@ -108,6 +121,7 @@ const TopUp = () => {
                             <Row className='User-Section'>
                                 <Col>
                                 <input type="text" name="amount" id="amount" onChange={e => setAmount(e.target.value)}/>
+                                <input type="text" name="pin" id="pin" onChange={e => setPin(e.target.value)}/>
                                 <button onClick={(e) => handleSubmit(e)}>SEND</button>
                                 </Col>
                             </Row>

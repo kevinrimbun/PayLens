@@ -5,12 +5,12 @@ import Auth from '../../Layout/Auth';
 import '../../Styles/Pages/auth.css';
 // import { CiLock } from 'react-icons/ci';
 // import {BsEnvelope} from 'react-icons/bs';
-
+import { createPinService } from '../../services/auth';
 
 
 const CreatePin = () => {
     const navigate = useNavigate();
-
+    const [pin, setInput] = useState("");
     const [pin1, setInput1] = useState("");
     const [pin2, setInput2] = useState("");
     const [pin3, setInput3] = useState("");
@@ -18,6 +18,29 @@ const CreatePin = () => {
     const [pin5, setInput5] = useState("");
     const [pin6, setInput6] = useState("");
     const [error, setError] = useState(false)
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //         if ( pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ) {
+    //             setError(true)
+    //         }
+    //     createPin();
+    // }
+
+    const createPin = async () => {
+        const data = {
+            pin
+        };
+
+        const detailUserId = `${response.id}`;
+
+        const response = await createPinService(data, detailUserId);
+            console.log(response);
+            if (response.status === 201) {
+            alert(response.data.message);
+            navigate("/success-pin", { replace: true })
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,8 +53,11 @@ const CreatePin = () => {
             localStorage.setItem("pin4", pin4)
             localStorage.setItem("pin5", pin5)
             localStorage.setItem("pin6", pin6)
+            const pin = localStorage.getItem("pin1") + localStorage.getItem("pin2") + localStorage.getItem("pin3") + localStorage.getItem("pin4") + localStorage.getItem("pin5") + localStorage.getItem("pin6")
+            console.log(pin);
             navigate('/success-pin',{ replace : true })
         }
+        // createPin();
     }
 
 

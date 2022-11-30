@@ -5,36 +5,49 @@ import '../../Styles/Layout/Auth/auth.css';
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
 import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
-const eye = <AiOutlineEye/>
-const eyeClose = <AiOutlineEyeInvisible/>
+import { loginService } from '../../services/auth';
+
+// const eye = <AiOutlineEye/>
+// const eyeClose = <AiOutlineEyeInvisible/>
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(false)
 
     const [passwordShown1, setPasswordShown1] = useState(false);
     const togglePasswordVisiblity1 = () => {
         setPasswordShown1(passwordShown1 ? false : true);
     };
 
-    const navigate = useNavigate();
+    const login = async () => {
+        const data = {
+            email,
+            password
+        };
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState(false)
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        localStorage.getItem("email")
-        localStorage.getItem("password")
-        if (email.length === 0 || password.length === 0) {
-            setError(true)
-        } else if (email === localStorage.getItem("email") && password === localStorage.getItem("password")) {
-            // window.location.replace("/dashboard")
+        const response = await loginService(data);
+            console.log(response);
+            if (response.status === 201) {
+            alert(response.data.message);
             navigate("/dashboard", { replace: true })
-        } else {
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const response = await loginService({
+            email,
+            password
+        });
+        if (email == response.data.data.email && password === response.data.data.password) {
+            alert(response.data.message);
+            navigate("/dashboard", { replace: true })
+        } else if ( email.length === 0 || password.length === 0 ) {
             setError(true)
         }
-        const data = new FormData(e.target)
-        console.log(Object.fromEntries(data.entries()));
+        login();
     }
 
     return <Auth>
