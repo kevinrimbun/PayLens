@@ -8,7 +8,7 @@ import '../../Styles/Pages/CreatePin/CreatePin.css'
 
 
 const CreatePin = () => {
-    const[pin, setPin] = useState(new Array(6).fill(""))
+    const[pin, setPin] = useState("")
     const navigate = useNavigate();
     const [pin1, setInput1] = useState("");
     const [pin2, setInput2] = useState("");
@@ -18,18 +18,6 @@ const CreatePin = () => {
     const [pin6, setInput6] = useState("");
 
     const [error, setError] = useState(false);
-
-    // const handleChange = (element, index) => {
-    //     if (isNaN(element.value)) return false;
-                
-    //     setPin([...pin.map((d, idx) => (idx === index) ? element.value : d)]);
-
-    //     if (element.nextSibling) {
-    //         element.nextSibling.focus();
-    //     }
-    // }
-
-
 
     const createPin = async () => {
         const detailUserId = localStorage.getItem("detailUserId") ;
