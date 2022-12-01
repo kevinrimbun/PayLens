@@ -29,9 +29,6 @@ const CreatePin = () => {
     //     }
     // }
 
-        const detailUserId = `${response.id}`;
-
-
     const createPin = async () => {
         const detailUserId = localStorage.getItem("detailUserId") ;
         const data = {
@@ -42,7 +39,7 @@ const CreatePin = () => {
             console.log(response);
             if (response.status === 201) {
             alert(response.data.message);
-            navigate("/success-pin", { replace: true })
+            
         }
     };
 
@@ -52,6 +49,7 @@ const CreatePin = () => {
         //     setError(true)
         // } 
         createPin();
+        navigate("/success-pin", { replace: true })
     }
 
     return <Auth>

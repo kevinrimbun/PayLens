@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Auth from '../../Layout/Auth';
 import { CiLock } from 'react-icons/ci';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 import { changePasswordService } from '../../services/changePassword';
 const eye = <AiOutlineEye/>
@@ -9,7 +9,7 @@ const eyeClose = <AiOutlineEyeInvisible/>
 
 const NewPassword = () => {
     const navigate = useNavigate();
-    
+    const { id } = useParams();
     const [passwordShown1, setPasswordShown1] = useState(false);
     const [passwordShown2, setPasswordShown2] = useState(false);
     const [password, setPassword] = useState("");
@@ -25,16 +25,23 @@ const NewPassword = () => {
     };
 
     const changePassword = async () => {
-        const userId = localStorage.getItem("userId");
         const data ={
             password
         }
-        const response = await changePasswordService(data, +userId);
+        const response = await changePasswordService(data,id);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         changePassword();
+        // localStorage.setItem(password);
+        navigate('/login')
+
+        // if (newPassword !== localStorage.getItem(password)) {
+        //     setError(true)
+        // }else{
+            
+        // }
     }
 
     // const handleSubmit = (e) => {

@@ -16,7 +16,7 @@ import TopUpInstruction from "../../Components/TopUp";
 // CSS
 import '../../Styles/Pages/TopUp/TopUp.css'
 import { topUpService } from "../../services/topUp";
-import { Input } from "@chakra-ui/react";
+import { Input, PinInputField, PinInput } from "@chakra-ui/react";
 
 const TopUp = () => {
     const [amount , setAmount] = useState("");
@@ -31,10 +31,10 @@ const TopUp = () => {
     const [error, setError] = useState(false)
 
     const topUp = async () => {
-        const userId = localStorage.getItem;
+        const userId = localStorage.getItem("userId") ;
         const data = {
             amount,
-            pin
+            pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
         }
         const response = await topUpService(data, +userId);
         console.log(response);
@@ -119,14 +119,34 @@ const TopUp = () => {
                             </Dropdown.Menu>
                         </Dropdown>
                             <Row className='User-Section'>
-                                <Col>
-                                <input type="text" name="amount" id="amount" onChange={e => setAmount(e.target.value)}/>
-                                <input type="text" name="pin" id="pin" onChange={e => setPin(e.target.value)}/>
-                                <button onClick={(e) => handleSubmit(e)}>SEND</button>
-                                </Col>
+                                <form onSubmit={handleSubmit}>
+                                    <Col>
+                                        <PinInput className='d-flex pin-input' >
+                                            <PinInputField className='pin-input text-center' name='pin1' onChange={(e) => setInput1(e.target.value)} />
+                                            <PinInputField className='pin-input text-center' name='pin2' onChange={(e) => setInput2(e.target.value)} />
+                                            <PinInputField className='pin-input text-center' name='pin3' onChange={(e) => setInput3(e.target.value)} />
+                                            <PinInputField className='pin-input text-center' name='pin4' onChange={(e) => setInput4(e.target.value)} />
+                                            <PinInputField className='pin-input text-center' name='pin5' onChange={(e) => setInput5(e.target.value)} />
+                                            <PinInputField className='pin-input text-center' name='pin6' onChange={(e) => setInput6(e.target.value)} />
+                                        </PinInput>
+
+                                        <div className='error-message'>
+                                            {error && pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ?
+                                            <label>Input cannot be empty !</label>:""}
+                                        </div>
+
+                                        <input type="text" name="amount" id="amount" onChange={e => setAmount(e.target.value)}/>
+                                        {/* <input type="text" name="pin" id="pin" onChange={e => setPin(e.target.value)}/> */}
+                                    
+                                        <div className='error-message'>
+                                            {error && pin[0] === null ?
+                                            <label>Input cannot be empty !</label>:""}
+                                        </div>
+
+                                            <button className="btn-auth" id='submit' type="submit" value="Enter" >Confirm</button>
+                                    </Col>
+                                </form>
                             </Row>
-                    
-                            
                         </Col>
                     </Row>
                 </Container>
