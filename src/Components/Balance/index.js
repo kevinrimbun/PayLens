@@ -15,7 +15,7 @@ import Col from 'react-bootstrap/Col';
 import '../../Styles/Components/Balance/Balance.css'
 
 function BalanceComp() {
-    localStorage.setItem("balance", 950000)
+    localStorage.setItem("balance", 0)
     var amount = localStorage.getItem("amount")
     var balance = localStorage.getItem("balance")
     const  result = balance - amount

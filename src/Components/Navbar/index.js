@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 // Iconify
 import { Icon } from '@iconify/react';
+
 // IMG
-import PaylensLogo from '../../Assets/paylens1.png'
+import PaylensLogo from '../../Assets/paylens3.png'
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
@@ -24,12 +25,12 @@ import Samuel from '../../Assets/account/samuelSuhi.svg'
 function NavbarComp() {
   return (
 
-    <Navbar bg="light" expand="lg" className="border shadow-lg Navbar-Section">
+    <Navbar bg="light" expand="lg" className="mx-0 my-0 shadow-lg Navbar-Section">
       <Container>
 
         {/* Logo Section */}
-        <Link to='/dashboard' className='text-decoration-none'>
-          <Navbar.Brand className="d-flex justify-content-center align-items-center Logo-Section">
+        <Link to='/dashboard' className='text-decoration-none my-0'>
+          <Navbar.Brand className="d-flex justify-content-center align-items-center Logo-Section my-0">
             <img src={PaylensLogo} className='logo-paylens' />
             <h4>PayLens</h4>
           </Navbar.Brand>
@@ -45,9 +46,9 @@ function NavbarComp() {
                 <Col className="m-0 p-0 me-5"></Col>
 
                 {/* User Section */}
-                <Col className="d-flex justify-content-center user-nav align-items-center mt-3  float-end">
-                  <img src={Samuel} className="img-navbar rounded me-2" alt="..." />
-                  <div className="infouser-nav me-3">
+                <Col className="d-flex justify-content-center user-nav align-items-center my-0 float-end">
+                  <img src={Samuel} className="img-navbar rounded me-2 " alt="..." />
+                  <div className="infouser-nav">
                     <h6>{localStorage.getItem("username")}</h6>
                     <p>+62 {localStorage.getItem('number')}</p>
                   </div>

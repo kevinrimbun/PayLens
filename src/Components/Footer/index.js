@@ -10,7 +10,7 @@ function Footer() {
                 <Link to='/contact' className='text-white'>
                     <p className='float-end mx-4'> contact@paylens.com</p>
                 </Link>
-                <p className='float-end'>(021) 123456</p>
+                <p className='float-end'>(0811) 1500998</p>
             </div>
         </footer>
     );

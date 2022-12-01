@@ -38,7 +38,7 @@ const PersonalInformation = () => {
                         <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
                         {/* Title Section */}
-                        <Col sm={8} className="p-4 ms-3 shadow-lg d-flex flex-column ">
+                        <Col sm={8} className="p-4 ms-3 shadow-lg d-flex flex-column personal-info">
                             <h3 className='mt-1 mb-3'>Personal Information</h3>
                             <p className='mt-3 mb-4'>
                                 We got your personal information from the sign <br />
