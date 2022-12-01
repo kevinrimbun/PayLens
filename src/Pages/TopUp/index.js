@@ -18,21 +18,41 @@ import TopUpInstruction from "../../Components/TopUp";
 
 // CSS
 import '../../Styles/Pages/TopUp/TopUp.css'
+import { topUpService } from "../../services/topUp";
+import { Input } from "@chakra-ui/react";
 
 const TopUp = () => {
-    var amounts = localStorage.getItem("amount")
-    var balances = localStorage.getItem("balance")
-
-    const navigate = useNavigate();
-    const { id } = useParams();
-    const [account] = useState(listAccount[id - 1]);
-    const [amount, setAmount] = useState()
+    const [amount , setAmount] = useState("");
+    const [pin , setPin] = useState("");
+    const [userId , setUserId] = useState("");
+    const [pin1, setInput1] = useState("");
+    const [pin2, setInput2] = useState("");
+    const [pin3, setInput3] = useState("");
+    const [pin4, setInput4] = useState("");
+    const [pin5, setInput5] = useState("");
+    const [pin6, setInput6] = useState("");
     const [error, setError] = useState(false)
 
-    const handelSubmit = (e) => {
-        e.preventDefault()
-        navigate('/topup-confirmation')
-      }
+    const topUp = async () => {
+        const userId = localStorage.getItem;
+        const data = {
+            amount,
+            pin
+        }
+        const response = await topUpService(data, +userId);
+        console.log(response);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        topUp();
+        localStorage.setItem("pin1", pin1)
+        localStorage.setItem("pin2", pin2)
+        localStorage.setItem("pin3", pin3)
+        localStorage.setItem("pin4", pin4)
+        localStorage.setItem("pin5", pin5)
+        localStorage.setItem("pin6", pin6)
+    }
 
     // Data Users
     const listParagraph = [
@@ -73,9 +93,10 @@ const TopUp = () => {
 
     return (
         <>
+
             {/* Navbar Section */}
             <NavbarComp />
-
+                
             <div className="App w-100 p-1">
                 <Container fluid className="w-100 p-5 Container-Section p-1">
                     <Row>
@@ -113,7 +134,7 @@ const TopUp = () => {
                                 </Row>
                             </Dropdown>
 
-                            <form onSubmit={handelSubmit}>
+                            <form onSubmit={handleSubmit}>
 
                                 <div className="add-amount">
                                     <Row className="d-flex flex-column justify-content-center align-content-center ms-1">
