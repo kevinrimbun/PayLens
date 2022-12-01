@@ -8,17 +8,22 @@ import { useNavigate } from 'react-router-dom';
 const ResetPass = () => {
 
     const navigate = useNavigate()
-
-    
     const [email, setEmail] = useState("");
     const [error, setError] = useState(false)
 
-    const changePassword = async () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         localStorage.getItem("email")
-        const data ={
-            email
+        if (email.length === 0) {
+            setError(true)
+        } else if (email === localStorage.getItem("email")) {
+            // window.location.replace("/dashboard")
+            navigate("/new-password", { replace: true })
+        } else if (email != localStorage.getItem("email")){
+            setError(true)
+        } else {
+            setError(true)
         }
-        const response = await changePasswordService(data);
     }
 
     // const handleSubmit = (e) => {
