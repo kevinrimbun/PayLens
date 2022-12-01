@@ -58,7 +58,7 @@ const Transfer = () => {
                   <Col className="card-receiver">
                     {accounts.map((getAccount) => {
                       return (
-                        <Card className="my-3 User-Section shadow-lg" key={getAccount.id}>
+                        <Card className="user-receiver my-3 User-Section shadow-lg" key={getAccount.id}>
                           <Card.Body>
                             <Link to={"/transfer-detail/" + getAccount.id} className="text-decoration-none text-dark">
                               <Container>

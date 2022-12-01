@@ -121,6 +121,7 @@ const Register = () => {
                     theme: "colored",
                 })}; 
         register();
+        navigate('/create-pin', { replace : true })
     }
 
     const [passwordShown1, setPasswordShown1] = useState(false);

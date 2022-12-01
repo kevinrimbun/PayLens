@@ -1,11 +1,11 @@
-import fetchAPI from "../Config/api";
+import fetchAPI from "../config/api";
 
 // Services for history controller
 const ROOT_API_PAYLENS = process.env.REACT_APP_API_PAYLENS;
 
 // Get All history data
-export const getHistoryService = async () => {
-  const url = `${ROOT_API_PAYLENS}/history`;
+export const getHistoryService = async (userId) => {
+  const url = `${ROOT_API_PAYLENS}/history/${userId}`;
   const response = await fetchAPI({ url, method: "GET" });
   return response;
 };
