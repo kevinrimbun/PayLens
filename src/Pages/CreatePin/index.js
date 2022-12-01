@@ -1,39 +1,51 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PinInput, PinInputField } from '@chakra-ui/react';
 import Auth from '../../Layout/Auth';
 import '../../Styles/Pages/auth.css';
-// import { CiLock } from 'react-icons/ci';
-// import {BsEnvelope} from 'react-icons/bs';
-
+import { createPinService } from '../../services/auth';
+import '../../Styles/Pages/CreatePin/CreatePin.css'
 
 
 const CreatePin = () => {
+    const[pin, setPin] = useState(new Array(6).fill(""))
     const navigate = useNavigate();
 
-    const [pin1, setInput1] = useState("");
-    const [pin2, setInput2] = useState("");
-    const [pin3, setInput3] = useState("");
-    const [pin4, setInput4] = useState("");
-    const [pin5, setInput5] = useState("");
-    const [pin6, setInput6] = useState("");
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ) {
-            setError(true)
-        } else {
-            localStorage.setItem("pin1", pin1)
-            localStorage.setItem("pin2", pin2)
-            localStorage.setItem("pin3", pin3)
-            localStorage.setItem("pin4", pin4)
-            localStorage.setItem("pin5", pin5)
-            localStorage.setItem("pin6", pin6)
-            navigate('/success-pin',{ replace : true })
+    const handleChange = (element, index) => {
+        if (isNaN(element.value)) return false;
+                
+        setPin([...pin.map((d, idx) => (idx === index) ? element.value : d)]);
+
+        if (element.nextSibling) {
+            element.nextSibling.focus();
         }
     }
 
+
+
+    const createPin = async () => {
+        const detailUserId = localStorage.getItem("detailUserId") ;
+        const data = {
+            pin: pin.join("")
+        };
+
+        const response = await createPinService(data, +detailUserId);
+            console.log(response);
+            if (response.status === 201) {
+            alert(response.data.message);
+            navigate("/success-pin", { replace: true })
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (pin[0] === null ) {
+            setError(true)
+        } 
+        createPin();
+        navigate('/success-pin',{ replace : true })
+    }
 
     return <Auth>
         <div className='title-right-wrapper'>
@@ -49,21 +61,33 @@ const CreatePin = () => {
 
         <div className='pin-wrapper'>
             <form onSubmit={handleSubmit}>
-                <PinInput className='d-flex pin-input' >
-                    <PinInputField className='pin-input text-center' name='pin1' onChange={(e) => setInput1(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin2' onChange={(e) => setInput2(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin3' onChange={(e) => setInput3(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin4' onChange={(e) => setInput4(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin5' onChange={(e) => setInput5(e.target.value)} />
-                    <PinInputField className='pin-input text-center' name='pin6' onChange={(e) => setInput6(e.target.value)} />
-                </PinInput>
+
+                {pin.map((data, index) => {
+                    return (
+                        <input
+                            className='pin-field'
+                            type="text"
+                            name="pin"
+                            maxLength="1"
+                            key={index}
+                            value={data}
+                            onChange={e => handleChange(e.target, index)}
+                            onFocus={e => e.target.select()}
+                        />
+                    )
+                })}
+
                 <div className='error-message'>
-                    {error && pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ?
+                    {error && pin[0] === null ?
                     <label>Input cannot be empty !</label>:""}
                 </div>
-                <button className="btn-auth" id='submit' type="submit" value="Enter">Confirm</button>
-                {/* <input type='submit'>Confirm</input> */}
+                <div className='form-pin'>
+                    <button className="btn-auth btn-pin" id='submit' type="submit" value="Enter" >Confirm</button>
+                </div>
             </form>
+            <button className="btn-clear" value="Enter" onClick={e => setPin([...pin.map(v => "")])}>
+                Clear
+            </button>
         </div>
 
   </Auth>

@@ -6,36 +6,67 @@ import { BsPerson } from 'react-icons/bs'
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
 import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
+import { registerService } from '../../services/auth';
+
 const eye = <AiOutlineEye/>
 const eyeClose = <AiOutlineEyeInvisible/>
 
 const Register = () => {
-    
     const navigate = useNavigate()
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(false)
+
+    const register = async () => {   
+        const data = {
+            username,
+            email,
+            password
+        };
+
+        const response = await registerService(data);
+            console.log(response);
+            if (response.status === 201) {
+            alert(response.data.message);
+            navigate('/create-pin', { replace : true })
+            localStorage.setItem("detailUserId", (response.data.data.detailUserId))
+            localStorage.setItem("userId", (response.data.data.userId))
+
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+            if (username.length === 0  || email.length === 0 || password.length === 0) {
+                setError(true)
+            }
+        register();
+    }
 
     const [passwordShown1, setPasswordShown1] = useState(false);
     const togglePasswordVisiblity1 = () => {
         setPasswordShown1(passwordShown1 ? false : true);
     };
     
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState(false)
+    // const [username, setUsername] = useState("")
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [error, setError] = useState(false)
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        localStorage.setItem("username", username);
-        localStorage.setItem("email", email);
-        localStorage.setItem("password", password);
-        if (username.length === 0  || email.length === 0 || password.length === 0) {
-            setError(true)
-        } else if  (username.length !== 0  || email.length !== 0 || password.length !== 0) {
-            navigate('/create-pin', { replace : true })
-        }
-        const data = new FormData(e.target)
-        console.log(Object.fromEntries(data.entries()));
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     localStorage.setItem("username", username);
+    //     localStorage.setItem("email", email);
+    //     localStorage.setItem("password", password);
+    //     if (username.length === 0  || email.length === 0 || password.length === 0) {
+    //         setError(true)
+    //     } else if  (username.length !== 0  || email.length !== 0 || password.length !== 0) {
+    //         navigate('/create-pin', { replace : true })
+    //     }
+    //     const data = new FormData(e.target)
+    //     console.log(Object.fromEntries(data.entries()));
+    // }
 
     return <Auth>
         <div className='title-right-wrapper'>
