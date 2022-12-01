@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { getHistoryService } from "../../Services/history";
+import { getHistoryService } from "../../services/history";
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
@@ -19,30 +19,30 @@ import '../../Styles/Pages/History/History.css'
 const History = () => {
   // Data Users
   const listUsers = [
-    {
-      picture: "https://i.pravatar.cc/50?img=3",
-      name: "Samuel Suhi",
-      transaction: "Transfer",
-      nominal: "+ Rp 50.000"
-    },
-    {
-      picture: "https://i.pravatar.cc/50?img=4",
-      name: "IntelliJ",
-      transaction: "Subcription",
-      nominal: "- Rp 80.000"
-    },
-    {
-      picture: "https://i.pravatar.cc/50?img=1",
-      name: "Christine Mar...",
-      transaction: "Transfer",
-      nominal: "+ Rp 90.000"
-    },
-    {
-      picture: "https://i.pravatar.cc/50?img=2",
-      name: "Netflix",
-      transaction: "Subcription",
-      nominal: "+ Rp 30.000"
-    }
+    // {
+    //   picture: "https://i.pravatar.cc/50?img=3",
+    //   name: "Samuel Suhi",
+    //   transaction: "Transfer",
+    //   nominal: "+ Rp 50.000"
+    // },
+    // {
+    //   picture: "https://i.pravatar.cc/50?img=4",
+    //   name: "IntelliJ",
+    //   transaction: "Subcription",
+    //   nominal: "- Rp 80.000"
+    // },
+    // {
+    //   picture: "https://i.pravatar.cc/50?img=1",
+    //   name: "Christine Mar...",
+    //   transaction: "Transfer",
+    //   nominal: "+ Rp 90.000"
+    // },
+    // {
+    //   picture: "https://i.pravatar.cc/50?img=2",
+    //   name: "Netflix",
+    //   transaction: "Subcription",
+    //   nominal: "+ Rp 30.000"
+    // }
 
   ]
 
@@ -61,7 +61,6 @@ const History = () => {
             {/* History Section */}
             <Col sm={8} className="History-Section p-4 ms-3 shadow-lg">
               <h4>Transaction History</h4>
-              <h5 className="mt-3">This Week</h5>
               {/* User Section */}
               <Row className='User-Section'>
                 <Col>

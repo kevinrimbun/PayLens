@@ -1,4 +1,4 @@
-import fetchAPI from "../Config/API";
+import fetchAPI from "../Config/api";
 
 // Services for history controller
 const ROOT_API_PAYLENS = process.env.REACT_APP_API_PAYLENS;

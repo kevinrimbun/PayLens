@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { getHistoryService } from "../../Services/history";
+import { getHistoryService } from "../../services/history";
 import { Link } from "react-router-dom";
 
 // Bootstrap
