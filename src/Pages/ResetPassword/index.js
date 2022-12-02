@@ -3,6 +3,8 @@ import Auth from '../../Layout/Auth';
 import '../../Styles/Pages/auth.css';
 import {BsEnvelope} from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { changePasswordService } from '../../services/changePassword';
+import { sendEmailService } from '../../services/mail';
 // import { Button } from '@chakra-ui/react';
 
 const ResetPass = () => {
@@ -11,20 +13,25 @@ const ResetPass = () => {
     const [email, setEmail] = useState("");
     const [error, setError] = useState(false)
 
+    const sendEmail = async () => {
+        // localStorage.getItem("email")
+        const data ={
+            recipient: email
+        }
+        const response = await sendEmailService(data);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.getItem("email")
-        if (email.length === 0) {
-            setError(true)
-        } else if (email === localStorage.getItem("email")) {
-            // window.location.replace("/dashboard")
-            navigate("/new-password", { replace: true })
-        } else if (email != localStorage.getItem("email")){
-            setError(true)
-        } else {
-            setError(true)
-        }
+        sendEmail();
+        // if (email = response.data.data.email) {
+            
+        // }
+        
+        localStorage.setItem(email);
     }
+    
+
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -73,7 +80,7 @@ const ResetPass = () => {
                     {/* Email */}
                     <div className='mt-4 d-flex form-email'>
                         <BsEnvelope className='bi envelope-icon' />
-                        <input  type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
+                        <input  type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" onChange={e => setEmail(e.target.value)} />
                     </div>
 
                     <div className='error-message'>

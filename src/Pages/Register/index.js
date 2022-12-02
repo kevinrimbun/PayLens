@@ -32,6 +32,8 @@ const Register = () => {
             if (response.status === 201) {
             alert(response.data.message);
             navigate('/create-pin', { replace : true })
+            localStorage.setItem("detailUserId", (response.data.data.detailUserId))
+            localStorage.setItem("userId", (response.data.data.userId))
         }
     };
 

@@ -50,7 +50,7 @@ const index = () => {
             <Route path='/create-pin' element={<CreatePin/>} />
             <Route path='/success-pin' element={<SuccessPin/>} />
             <Route path='/reset-password' element={<ResetPass/>} />
-            <Route path='/new-password' element={<NewPassword/>} />
+            <Route path='/new-password/:id' element={<NewPassword/>} />
             <Route path='/change-password' element={<ChangePassword/>} />
             <Route path='/add-phone' element={<AddPhoneNum/>} />
             <Route path='/manage-phone' element={<ManagePhoneNum/>} />

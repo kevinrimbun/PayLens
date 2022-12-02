@@ -19,7 +19,7 @@ import TopUpInstruction from "../../Components/TopUp";
 // CSS
 import '../../Styles/Pages/TopUp/TopUp.css'
 import { topUpService } from "../../services/topUp";
-import { Input } from "@chakra-ui/react";
+import { Input, PinInputField, PinInput } from "@chakra-ui/react";
 
 const TopUp = () => {
     const [amount , setAmount] = useState("");
@@ -34,10 +34,10 @@ const TopUp = () => {
     const [error, setError] = useState(false)
 
     const topUp = async () => {
-        const userId = localStorage.getItem;
+        const userId = localStorage.getItem("userId") ;
         const data = {
             amount,
-            pin
+            pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
         }
         const response = await topUpService(data, +userId);
         console.log(response);

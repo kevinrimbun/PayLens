@@ -32,6 +32,7 @@ const Login = () => {
             if (response.status === 201) {
             alert(response.data.message);
             navigate("/dashboard", { replace: true })
+            localStorage.setItem("userId", (response.data.data.userId))
         }
     };
 
