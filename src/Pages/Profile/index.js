@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
+import { getDetailUserService } from "../../services/user";
+
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -20,6 +22,24 @@ import ProfileButton from "../../Components/ProfileButton";
 import '../../Styles/Pages/Profile/Profile.css'
 
 const Profile = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+
+    const getDetailUser = useCallback (async () => {
+      const detailUserId = localStorage.getItem("detailUserId") ;
+  
+      const response = await getDetailUserService(detailUserId);
+      console.log(response);
+      const data = response.data.data;
+      setFirstName(data.firstName);
+      setLastName(data.lastName);
+      setPhoneNumber(data.phoneNumber);
+    }, []);
+  
+    useEffect(() => {
+      getDetailUser();
+    }, [getDetailUser]);
     // Data Button
     const listButtons = [
         {
@@ -70,8 +90,8 @@ const Profile = () => {
                         <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center">
                             <img src="https://i.pravatar.cc/100?img=3" className="ImgUser-Profile rounded" alt="Profile" />
                             <p className='mt-3 mb-3'><Icon icon="ep:edit-pen" color="#7A7886" width="20" height="20" />Edit</p>
-                            <h3 className='mt-1 mb-3'>{localStorage.getItem("username")}</h3>
-                            <h5 className='mb-4'>+62 {localStorage.getItem('number')}</h5>
+                            <h3 className='mt-1 mb-3'>{firstName} {lastName}</h3>
+                            <h5 className='mb-4'>{phoneNumber}</h5>
                             {/* Button Profile Section */}
                             <Row className='ButtonProfile-Section'>
                                 <Col className='d-flex flex-column'>

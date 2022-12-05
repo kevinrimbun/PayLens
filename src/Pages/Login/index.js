@@ -6,6 +6,8 @@ import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
 import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 import { loginService } from '../../services/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // const eye = <AiOutlineEye/>
 // const eyeClose = <AiOutlineEyeInvisible/>
@@ -28,25 +30,31 @@ const Login = () => {
         };
 
         const response = await loginService(data);
-            console.log(response);
-            if (response.status === 201) {
-            alert(response.data.message);
-            navigate("/dashboard", { replace: true })
+        if (response.status !== 200) {
+            toast.error(response.data.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+        } else {
+            const responseData = response.data.data;
+            const token = responseData.token;
+            const email = responseData.email;
+            localStorage.setItem("token", token);
+            localStorage.setItem("email", email);
+            navigate("/dashboard")
         }
+        console.log(response.data.message);
+        console.log(response.status);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const response = await loginService({
-            email,
-            password
-        });
-        if (email == response.data.data.email && password === response.data.data.password) {
-            alert(response.data.message);
-            navigate("/dashboard", { replace: true })
-        } else if ( email.length === 0 || password.length === 0 ) {
-            setError(true)
-        }
         login();
     }
 

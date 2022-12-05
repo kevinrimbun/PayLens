@@ -6,17 +6,48 @@ import {BsTelephone} from "react-icons/bs"
 import Container from "react-bootstrap/Container"
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom'
+import { phoneNumberService } from '../../services/user';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddPhoneNum = () => {
   const navigate = useNavigate();
-  const [number, setNumber] = useState("");
+  const [phoneNumber, setNumber] = useState("");
+  const phoneNumStr = phoneNumber.toString();
+
+  const addPhoneNumber = async () => {
+    const detailUserId = localStorage.getItem("detailUserId") ;
+    const data = {
+      phoneNumber: phoneNumStr
+    };
+
+    const response = await phoneNumberService(data, +detailUserId);
+    console.log(response);
+    if (response.status !== 201) {
+        toast.error(response.data.errors.username, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
+    } else {
+        const responseData = response.data.data;
+        navigate('/manage-phone', { replace : true })
+        return responseData;
+    }
+};
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('number', number)
-    alert("added succes")
-    navigate('/manage-phone')
-    console.log(number);
+    addPhoneNumber();
+    // localStorage.setItem('number', number)
+    // alert("added succes")
+    // navigate('/manage-phone')
+    // console.log(number);
   }
   return <Content>
         <div className='addnum-title'>

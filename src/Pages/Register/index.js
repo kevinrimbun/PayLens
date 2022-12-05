@@ -15,12 +15,12 @@ const eyeClose = <AiOutlineEyeInvisible/>
 
 const Register = () => {
     // const notify = () => toast("Wow so easy!");
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const register = async () => {   
+    const register = async () => {
         const data = {
             username,
             email,
@@ -28,82 +28,9 @@ const Register = () => {
         };
 
         const response = await registerService(data);
-            console.log(response);
-            if (response.status === 201) {
-            alert(response.data.message);
-            navigate('/create-pin', { replace : true })
-            localStorage.setItem("detailUserId", (response.data.data.detailUserId))
-            localStorage.setItem("userId", (response.data.data.userId))
-
-        }
-    };
-
-    // if (username.length === 0) {
-
-    //     toast.error('Username Cannot be empty!', {
-    //         position: "bottom-right",
-    //         autoClose: 5000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //         theme: "colored",
-    //     }); if (email.length === 0) {
-    //         toast.error('Email Cannot be empty!', {
-    //             position: "bottom-right",
-    //             autoClose: 5000,
-    //             hideProgressBar: false,
-    //             closeOnClick: true,
-    //             pauseOnHover: true,
-    //             draggable: true,
-    //             progress: undefined,
-    //             theme: "colored",
-    //         });
-    //     } if (password.length === 0) {
-    //         toast.error('Password Cannot be empty!', {
-    //             position: "bottom-right",
-    //             autoClose: 5000,
-    //             hideProgressBar: false,
-    //             closeOnClick: true,
-    //             pauseOnHover: true,
-    //             draggable: true,
-    //             progress: undefined,
-    //             theme: "colored",
-    //         });
-    //     }
-    //     } if (username.length === 0 && email.length === 0 && password.length === 0) {
-    //         toast.error('Input required!', {
-    //             position: "bottom-right",
-    //             autoClose: 5000,
-    //             hideProgressBar: false,
-    //             closeOnClick: true,
-    //             pauseOnHover: true,
-    //             draggable: true,
-    //             progress: undefined,
-    //             theme: "colored",
-    //         });
-    //     }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const response = await registerService({
-            username,
-            email,
-            password
-        });
-        if (username.length === 0) {
-        toast.error(response.data.errors.username, {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        })} if (email.length === 0) {
-            toast.error(response.data.errors.email, {
+        console.log(response);
+        if (response.status !== 201) {
+            toast.error(response.data.errors.username, {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -112,17 +39,40 @@ const Register = () => {
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
-            })}; if (password.length === 0) {
-                toast.error(response.data.errors.password, {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                })}; 
+            })  && toast.error(response.data.errors.email, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) && toast.error(response.data.errors.password, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) 
+        } else {
+            const responseData = response.data.data;
+            const userId = responseData.userId;
+            const detailUserId = responseData.detailUserId;
+            const fileId = responseData.fileId;
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("detailUserId", detailUserId);
+            localStorage.setItem("fileId", fileId);
+            navigate('/create-pin', { replace : true })
+            return responseData;
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         register();
     }
 

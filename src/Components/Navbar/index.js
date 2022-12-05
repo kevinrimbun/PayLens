@@ -1,3 +1,6 @@
+import React, { useCallback, useState, useEffect } from 'react'
+import { getDetailUserService } from "../../services/user";
+
 // Components
 import { Link } from 'react-router-dom';
 
@@ -22,6 +25,24 @@ import Navbar from 'react-bootstrap/Navbar';
 import Samuel from '../../Assets/account/samuelSuhi.svg'
 
 function NavbarComp() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const getDetailUser = useCallback (async () => {
+    const detailUserId = localStorage.getItem("detailUserId") ;
+
+    const response = await getDetailUserService(detailUserId);
+    console.log(response);
+    const data = response.data.data;
+    setFirstName(data.firstName);
+    setLastName(data.lastName);
+    setPhoneNumber(data.phoneNumber);
+  }, []);
+
+  useEffect(() => {
+    getDetailUser();
+  }, [getDetailUser]);
   return (
 
     <Navbar bg="light" expand="lg" className="border shadow-lg Navbar-Section">
@@ -48,8 +69,8 @@ function NavbarComp() {
                 <Col className="d-flex justify-content-center user-nav align-items-center mt-3  float-end">
                   <img src={Samuel} className="img-navbar rounded me-2" alt="..." />
                   <div className="infouser-nav me-3">
-                    <h6>{localStorage.getItem("username")}</h6>
-                    <p>+62 {localStorage.getItem('number')}</p>
+                    <h6>{firstName} {lastName}</h6>
+                    <p>{phoneNumber}</p>
                   </div>
 
 

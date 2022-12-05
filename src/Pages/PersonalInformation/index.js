@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Iconify
 // import { Icon } from '@iconify/react';
-
+import { getDetailUserService } from "../../services/user";
 // Bootstrap
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -20,10 +20,31 @@ import Footer from "../../Components/Footer";
 import '../../Styles/Pages/PersonalInformation/PersonalInformation.css'
 
 const PersonalInformation = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+
     
-    const splitName = localStorage.getItem('username').split(' ');
-    const first = splitName[0];
-    const last = splitName[1];
+    // const splitName = localStorage.getItem('username').split(' ');
+    // const first = splitName[0];
+    // const last = splitName[1];
+
+
+
+    const getDetailUser = useCallback (async () => {
+        const detailUserId = localStorage.getItem("detailUserId") ;
+
+        const response = await getDetailUserService(detailUserId);
+        console.log(response);
+        const data = response.data.data;
+        setFirstName(data.firstName);
+        setLastName(data.lastName);
+        setPhoneNumber(data.phoneNumber);
+    }, []);
+
+    useEffect(() => {
+        getDetailUser();
+    }, [getDetailUser]);
 
     return (
         <>
@@ -52,7 +73,7 @@ const PersonalInformation = () => {
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">First Name</Card.Subtitle>
                                             <Card.Text>
-                                                <h5 className="Information-User">{first}</h5>
+                                                <h5 className="Information-User" >{firstName}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
@@ -60,7 +81,7 @@ const PersonalInformation = () => {
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Last Name</Card.Subtitle>
                                             <Card.Text>
-                                                <h5 className="Information-User">{last}</h5>
+                                                <h5 className="Information-User" >{lastName}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
@@ -79,7 +100,7 @@ const PersonalInformation = () => {
                                                 <Card.Subtitle className="text-primary float-end Manage-Button"><p>Manage</p></Card.Subtitle>
                                             </Link>
                                             <Card.Text>
-                                                <h5 className="Information-User">+62 {localStorage.getItem("number")}</h5>
+                                                <h5 className="Information-User">{phoneNumber}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
