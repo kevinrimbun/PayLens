@@ -12,6 +12,10 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from 'react-bootstrap/Button';
 
+import NavbarComp from "../../Components/Navbar";
+import Sidebar from "../../Components/Sidebar";
+import Footer from "../../Components/Footer";
+
 import { Icon } from "@iconify/react";
 
 const DetailTransfer = () => {
@@ -41,8 +45,20 @@ const DetailTransfer = () => {
 
 
   return (
-    <Content>
-      <Container>
+    <>
+      {/* Navbar Section */}
+      <NavbarComp />
+
+      <div className="App w-100 p-1">
+        <Container fluid className="w-100 p-5 Container-Section p-1">
+          <Row>
+
+            {/* Sidebar Section */}
+            <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
+
+            {/* History Section */}
+            <Col sm={8} className="History-Section p-4 ms-3 shadow-lg">
+            <Container>
         <Row className="d-flex flex-column justify-content-center">
           <Col >
             <h4>Transfer Money</h4>
@@ -119,7 +135,12 @@ const DetailTransfer = () => {
           </div>
         </form>
       </Container>
-    </Content>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Footer />
+    </>
   );
 };
 

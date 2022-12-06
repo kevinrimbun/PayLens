@@ -15,6 +15,7 @@ import NavbarComp from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
 import Footer from "../../Components/Footer";
 import ProfileButton from "../../Components/ProfileButton";
+import Samuel from '../../Assets/account/samuelSuhi.svg'
 
 // CSS
 import '../../Styles/Pages/Profile/Profile.css'
@@ -68,9 +69,8 @@ const Profile = () => {
 
                         {/* Profile Section */}
                         <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center">
-                            <img src="https://i.pravatar.cc/100?img=3" className="ImgUser-Profile rounded" alt="Profile" />
-                            <p className='mt-3 mb-3'><Icon icon="ep:edit-pen" color="#7A7886" width="20" height="20" />Edit</p>
-                            <h3 className='mt-1 mb-3'>{localStorage.getItem("username")}</h3>
+                            <img src={Samuel} className="ImgUser-Profile rounded mb-3" alt="Profile" />
+                            <h3 className='mt-1 mb-2'>{localStorage.getItem("username")}</h3>
                             <h5 className='mb-4'>+62 {localStorage.getItem('number')}</h5>
                             {/* Button Profile Section */}
                             <Row className='ButtonProfile-Section'>

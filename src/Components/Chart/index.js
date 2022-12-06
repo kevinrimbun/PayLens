@@ -16,6 +16,13 @@ import '../../Styles/Components/Chart/Chart.css'
 import ChartPic from '../../Assets/graphic.svg'
 
 function Chart() {
+    
+    localStorage.setItem("balance", 0)
+    var TopAmount = localStorage.getItem("TopAmount")
+    var amount = localStorage.getItem("amount")
+    var balance = localStorage.getItem("balance")
+    const resultIncome = balance + TopAmount
+    const resultExpense = balance - amount
 
     return (
         <Card className='shadow-lg Chart-Comp'>
@@ -27,12 +34,12 @@ function Chart() {
                         <Col className='d-flex flex-column'>
                             <Icon icon="akar-icons:arrow-up" color="green" width="30" height="30" vFlip={true} />
                             <p>Income</p>
-                            <h4>Rp 8.500.000</h4>
+                            <h4>Rp {resultIncome}</h4>
                         </Col>
                         <Col className='d-flex flex-column float-end'>
                             <Icon icon="akar-icons:arrow-up" color="red" width="30" height="30" className='float-end ms-5'/>
                             <p className='float-end ms-5'>Expense</p>
-                            <h4 className='float-end ms-5'>Rp 3.400.000</h4>
+                            <h4 className='float-end ms-5'>Rp {resultExpense}</h4>
                         </Col>
                     </Row>
 

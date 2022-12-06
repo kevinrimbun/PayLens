@@ -8,7 +8,7 @@ import '../../Styles/Pages/CreatePin/CreatePin.css'
 
 
 const CreatePin = () => {
-    const[pin, setPin] = useState(new Array(6).fill(""))
+    const[pin, setPin] = useState("")
     const navigate = useNavigate();
     const [pin1, setInput1] = useState("");
     const [pin2, setInput2] = useState("");

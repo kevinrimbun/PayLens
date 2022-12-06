@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import Content from '../../Layout/Content'
+
+// Bootstrap
 import Container from 'react-bootstrap/Container';
-import "../../Styles/Pages/ChangePassword/changepassword.css";
 import Button from 'react-bootstrap/Button';
-import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
-const eye = <AiOutlineEye/>
-const eyeClose = <AiOutlineEyeInvisible/>
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+// CSS
+import "../../Styles/Pages/ChangePassword/changepassword.css";
+
+// React Icon
+import { AiFillLock, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+
+// Components
+import NavbarComp from "../../Components/Navbar";
+import Sidebar from "../../Components/Sidebar";
+import Footer from "../../Components/Footer";
+
+const eye = <AiOutlineEye />
+const eyeClose = <AiOutlineEyeInvisible />
 
 const ChangePassword = () => {
   const [password, setPassword] = useState("");
@@ -41,60 +54,77 @@ const ChangePassword = () => {
       alert("Are you sure?")
       localStorage.setItem("password", newPassword2);
     }
-    
+
   };
 
 
-  return <Content className='changeP'>
-            <Container className='title-changeP mt-5'>
-            <h4>Change Password</h4>
-            <p>You must enter your current password <br /> and then type your new password twice.</p>
+  return <>
+    {/* Navbar Section */}
+    <NavbarComp />
+
+    <div className="App w-100 p-1">
+      <Container fluid className="w-100 p-5 Container-Section p-1">
+        <Row>
+
+          {/* Sidebar Section */}
+          <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
+
+          {/* Profile Section */}
+          <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center changeP">
+            <Container className='title-changeP mt-5 text-center'>
+              <h4>Change Password</h4>
+              <p>You must enter your current password <br /> and then type your new password twice.</p>
             </Container>
 
-            <div className="">
-                <form onSubmit={handleSubmit}>
-                  <Container className='text-center form-changeP mt-5'>
-                      <div className="">
-                      <AiFillLock/>
-                      <input type={passwordShown1 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Input Current Password' onChange={(e) => setPassword(e.target.value)} secureTextEntry/>
-                      <i onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
-                      </div>
-                    <div className='error-message'>
-                      {error && password !== localStorage.getItem("password") ?
-                      <label>Password Invalid !</label>:""}
-                    </div>
-                  </Container>
+            <div className="w-100">
+              <form onSubmit={handleSubmit}>
+                <Container className='text-center form-changeP mt-5'>
+                  <div className="">
+                    <AiFillLock className="me-2"/>
+                    <input type={passwordShown1 ? "text" : "password"} style={{ outlineStyle: 'none' }} placeholder='Input Current Password' onChange={(e) => setPassword(e.target.value)} secureTextEntry />
+                    <i className="ms-2" onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</i>
+                  </div>
+                  <div className='error-message'>
+                    {error && password !== localStorage.getItem("password") ?
+                      <label>Password Invalid !</label> : ""}
+                  </div>
+                </Container>
 
 
-                  <Container className='text-center form-changeP mt-5'>
-                      <AiFillLock/>
-                      <input type={passwordShown2 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder='Masukan Password Baru' onChange={(e) => setnewPassword1(e.target.value)}/>
-                      <i onClick={togglePasswordVisiblity2}>{passwordShown2 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
-                      <div className='error-message'>
-                        {error && newPassword1 === localStorage.getItem("password") ?
-                      <label>New Password must be different!</label>:""}
-                    </div>
-                  </Container>
+                <Container className='text-center form-changeP mt-5'>
+                  <AiFillLock className="me-2"/>
+                  <input type={passwordShown2 ? "text" : "password"} style={{ outlineStyle: 'none' }} placeholder='Masukan Password Baru' onChange={(e) => setnewPassword1(e.target.value)} />
+                  <i className="ms-2" onClick={togglePasswordVisiblity2}>{passwordShown2 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</i>
+                  <div className='error-message'>
+                    {error && newPassword1 === localStorage.getItem("password") ?
+                      <label>New Password must be different!</label> : ""}
+                  </div>
+                </Container>
 
-                  <Container className='text-center form-changeP mt-5'>
-                      <AiFillLock/>
-                      <input type={passwordShown3 ? "text" : "password"} style={{outlineStyle: 'none' }} placeholder=' Masukan Password lagi' onChange={(e) => setnewPassword2(e.target.value)}/>
-                      <i onClick={togglePasswordVisiblity3}>{passwordShown3 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
-                      <div className='error-message'>
-                        {error && newPassword2 !== newPassword1 ?
-                      <label>New Password do not match!</label>:""}
-                    </div>
-                  </Container>
+                <Container className='text-center form-changeP mt-5'>
+                  <AiFillLock className="me-2"/>
+                  <input type={passwordShown3 ? "text" : "password"} style={{ outlineStyle: 'none' }} placeholder=' Masukan Password lagi' onChange={(e) => setnewPassword2(e.target.value)} />
+                  <i className="ms-2" onClick={togglePasswordVisiblity3}>{passwordShown3 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</i>
+                  <div className='error-message'>
+                    {error && newPassword2 !== newPassword1 ?
+                      <label>New Password do not match!</label> : ""}
+                  </div>
+                </Container>
 
-                  <Container className='text-center form-changeP mt-5'>
-                      <Button variant="secondary" type='submit' value="Enter">Change Password</Button>
-                      {/* <Modal2 buttonName='Change Password'></Modal2> */}
-                      
-                  </Container>
-                </form>
+                <Container className='text-center form-changeP mt-5'>
+                  <Button variant="secondary" type='submit' value="Enter">Change Password</Button>
+                  {/* <Modal2 buttonName='Change Password'></Modal2> */}
+
+                </Container>
+              </form>
             </div>
-            
-        </Content>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+    <Footer />
+  </>
+
 }
 
 export default ChangePassword

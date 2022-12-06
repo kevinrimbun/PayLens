@@ -6,7 +6,7 @@
   padding: 0px;
 }
 
-.Topup-Section {
+.Transfer-Section {
   border: none !important;
   border-radius: 25px;
   -webkit-border-radius: 25px;
@@ -15,10 +15,7 @@
   -o-border-radius: 25px;
 }
 
-.instructions {
-  border: none !important;
-}
-
-.instructions-toggle {
-  border: none !important;
+.User-Section {
+    border: 2px none !important;
+    /* margin: 10px 0px; */
 }
