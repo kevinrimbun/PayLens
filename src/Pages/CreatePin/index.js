@@ -21,6 +21,16 @@ const CreatePin = () => {
 
     const [error, setError] = useState(false);
 
+    // const handleChange = (element, index) => {
+    //     if (isNaN(element.value)) return false;
+                
+    //     setPin([...pin.map((d, idx) => (idx === index) ? element.value : d)]);
+
+    //     if (element.nextSibling) {
+    //         element.nextSibling.focus();
+    //     }
+    // }
+
     const createPin = async () => {
         const detailUserId = localStorage.getItem("detailUserId") ;
         const data = {
@@ -48,6 +58,7 @@ const CreatePin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         createPin();
+        navigate("/success-pin", { replace: true })
     }
 
     return <Auth>

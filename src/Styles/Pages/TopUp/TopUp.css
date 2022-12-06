@@ -14,3 +14,11 @@
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
 }
+
+.instructions {
+  border: none !important;
+}
+
+.instructions-toggle {
+  border: none !important;
+}

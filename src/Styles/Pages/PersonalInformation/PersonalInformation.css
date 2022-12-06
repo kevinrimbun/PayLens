@@ -2,6 +2,15 @@
   font-weight: bolder !important;
 }
 
+.personal-info{
+  border: none !important;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+
 .Manage-Button {
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;

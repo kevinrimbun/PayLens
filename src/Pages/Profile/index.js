@@ -17,6 +17,7 @@ import NavbarComp from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
 import Footer from "../../Components/Footer";
 import ProfileButton from "../../Components/ProfileButton";
+import Samuel from '../../Assets/account/samuelSuhi.svg'
 
 // CSS
 import '../../Styles/Pages/Profile/Profile.css'
