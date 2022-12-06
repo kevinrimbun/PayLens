@@ -44,9 +44,13 @@ const Login = () => {
         } else {
             const responseData = response.data.data;
             const token = responseData.token;
+            const userId = responseData.userId;
             const email = responseData.email;
+            const detailUserId = responseData.detailUserId;
             localStorage.setItem("token", token);
             localStorage.setItem("email", email);
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("detailUserId", detailUserId);
             navigate("/dashboard")
         }
         console.log(response.data.message);

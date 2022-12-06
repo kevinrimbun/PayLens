@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { getDetailUserService } from "../../services/user";
-
+import Avatar from 'react-avatar';
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -88,9 +88,10 @@ const Profile = () => {
 
                         {/* Profile Section */}
                         <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center">
-                            <img src="https://i.pravatar.cc/100?img=3" className="ImgUser-Profile rounded" alt="Profile" />
+                            {/* <img src="https://i.pravatar.cc/100?img=3" className="ImgUser-Profile rounded" alt="Profile" /> */}
+                            <Avatar facebookId="100008343750912" size={90} round="10px"/>
                             <p className='mt-3 mb-3'><Icon icon="ep:edit-pen" color="#7A7886" width="20" height="20" />Edit</p>
-                            <h3 className='mt-1 mb-3'>{firstName} {lastName}</h3>
+                            <h4 className='mt-1 mb-3'>{firstName} {lastName}</h4>
                             <h5 className='mb-4'>{phoneNumber}</h5>
                             {/* Button Profile Section */}
                             <Row className='ButtonProfile-Section'>
