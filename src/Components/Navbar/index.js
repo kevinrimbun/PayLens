@@ -1,5 +1,6 @@
 // Components
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -15,6 +16,9 @@ import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
 
+//Service
+import { getListTransactionHistory } from '../../services/history';
+
 // CSS
 import '../../Styles/Components/Navbar/Navbar.css'
 
@@ -23,6 +27,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import Samuel from '../../Assets/account/samuelSuhi.svg'
 
 function NavbarComp() {
+
+  const [listTransaction, setListTransaction] = useState([])
+  const userId = +localStorage.getItem("userId")
+
+  useEffect(()=>{
+    const getList = async () => {
+      const  data = await getListTransactionHistory(userId)
+
+      if(Array.isArray(data) && data.length > 0){
+        console.log({data})
+        setListTransaction(data)
+      }
+    }
+    getList()
+  }, [userId])
   return (
 
     <Navbar bg="light" expand="lg" className="mx-0 my-0 shadow-lg Navbar-Section">
@@ -65,7 +84,47 @@ function NavbarComp() {
 
                     <Dropdown.Menu className='shadow Dropdown-Menu'>
                       <Dropdown.Item>
-                        <Card.Subtitle className="mb-3 text-muted"><h6>Today</h6></Card.Subtitle>
+                        {
+                          listTransaction.map((data,index)=>{
+                            if(data?.transaction == 'Top Up' || data?.transaction == 'Transfer ( Income )'){
+                              return (
+                                <div key={index}>
+                                <Card.Subtitle className="mb-3 text-muted"><h6>{data?.date}</h6></Card.Subtitle>
+
+                                <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-down" color="green" width="25" height="25" className='' />
+                              <div key={index}>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">{data?.label}</Card.Subtitle>
+                                <p className='Text-Dropdown'>{data?.nominal}</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+                        </div>
+                              )
+                            }else if(data?.transaction == 'Transfer ( Expense )'){
+                              return(
+                                <div>
+                                <Card.Subtitle className="mb-3 text-muted"><h6>{data?.date}</h6></Card.Subtitle>
+                                <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-up" color="red" width="25" height="25" className='' />
+                              <div>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">{data?.label}</Card.Subtitle>
+                                <p className='Text-Dropdown'>{data?.nominal}</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+                                </div>
+                              )
+                            }
+                          })
+                        }
+                        {/* <Card.Subtitle className="mb-3 text-muted"><h6>Today</h6></Card.Subtitle>
 
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
@@ -115,7 +174,7 @@ function NavbarComp() {
                               </div>
                             </div>
                           </Card.Body>
-                        </Card>
+                        </Card> */}
 
 
 

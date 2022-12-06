@@ -29,7 +29,7 @@ const Login = () => {
 
         const response = await loginService(data);
             console.log(response);
-            if (response.status === 201) {
+            if (response.data.status === 201 || response.data.status === 200) {
             alert(response.data.message);
             navigate("/dashboard", { replace: true })
             localStorage.setItem("userId", (response.data.data.userId))
@@ -42,6 +42,8 @@ const Login = () => {
             email,
             password
         });
+
+        // if (email == response.data.data.email && response.data.status === 200) {
         if (email == response.data.data.email && password === response.data.data.password) {
             alert(response.data.message);
             navigate("/dashboard", { replace: true })
