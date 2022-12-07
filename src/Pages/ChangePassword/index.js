@@ -16,6 +16,7 @@ import { AiFillLock, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import NavbarComp from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
 import Footer from "../../Components/Footer";
+import { changePasswordService } from '../../services/changePassword';
 
 const eye = <AiOutlineEye />
 const eyeClose = <AiOutlineEyeInvisible />
@@ -41,18 +42,28 @@ const ChangePassword = () => {
     setPasswordShown3(passwordShown3 ? false : true);
   };
 
+  const changePassword = async () => {
+    const userId =localStorage.getItem("userId");
+    const data ={
+        oldPassword: password,
+        newPassword:newPassword1
+    }
+    const response = await changePasswordService(data,userId);
+}
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== localStorage.getItem("password")) {
-      setError(true)
-    } else if (newPassword1 === localStorage.getItem("password")) {
+    if (newPassword1 === password) {
       setError(true)
     } else if (newPassword2 !== newPassword1) {
       setError(true)
     } else {
       alert("Are you sure?")
-      localStorage.setItem("password", newPassword2);
+      changePassword();
+      // navigate('/dashboard')
+      // localStorage.setItem("password", newPassword2);
     }
 
   };
@@ -84,10 +95,10 @@ const ChangePassword = () => {
                     <input type={passwordShown1 ? "text" : "password"} style={{ outlineStyle: 'none' }} placeholder='Input Current Password' onChange={(e) => setPassword(e.target.value)} secureTextEntry />
                     <i className="ms-2" onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</i>
                   </div>
-                  <div className='error-message'>
+                  {/* <div className='error-message'>
                     {error && password !== localStorage.getItem("password") ?
                       <label>Password Invalid !</label> : ""}
-                  </div>
+                  </div> */}
                 </Container>
 
 

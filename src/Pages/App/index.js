@@ -26,6 +26,9 @@ import ChangePin from '../ChangePin';
 import ChangePinAfter from '../ChangePinAfter';
 import StatusBerhasil from '../StatusBerhasil';
 import StatusGagal from '../StatusGagal';
+import DetailTransfer2 from '../DetailTransfer2';
+import TransferConfirmation3 from '../TransferConfirmation3';
+import TransactionSuccess from '../TransactionSucces';
 
 
 const index = () => {
@@ -41,8 +44,10 @@ const index = () => {
             <Route path='/history' element={<History/>} />
             <Route path='/transfer' element={<Transfer/>} />
             <Route path='/transfer-confirmation/:id' element={<TransferConfirmation/>} />
+            <Route path='/transfer-confirmation3' element={<TransferConfirmation3/>} />
             <Route path='/topup-confirmation' element={<TopUpConfirmation/>} />
             <Route path='/transfer-detail/:id' element={<DetailTransfer/>} />
+            <Route path='/transfer-detail2' element={<DetailTransfer2/>} />
             <Route path='/topup' element={<TopUp/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/information' element={<PersonalInformation/>} />
@@ -57,8 +62,9 @@ const index = () => {
             <Route path='/change-pin' element={<ChangePin/>} />
             <Route path='/new-pin' element={<ChangePinAfter/>} />
             <Route path='/layout-status' element={<Status />} />
-            <Route path='/success-transfer/:id' element={<StatusBerhasil />} />
-            <Route path='/failed-transfer/:id' element={<StatusGagal />} />
+            <Route path='/success-transfer' element={<StatusBerhasil />} />
+            <Route path='/failed-transfer' element={<StatusGagal />} />
+            <Route path='/transaction-success' element={<TransactionSuccess />} />
         </Routes>
     </BrowserRouter>
   )

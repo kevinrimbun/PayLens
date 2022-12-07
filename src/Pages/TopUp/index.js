@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
 import listAccount from "../../Data/account";
 
 // Bootstrap
@@ -22,36 +22,20 @@ import { topUpService } from "../../services/topUp";
 import { Input, PinInputField, PinInput } from "@chakra-ui/react";
 
 const TopUp = () => {
+    const navigate = useNavigate();
     const [amount , setAmount] = useState("");
-    const [pin , setPin] = useState("");
-    const [userId , setUserId] = useState("");
-    const [pin1, setInput1] = useState("");
-    const [pin2, setInput2] = useState("");
-    const [pin3, setInput3] = useState("");
-    const [pin4, setInput4] = useState("");
-    const [pin5, setInput5] = useState("");
-    const [pin6, setInput6] = useState("");
     const [error, setError] = useState(false)
-
-    const topUp = async () => {
-        const userId = localStorage.getItem("userId") ;
-        const data = {
-            amount,
-            pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
-        }
-        const response = await topUpService(data, +userId);
-        console.log(response);
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        topUp();
-        localStorage.setItem("pin1", pin1)
-        localStorage.setItem("pin2", pin2)
-        localStorage.setItem("pin3", pin3)
-        localStorage.setItem("pin4", pin4)
-        localStorage.setItem("pin5", pin5)
-        localStorage.setItem("pin6", pin6)
+        if (amount < 10000) {
+            // alert("Nominal tidak boleh kurang dari 10 k")
+            setError(true);
+        }else{
+            localStorage.setItem("amount", amount)
+            navigate("/topup-confirmation", { replace: true })
+        }
+       
     }
 
     // Data Users
@@ -100,7 +84,6 @@ const TopUp = () => {
             <div className="App w-100 p-1">
                 <Container fluid className="w-100 p-5 Container-Section p-1">
                     <Row>
-
                         {/* Sidebar Section */}
                         <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
@@ -150,13 +133,17 @@ const TopUp = () => {
                                         </Col>
                                     </Row>
                                 </div>
-
+                                
+                                <div className='error-message text-center'>
+                                                {error ?
+                                                <label>Minimal Nominal Top Up adalah 10k</label>:""}
+                                </div>
                                 <div className=" btn-addamount">
-                                    <Row className="d-flex flex-column justify-content-center">
-                                        <Col>
-                                            <Button type='submit' className="rounded-3 py-2 px-5" style={{ background: '#6379F4' }} >Continue</Button>
-                                        </Col>
-                                    </Row>
+                                <Row className="d-flex flex-column justify-content-center">
+                                    <Col>
+                                        <Button type='submit' className="rounded-3 py-2 px-5" style={{ background: '#6379F4' }}>Continue</Button>
+                                    </Col>
+                                </Row>
                                 </div>
                             </form>
                         </Col>

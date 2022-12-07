@@ -19,9 +19,10 @@ import Content from "../../Layout/Content";
 import "../../Styles/Components/Sidebar/Sidebar.css";
 import "../../Styles/Layout/Content/Content.css";
 import { useParams, useNavigate } from "react-router-dom";
+import Footer from "../../Components/Footer";
 
-const Status = (props) => {
-  var amounts = localStorage.getItem("amount")
+const TransactionSuccess = () => {
+  var amounts = localStorage.getItem("nominalTransfer")
   var balances = localStorage.getItem("balance")
   const  result = balances - amounts
 
@@ -36,7 +37,7 @@ const Status = (props) => {
     e.preventDefault();
     navigate("/dashboard", {replace : true});
   };
-  const { children } = props
+//   const { children } = props
 
   return (
     <>
@@ -53,7 +54,8 @@ const Status = (props) => {
                   <Container>
                   <Row className="d-flex flex-column justify-content-center">
                       <Col>
-                        {children}
+                        <Image src={Success}/>
+                        <h4>Transfer Success</h4>
                       </Col>
                     </Row>
                     <Row className="d-flex flex-column justify-content-center mt-2">
@@ -64,7 +66,7 @@ const Status = (props) => {
                               <Row>
                                 <Col>
                                   <Card.Text>Amount</Card.Text>
-                                  <Card.Text>Rp. {localStorage.getItem("amount")}</Card.Text>
+                                  <Card.Text>Rp. {localStorage.getItem("nominalTransfer")}</Card.Text>
                                 </Col>
                               </Row>
                             </Container>
@@ -127,21 +129,22 @@ const Status = (props) => {
                     </Row>
                     <Row className="d-flex flex-column justify-content-center mt-2">
                       <Col>
-                        <Card key={account.id}>
+                        <Card>
                           <Card.Body>
                             <Container>
                               <Row>
-                                <Col sm={2}>
-                                  <Card.Img
+                                <Col>
+                                  {/* <Card.Img
                                     style={{ height: "70px", width: "70px" }}
                                     src={account.profilePic}
-                                  />
+                                  /> */}
+                                  <Card.Text>{localStorage.getItem("userName")}</Card.Text>
                                 </Col>
-                                <Col sm={4}>
-                                  <Card.Text>{account.name}</Card.Text>
-                                  <Card.Text>{account.phone}</Card.Text>
-                                </Col>
-                                <Col></Col>
+                                {/* <Col sm={4}> */}
+                                  {/* <Card.Text>{account.name}</Card.Text> */}
+                                  {/* <Card.Text>{account.phone}</Card.Text> */}
+                                {/* </Col> */}
+                                {/* <Col></Col> */}
                               </Row>
                             </Container>
                           </Card.Body>
@@ -166,9 +169,10 @@ const Status = (props) => {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </div>
     </>
   );
 };
 
-export default Status;
+export default TransactionSuccess;

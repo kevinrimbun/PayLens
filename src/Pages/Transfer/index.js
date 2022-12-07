@@ -14,13 +14,28 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // CSS
 import '../../Styles/Pages/Transfer/Transfer.css'
 
 const Transfer = () => {
   const [accounts] = useState(listAccount);
+  const navigate = useNavigate();
+  const [user , setUser] = useState("");
+  const [error, setError] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (user === "") {
+      setError(true);
+    }else{
+      localStorage.setItem("userName", user);
+      navigate('/transfer-detail2');
+    }
+    
+  }
+
   return (
     <>
       {/* Navbar Section */}
@@ -41,17 +56,24 @@ const Transfer = () => {
                 <Row className="d-flex flex-column justify-content-center">
                   <Col>
                     <h4>Search Receiver</h4>
+                    {/* <input type="text" name="userName" id="userName" onChange={e => setUser(e.target.value)}/>
+                    <button onClick={(e) => handleSubmit(e)}>continue</button> */}
                   </Col>
                 </Row>
                 <Row className="d-flex flex-column justify-content-center">
                   <Col>
                     <InputGroup className="sm-3 mb-3 mt-2">
                       
-                      <Button color="#6379F4"><Icon icon="ant-design:search-outlined" width="20" height="15" className="m-1" /></Button>
+                      <Button onClick={(e) => handleSubmit(e)} color="#6379F4"><Icon icon="ant-design:search-outlined" width="20" height="15" className="m-1" /></Button>
                       
-                      <Form.Control placeholder="Search receiver here" aria-label="Search receiver here" aria-describedby="search" />
+                      <Form.Control placeholder="Search receiver here" aria-label="Search receiver here" aria-describedby="search" type="text" name="userName" id="userName" onChange={e => setUser(e.target.value)}/>
                     </InputGroup>
+
                   </Col>
+                  <div className='error-message'>
+                        {error ?
+                        <label>User Belum di ketik</label>:""}
+                      </div>
                 </Row>
 
                 <Row className="d-flex flex-column justify-content-center">

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Content from "../../Layout/Content";
-import listAccount from "../../Data/account";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "../../Components/Footer";
+import NavbarComp from "../../Components/Navbar";
+import Sidebar from "../../Components/Sidebar";
+
 import '../../Styles/Pages/DetailTransfer/detailtransfer.css'
 
 import Container from "react-bootstrap/Container";
@@ -12,36 +14,28 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from 'react-bootstrap/Button';
 
-import NavbarComp from "../../Components/Navbar";
-import Sidebar from "../../Components/Sidebar";
-import Footer from "../../Components/Footer";
-
-import { Icon } from "@iconify/react";
-
-const DetailTransfer = () => {
-
-  var amounts = localStorage.getItem("amount")
-  var balances = localStorage.getItem("balance")
-  const  result = balances - amounts
-
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const [account] = useState(listAccount[id - 1]);
-  const [amount, setAmount] = useState()
-  const [notes, setNotes] = useState()
-  const [error, setError] = useState(false)
-
-  const handelSubmit = (e) => {
-    e.preventDefault()
-      localStorage.setItem("nominalTransfer", amount) 
-      localStorage.setItem("notes", notes)
-      navigate('/transfer-confirmation', {replace : true})
-  }
 
 
-
-  return (
-    <>
+const DetailTransfer2 = () => {
+    const navigate = useNavigate();
+    // const [account] = useState(listAccount[id - 1]);
+    const [amount, setAmount] = useState()
+    const [notes, setNotes] = useState()
+    const [error, setError] = useState(false)
+  
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (amount < 10000 || amount === "") {
+          setError(true);
+        }else{
+          localStorage.setItem("nominalTransfer", amount) 
+          localStorage.setItem("notes", notes)
+          navigate('/transfer-confirmation3', {replace : true})
+        }
+      }
+  
+  
+    return <>
       {/* Navbar Section */}
       <NavbarComp />
 
@@ -60,7 +54,7 @@ const DetailTransfer = () => {
             <h4>Transfer Money</h4>
           </Col>
         </Row>
-        <Row className="d-flex flex-column justify-content-center">
+        {/* <Row className="d-flex flex-column justify-content-center">
           <Col>
             <Card key={account.id}>
               <Card.Body className="shadow p-3 ">
@@ -81,7 +75,7 @@ const DetailTransfer = () => {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
         <Row className="d-flex flex-column justify-content-center">
           <Col className="mt-4">
             <p>
@@ -90,21 +84,20 @@ const DetailTransfer = () => {
             </p>
           </Col>
         </Row>
-        <form onSubmit={handelSubmit}>
+        <form onSubmit={handleSubmit}>
 
           <div className="add-amount">
 
-            <Row className="d-flex flex-column justify-content-center">
+          <Row className="d-flex flex-column justify-content-center">
               <Col>
-                <Form.Control id="amount" className="border-0" type="number" style={{width: "150px"}}
-                placeholder="0.00" name="amount" onChange={(e) => setAmount(e.target.value)}/>
+                  <Form.Control id="amount" className="border-0" type="number" style={{ width: "150px" }}
+                      placeholder="Rp 0.00" name="amount" onChange={(e) => setAmount(e.target.value)} />
               </Col>
-            </Row>
-            <Row className="d-flex flex-column justify-content-center">
-              <Col>
-              <p>Rp {result} available</p>
-              </Col>
-            </Row>
+              <div className='error-message'>
+                      {error ?
+                      <label>Minimal Nominal Top Up adalah 10k</label>:""}
+              </div>
+          </Row>
 
           </div>
 
@@ -117,10 +110,10 @@ const DetailTransfer = () => {
             </Row>
           </div>
 
-          <div className='error-message'>
+          {/* <div className='error-message'>
             {error && amount.length === 0 ?
             <label>Email or Password Invalid !</label>:""}
-          </div>
+          </div> */}
 
           <div className=" btn-addamount">
             <Row className="d-flex flex-column justify-content-center">
@@ -137,7 +130,7 @@ const DetailTransfer = () => {
       </div>
       <Footer />
     </>
-  );
-};
-
-export default DetailTransfer;
+  
+  }
+  
+  export default DetailTransfer2

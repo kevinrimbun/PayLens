@@ -17,12 +17,14 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import { Link, useParams, Component, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
+import { topUpService } from "../../services/topUp";
 
 const TopUpConfirmation = () => {
 
-  var amounts = localStorage.getItem("amount")
+  const amounts = localStorage.getItem("amount")
   var balances = localStorage.getItem("balance")
   const  result = balances - amounts
+
 
   const navigate = useNavigate()
   const date = Date().toLocaleString()
@@ -46,19 +48,46 @@ const TopUpConfirmation = () => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  const topUp = async () => {
+    const userId = localStorage.getItem("userId") ;
+    const data = {
+        amount: amounts,
+        pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
+    }
+
+    const response = await topUpService(data, +userId);
+    console.log(response);
+    const responseData = response.data.message;
+    if (response.status === 401) {
+    alert(responseData);
+    }
+    if (response.status === 201) {
+      alert(responseData);
+      navigate('/dashboard')
+      }
+}
+
   const handleSuccess = (e) => {
     e.preventDefault();
-    if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
-      navigate("/success-topup");
-    }
-    if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
-      alert("PIN salah, silahkan masukkan ulang")
-    }
+    localStorage.setItem("pin1", pin1)
+    localStorage.setItem("pin2", pin2)
+    localStorage.setItem("pin3", pin3)
+    localStorage.setItem("pin4", pin4)
+    localStorage.setItem("pin5", pin5)
+    localStorage.setItem("pin6", pin6)
+    // if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
+    //   navigate("/success-topup");
+    // }
+    // // if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
+    // //   alert("PIN salah, silahkan masukkan ulang")
+    // // }
+    topUp();
   };
 
   const handleFailed = (e) => {
     e.preventDefault();
-    navigate("/failed-topup");
+    navigate("/dashboard");
+    alert("canceled");
   };
 
   return (
@@ -128,12 +157,12 @@ const TopUpConfirmation = () => {
       </Container>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Enter PIN to Transfer</Modal.Title>
+          <Modal.Title>Enter PIN to Top Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
             Enter your 6 digits of PIN for confirmation <br />
-            to continue transferring the money
+            to continue top up the money
           </p>
           <PinInput className="d-flex pin-input">
             <PinInputField
