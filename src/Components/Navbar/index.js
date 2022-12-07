@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 // IMG
+// import PaylensLogo from '../../Assets/paylens1.png'
+import Avatar from 'react-avatar';
 import PaylensLogo from '../../Assets/paylens3.png'
 
 // Bootstrap
@@ -85,9 +87,10 @@ function NavbarComp() {
                 <Col className="m-0 p-0 me-5"></Col>
 
                 {/* User Section */}
-                <Col className="d-flex justify-content-center user-nav align-items-center my-0 float-end">
-                  <img src={Samuel} className="img-navbar rounded me-2 " alt="..." />
-                  <div className="infouser-nav">
+                <Col className="d-flex justify-content-center user-nav align-items-center mt-3  float-end">
+                  {/* <img src={Samuel} className="img-navbar rounded me-2" alt="..." /> */}
+                  <Avatar facebookId="100008343750912" size={50} className="img-navbar rounded me-2"/>
+                  <div className="infouser-nav me-3">
                     <h6>{firstName} {lastName}</h6>
                     <p>{phoneNumber}</p>
                   </div>

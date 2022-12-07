@@ -25,9 +25,9 @@ const PersonalInformation = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
 
     
-    // // const splitName = localStorage.getItem('username').split(' ');
-    // // const first = splitName[0];
-    // // const last = splitName[1];
+    // const splitName = localStorage.getItem('username').split(' ');
+    // const first = splitName[0];
+    // const last = splitName[1];
 
 
 
@@ -73,7 +73,7 @@ const PersonalInformation = () => {
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">First Name</Card.Subtitle>
                                             <Card.Text>
-                                                {/* <h5 className="Information-User" >{firstName}</h5> */}
+                                                <h5 className="Information-User" >{firstName}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
@@ -81,7 +81,7 @@ const PersonalInformation = () => {
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2 text-muted">Last Name</Card.Subtitle>
                                             <Card.Text>
-                                                {/* <h5 className="Information-User" >{lastName}</h5> */}
+                                                <h5 className="Information-User" >{lastName}</h5>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
