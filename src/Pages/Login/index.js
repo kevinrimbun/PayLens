@@ -28,11 +28,10 @@ const Login = () => {
         };
 
         const response = await loginService(data);
-            console.log(response);
-            if (response.status === 201) {
-            alert(response.data.message);
-            navigate("/dashboard", { replace: true })
-            localStorage.setItem("userId", (response.data.data.userId))
+        console.log(response);
+        if (response.status === 201) {
+        alert(response.data.message);
+        navigate("/dashboard", { replace: true })
         }
     };
 
@@ -49,6 +48,20 @@ const Login = () => {
             setError(true)
         }
         login();
+        localStorage.setItem("userId", (response.data.data.userId))
+        localStorage.setItem("password", (response.data.data.password))
+        localStorage.setItem("balance2", (response.data.data.balance))
+        // const response = await loginService({
+        //     email,
+        //     password
+        // });
+        // if (email == response.data.data.email && password === response.data.data.password) {
+        //     alert(response.data.message);
+        //     navigate("/dashboard", { replace: true })
+        // } else if ( email.length === 0 || password.length === 0 ) {
+        //     setError(true)
+        // }
+        navigate("/dashboard", { replace: true })
     }
 
     return <Auth>

@@ -13,10 +13,13 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import { Link, useParams, Component, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
+import { transferService } from "../../services/transfer";
 
 const TransferConfirmation = () => {
 
-  var amounts = localStorage.getItem("amount")
+  const amounts = localStorage.getItem("amount")
+  const notes = localStorage.getItem("notes")
+  const username = localStorage.getItem("userName")
   var balances = localStorage.getItem("balance")
   const  result = balances - amounts
 
@@ -44,6 +47,18 @@ const TransferConfirmation = () => {
   const { id } = useParams();
   const [account] = useState(listAccount[id - 1]);
 
+  const transfer = async () => {
+    const userId = localStorage.getItem("userId") ;
+    const data = {
+        amount: amounts,
+        notes,
+        username,
+        pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
+    }
+    const response = await transferService(data, +userId);
+    console.log(response);
+  }
+
   const handleSuccess = (e) => {
     e.preventDefault();
     if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
@@ -52,6 +67,7 @@ const TransferConfirmation = () => {
     if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
       alert("PIN salah, silakkan masukkan ulang")
     }
+    transfer();
   };
 
   const handleFailed = (e) => {
@@ -60,7 +76,7 @@ const TransferConfirmation = () => {
   };
 
   return (
-    <Content>
+<>
       <Container>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
@@ -233,7 +249,7 @@ const TransferConfirmation = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </Content>
+      </>
   );
 };
 

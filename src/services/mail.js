@@ -1,4 +1,4 @@
-import fetchAPI from "../config/api";
+import fetchAPI from "../config/api/fetchAPI";
 
 const ROOT_API_PAYLENS = process.env.REACT_APP_PAYLENS;
 

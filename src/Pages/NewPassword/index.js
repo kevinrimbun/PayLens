@@ -4,6 +4,7 @@ import { CiLock } from 'react-icons/ci';
 import { useNavigate, useParams } from 'react-router-dom';
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 import { changePasswordService } from '../../services/changePassword';
+import { forgotPasswordService } from '../../services/forgotPassword';
 const eye = <AiOutlineEye/>
 const eyeClose = <AiOutlineEyeInvisible/>
 
@@ -24,24 +25,25 @@ const NewPassword = () => {
         setPasswordShown2(passwordShown2 ? false : true);
     };
 
-    const changePassword = async () => {
+    const forgotPassword = async () => {
         const data ={
             password
         }
-        const response = await changePasswordService(data,id);
+        const response = await forgotPasswordService(data,id);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        changePassword();
-        // localStorage.setItem(password);
-        navigate('/login')
 
-        // if (newPassword !== localStorage.getItem(password)) {
-        //     setError(true)
-        // }else{
-            
-        // }
+        // localStorage.setItem(password);
+
+
+        if (newPassword !== password) {
+            setError(true)
+        }else{
+            forgotPassword();
+            navigate('/login')
+        }
     }
 
     // const handleSubmit = (e) => {
@@ -104,7 +106,7 @@ const NewPassword = () => {
                     </div>
 
                     <div className='error-message'>
-                        {error && newPassword !== password && newPassword.length <= 0?
+                        {error && newPassword !== password ?
                         <label>Password do not match !</label>:""}
                     </div>
 
