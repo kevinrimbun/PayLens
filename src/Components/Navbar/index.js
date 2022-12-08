@@ -3,7 +3,6 @@ import { getDetailUserService } from "../../services/user";
 
 // Components
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 // Iconify
 import { Icon } from '@iconify/react';

@@ -16,7 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(false)
+    // const [error, setError] = useState(false)
 
     const [passwordShown1, setPasswordShown1] = useState(false);
     const togglePasswordVisiblity1 = () => {
@@ -109,11 +109,6 @@ const Login = () => {
                         <Link to='/reset-password'>
                             Forgot Your Password?
                         </Link>
-                    </div>
-                    
-                    <div className='error-message'>
-                        {error && email !== localStorage.getItem("email") && password !== localStorage.getItem("password") ?
-                        <label>Email or Password Invalid !</label>:""}
                     </div>
 
                     <button className="btn-auth" id='submit' type="submit" value="Enter">Login</button>
