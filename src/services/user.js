@@ -1,4 +1,4 @@
-import fetchAPI, {getHeaders} from "../config/api/fetchAPI";
+import fetchAPI, {getHeaders} from "../config/api";
 
 const ROOT_API_PAYLENS = process.env.REACT_APP_PAYLENS;
 
