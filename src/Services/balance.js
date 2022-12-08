@@ -1,4 +1,4 @@
-import fetchAPI from "../config/api";
+import fetchAPI from "../config/api/fetchAPI";
 import { getHistoryService } from "./history";
 
 // Balance service

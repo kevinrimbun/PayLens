@@ -58,7 +58,7 @@ function BalanceComp() {
                     <Row className='d-flex justify-content-center'>
                         <Col className='d-flex flex-column justify-content-center Description-Section'>
                             <p className='text-start mt-1'>Balance</p>
-                            <h4 className='text-start'>Rp. {result}</h4>
+                            <h4 className='text-start'>Rp. {localStorage.getItem('balance2')}</h4>
                             <p className='text-start mb-1'>+62 {localStorage.getItem('number')}</p>
                         </Col>
 
