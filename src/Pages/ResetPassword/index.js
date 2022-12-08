@@ -30,8 +30,6 @@ const ResetPass = () => {
         
         localStorage.setItem(email);
     }
-    
-
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();

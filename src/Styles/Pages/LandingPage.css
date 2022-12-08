@@ -19,6 +19,12 @@
     border-color: none !important;
 }
 
+.btn-signup:hover {
+    background-color: #fff !important;
+    border: 1px solid #6379F4 !important;
+    color: #6379F4 !important;
+}
+
 .landingpage .leftside{
     width: 40%;
 }
@@ -137,6 +143,22 @@
     margin: auto;
 }
 
+
+.feature-explanation {
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.feature-explanation:hover{
+    -webkit-transform: translateX(10px) translateY(10px) translateZ(0px);
+    -moz-transform: translateX(20px) translateY(20px) translateZ(0px);
+    -ms-transform: translateX(20px) translateY(20px) translateZ(0px);
+    -o-transform: translateX(20px) translateY(20px) translateZ(0px);
+    transform:  translateX(20px) translateY(20px) translateZ(0px);
+}
 
 /* carousel */
 .Wrapper-carousel{
