@@ -19,3 +19,4 @@ export const loginService = async (data) => {
     const response = await fetchAPI({ url, method: "POST", data });
     return response;
 };
+
