@@ -6,6 +6,8 @@ import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
 import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 import { loginService } from '../../services/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // const eye = <AiOutlineEye/>
 // const eyeClose = <AiOutlineEyeInvisible/>
@@ -14,7 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(false)
+    // const [error, setError] = useState(false)
 
     const [passwordShown1, setPasswordShown1] = useState(false);
     const togglePasswordVisiblity1 = () => {
@@ -28,32 +30,38 @@ const Login = () => {
         };
 
         const response = await loginService(data);
-            console.log(response);
-            if (response.data.status === 201 || response.data.status === 200) {
-            alert(response.data.message);
-            navigate("/dashboard", { replace: true })
-            localStorage.setItem("userId", (response.data.data.userId))
+        if (response.status !== 200) {
+            toast.error(response.data.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+        } else {
+            const responseData = response.data.data;
+            const token = responseData.token;
+            const userId = responseData.userId;
+            const email = responseData.email;
+            const detailUserId = responseData.detailUserId;
+            localStorage.setItem("token", token);
+            localStorage.setItem("email", email);
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("detailUserId", detailUserId);
+            localStorage.setItem("balance2", (response.data.data.balance))
+            navigate("/dashboard")
         }
+        console.log(response.data.message);
+        console.log(response.status);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const response = await loginService({
-            email,
-            password
-        });
-
-        // if (email == response.data.data.email && response.data.status === 200) {
-        if (email == response.data.data.email && password === response.data.data.password) {
-            alert(response.data.message);
-            navigate("/dashboard", { replace: true })
-        } else if ( email.length === 0 || password.length === 0 ) {
-            setError(true)
-        }
         login();
-        localStorage.setItem("userId", (response.data.data.userId))
-        localStorage.setItem("password", (response.data.data.password))
-        localStorage.setItem("balance2", (response.data.data.balance))
+
         // const response = await loginService({
         //     email,
         //     password
@@ -114,11 +122,6 @@ const Login = () => {
                         <Link to='/reset-password'>
                             Forgot Your Password?
                         </Link>
-                    </div>
-                    
-                    <div className='error-message'>
-                        {error && email !== localStorage.getItem("email") && password !== localStorage.getItem("password") ?
-                        <label>Email or Password Invalid !</label>:""}
                     </div>
 
                     <button className="btn-auth" id='submit' type="submit" value="Enter">Login</button>

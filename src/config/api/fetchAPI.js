@@ -11,4 +11,20 @@ const fetchAPI = async ({ url, method, data, headers }) => {
   return responseAxios;
 };
 
+export const getToken = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    return token;
+  }
+  return null;
+};
+
+export const getHeaders = () => {
+  const token = getToken();
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  return headers;
+};
+
 export default fetchAPI;

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
+import { getDetailUserService } from "../../services/user";
+import Avatar from 'react-avatar';
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -21,6 +23,25 @@ import Samuel from '../../Assets/account/samuelSuhi.svg'
 import '../../Styles/Pages/Profile/Profile.css'
 
 const Profile = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [show, setShow] = useState(false);
+
+    const getDetailUser = useCallback (async () => {
+      const detailUserId = localStorage.getItem("detailUserId") ;
+  
+      const response = await getDetailUserService(detailUserId);
+      console.log(response);
+      const data = response.data.data;
+      setFirstName(data.firstName);
+      setLastName(data.lastName);
+      setPhoneNumber(data.phoneNumber);
+    }, []);
+  
+    useEffect(() => {
+      getDetailUser();
+    }, [getDetailUser]);
     // Data Button
     const listButtons = [
         {
@@ -54,6 +75,10 @@ const Profile = () => {
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return (
 
         <>
@@ -69,9 +94,37 @@ const Profile = () => {
 
                         {/* Profile Section */}
                         <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center">
-                            <img src={Samuel} className="ImgUser-Profile rounded mb-3" alt="Profile" />
-                            <h3 className='mt-1 mb-2'>{localStorage.getItem("username")}</h3>
-                            <h5 className='mb-4'>+62 {localStorage.getItem('number')}</h5>
+                            {/* <img src="https://i.pravatar.cc/100?img=3" className="ImgUser-Profile rounded" alt="Profile" /> */}
+                            <Avatar facebookId="100008343750912" size={90} round="10px"/>
+                            <div class="form-file">
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    type="file"
+                                    name="file-input"
+                                    id="file-input"
+                                    className="file-input__input "
+                                />
+                                    
+                                <button className="file-input__show" for="file-input" onClick={()=>setShow(true)}>
+                                     <span><Icon icon="ep:edit-pen" color="black" width="15" height="15"/>Edit</span></button
+                                >
+                                {
+                                    show?
+                                    <div>
+                                        <button className="file-input__hide" for="file-input" onClick={()=>setShow(false)}>
+                                        <span><Icon icon="ep:edit-pen" color="black" width="15" height="15"/>Hide Edit</span></button
+                                >
+                                        <input type="file" className="input-file form-control" id="customFile"></input><br/>
+                                        <button className="btn-editPhoto">Submit</button>
+                                    </div>
+                                    :null
+                                }
+
+                            </form>
+                            </div>
+
+                            <h4 className='mt-1 mb-3'>{firstName} {lastName}</h4>
+                            <h5 className='mb-4'>{phoneNumber}</h5>
                             {/* Button Profile Section */}
                             <Row className='ButtonProfile-Section'>
                                 <Col className='d-flex flex-column'>

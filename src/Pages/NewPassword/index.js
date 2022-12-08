@@ -106,7 +106,7 @@ const NewPassword = () => {
                     </div>
 
                     <div className='error-message'>
-                        {error && newPassword !== password ?
+                        {error && newPassword !== password?
                         <label>Password do not match !</label>:""}
                     </div>
 
