@@ -51,7 +51,7 @@ const Login = () => {
             localStorage.setItem("email", email);
             localStorage.setItem("userId", userId);
             localStorage.setItem("detailUserId", detailUserId);
-            localStorage.setItem("balance2", (response.data.data.balance))
+            localStorage.setItem("balance", (response.data.data.balance));
             navigate("/dashboard")
         }
         console.log(response.data.message);
@@ -61,19 +61,8 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         login();
-
-        // const response = await loginService({
-        //     email,
-        //     password
-        // });
-        // if (email == response.data.data.email && password === response.data.data.password) {
-        //     alert(response.data.message);
-        //     navigate("/dashboard", { replace: true })
-        // } else if ( email.length === 0 || password.length === 0 ) {
-        //     setError(true)
-        // }
-        navigate("/dashboard", { replace: true })
     }
+
 
     return <Auth>
         <div className='title-right-wrapper'>

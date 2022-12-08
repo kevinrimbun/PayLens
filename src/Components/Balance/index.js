@@ -21,6 +21,7 @@ function BalanceComp() {
     // Data balance
     const [userBalance, setUserBalance] = useState({})
     const userId = +localStorage.getItem('userId')
+    const balance = localStorage.getItem('balance');
 
     // localStorage.setItem("balance", 0)
     // var amount = localStorage.getItem("amount")
@@ -58,7 +59,7 @@ function BalanceComp() {
                     <Row className='d-flex justify-content-center'>
                         <Col className='d-flex flex-column justify-content-center Description-Section'>
                             <p className='text-start mt-1'>Balance</p>
-                            <h4 className='text-start'>Rp. {result}</h4>
+                            <h4 className='text-start'>Rp. {balance}</h4>
                             <p className='text-start mb-1'>+62 {localStorage.getItem('number')}</p>
                         </Col>
 

@@ -44,7 +44,7 @@ export const getBalance = async (userId) => {
 
         console.log({income, expense})
         const totalIncome = income.reduce((total, data) => total + data.amount, 0)
-        const totalExpense = expense.reduce((total, data) => total + data.amount, 0)
+        const totalExpense = expense.reduce((total, data) => total - data.amount, 0)
         const balance = totalIncome - totalExpense
 
         return [{
