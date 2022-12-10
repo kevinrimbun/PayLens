@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import { getDetailUserService } from "../../services/user";
+import { getProfilePicture } from "../../services/files"
 
 // Components
 import { Link } from 'react-router-dom';
@@ -34,6 +35,8 @@ function NavbarComp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [image, setImage] = useState(null);
+  const [fileId, setFileId] = useState(0);
 
   const getDetailUser = useCallback (async () => {
     const detailUserId = localStorage.getItem("detailUserId") ;
@@ -46,9 +49,25 @@ function NavbarComp() {
     setPhoneNumber(data?.phoneNumber);
   }, []);
 
+  const getImage = useCallback (async () => {
+    const uuid = localStorage.getItem("fileId");
+    const response = await getProfilePicture(uuid);
+    const data = response.data;
+    console.log(response);
+    setFileId(uuid);
+
+    setImage(data);
+    // if (response.status === 200) {
+    //     setIsFilePicked(true);
+    // } else {
+    //     setIsFilePicked(false);
+    // }
+  }, []);
+
   useEffect(() => {
     getDetailUser();
-  }, [getDetailUser]);
+    getImage();
+  }, [getDetailUser, getImage]);
 
   const [listTransaction, setListTransaction] = useState([])
   const userId = +localStorage.getItem("userId")
