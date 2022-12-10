@@ -1,18 +1,50 @@
-import React, { useEffect, useState } from 'react'
+<<<<<<<<< Temporary merge branch 1
+import React, { useCallback, useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Content from '../../Layout/Content'
 import { BiTrashAlt } from "react-icons/bi"
 import "../../Styles/Pages/ManagePhoneNum/managephonenum.css"
+=========
+import React, { useEffect, useState } from 'react'
+>>>>>>>>> Temporary merge branch 2
 import { useNavigate, Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
+<<<<<<<<< Temporary merge branch 1
+import { getDetailUserService, deletePhoneNumberService } from "../../services/user";
+
+=========
+import { Row, Col } from 'react-bootstrap'
+>>>>>>>>> Temporary merge branch 2
 
 
+// CSS
+import "../../Styles/Pages/ManagePhoneNum/managephonenum.css"
 
 const ManagePhoneNum = () => {
-  const dibuang = () => {
-    alert("Dibuang seperti mantan");
-    localStorage.removeItem("number")
-  }
+<<<<<<<<< Temporary merge branch 1
+
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const detailUserId = localStorage.getItem("detailUserId");
+
+  const getDetailUser = useCallback (async () => {
+
+    const response = await getDetailUserService(detailUserId);
+    console.log(response);
+    const data = response.data.data;
+    setPhoneNumber(data.phoneNumber);
+  }, []);
+
+  const deletePhoneNumber = async (e, detailUserId) => {
+    e.preventDefault();
+    // const detailUserId = localStorage.getItem("detailUserId");
+
+    const response = await deletePhoneNumberService(detailUserId);
+    console.log(response);
+  };
+
+  useEffect(() => {
+    getDetailUser();
+  }, [getDetailUser]);
 
   return <Content>
     <Row>
@@ -25,11 +57,11 @@ const ManagePhoneNum = () => {
       <Card style={{ width: '100%' }} className='shadow mt-3 CardPhone'>
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">Phone Number</Card.Subtitle>
-          <Card.Subtitle className="float-end Delete-Button"><i onClick={dibuang}> <BiTrashAlt /> </i>
+          <Card.Subtitle className="float-end Delete-Button"><i onClick={(e) => deletePhoneNumber(e)}> <BiTrashAlt /> </i>
           </Card.Subtitle>
           <Card.Text>
             <div className="d-flex managenum-body">
-              <h5>+62 {localStorage.getItem('number')}</h5>
+              <h5>{phoneNumber}</h5>
             </div>
           </Card.Text>
         </Card.Body>
@@ -39,11 +71,51 @@ const ManagePhoneNum = () => {
     
       <button className="btn-addphone mt-2" id='submit' type="submit" value="Enter">Add Phone Number</button>
     </Link>
+=========
+  const dibuang = () => {
+    alert("Nomor telepon berhasil dihapus!");
+    localStorage.removeItem("number")
+  }
+
+  return <>
+    {/* Navbar Section */}
+    <NavbarComp />
+>>>>>>>>> Temporary merge branch 2
 
 
 
+          {/* Profile Section */}
+          <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center">
+            <Row>
+              <div className='addnum-title text-center'>
+                <h4>Manage Phone Number</h4>
+                <p>You can only delete the phone number <br /> and then you must add another phone number.</p>
+              </div>
+            </Row>
+            <Row className='p-4 w-100 border-0'>
+              <Card style={{ width: '100%' }} className='shadow mt-3 CardPhone border-0'>
+                <Card.Body>
+                  <Card.Subtitle className="mb-2 text-muted">Phone Number</Card.Subtitle>
+                  <Card.Subtitle className="float-end Delete-Button"><i onClick={dibuang}> <BiTrashAlt /> </i>
+                  </Card.Subtitle>
+                  <Card.Text>
+                    <div className="d-flex managenum-body">
+                      <h5>+62 {localStorage.getItem('number')}</h5>
+                    </div>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Row>
+            <Link to='/add-phone'>
+              <button className="btn-addphone mt-2" id='submit' type="submit" value="Enter">Add Phone Number</button>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+    <Footer />
+  </>
 
-  </Content>
 }
 
 export default ManagePhoneNum

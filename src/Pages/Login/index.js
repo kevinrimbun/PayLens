@@ -6,6 +6,8 @@ import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
 import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
 import { loginService } from '../../services/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // const eye = <AiOutlineEye/>
 // const eyeClose = <AiOutlineEyeInvisible/>
@@ -28,11 +30,31 @@ const Login = () => {
         };
 
         const response = await loginService(data);
-            console.log(response);
-            if (response.status === 201) {
-            alert(response.data.message);
-            navigate("/dashboard", { replace: true })
+        if (response.status !== 200) {
+            toast.error(response.data.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+        } else {
+            const responseData = response.data.data;
+            const token = responseData.token;
+            const userId = responseData.userId;
+            const email = responseData.email;
+            const detailUserId = responseData.detailUserId;
+            localStorage.setItem("token", token);
+            localStorage.setItem("email", email);
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("detailUserId", detailUserId);
+            navigate("/dashboard")
         }
+        console.log(response.data.message);
+        console.log(response.status);
     };
 
     const handleSubmit = async (e) => {
@@ -41,6 +63,8 @@ const Login = () => {
             email,
             password
         });
+
+        // if (email == response.data.data.email && response.data.status === 200) {
         if (email == response.data.data.email && password === response.data.data.password) {
             alert(response.data.message);
             navigate("/dashboard", { replace: true })
@@ -48,6 +72,20 @@ const Login = () => {
             setError(true)
         }
         login();
+        localStorage.setItem("userId", (response.data.data.userId))
+        localStorage.setItem("password", (response.data.data.password))
+        localStorage.setItem("balance2", (response.data.data.balance))
+        // const response = await loginService({
+        //     email,
+        //     password
+        // });
+        // if (email == response.data.data.email && password === response.data.data.password) {
+        //     alert(response.data.message);
+        //     navigate("/dashboard", { replace: true })
+        // } else if ( email.length === 0 || password.length === 0 ) {
+        //     setError(true)
+        // }
+        navigate("/dashboard", { replace: true })
     }
 
     return <Auth>

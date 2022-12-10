@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 // Iconify
@@ -11,14 +11,44 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+// Service
+import { getBalance } from '../../services/balance';
 // CSS
 import '../../Styles/Components/Balance/Balance.css'
 
 function BalanceComp() {
-    localStorage.setItem("balance", 950000)
-    var amount = localStorage.getItem("amount")
-    var balance = localStorage.getItem("balance")
-    const  result = balance - amount
+
+    // Data balance
+    const [userBalance, setUserBalance] = useState({})
+    const userId = +localStorage.getItem('userId')
+
+    // localStorage.setItem("balance", 0)
+    // var amount = localStorage.getItem("amount")
+    // var balance = localStorage.getItem("balance")
+
+    let  result
+    if(userBalance?.balance) {
+        result = userBalance.balance
+    } else {
+        result =0
+    }
+
+    useEffect( ()=>{
+        const getUserBalance = async ()=> {
+            
+            const balance = await getBalance(userId)
+
+            // console.log({balance})
+            if(balance[0] !== null){
+                setUserBalance(balance[0])
+            }else{
+                console.error(balance[1])
+            }
+        }
+        getUserBalance()
+        
+    },[])
+    
     return (
         <Card className='shadow-lg Balance-Comp'>
             <Card.Body>

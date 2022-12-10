@@ -1,4 +1,6 @@
-import fetchAPI from "../config/api";
+<<<<<<< HEAD
+=======
+import fetchAPI from "../config/api/fetchAPI";
 
 const ROOT_API_PAYLENS = process.env.REACT_APP_PAYLENS;
 
@@ -19,3 +21,4 @@ export const loginService = async (data) => {
     const response = await fetchAPI({ url, method: "POST", data });
     return response;
 };
+>>>>>>> 2ac6971433e748b553ca994b13a7ac9e6c955a49

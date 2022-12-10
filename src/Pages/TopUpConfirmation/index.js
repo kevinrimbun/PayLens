@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import listAccount from "../../Data/account";
 
+import NavbarComp from "../../Components/Navbar";
+import Sidebar from "../../Components/Sidebar";
+import Footer from "../../Components/Footer";
+
 import { PinInput, PinInputField } from "@chakra-ui/react";
 
 import Container from "react-bootstrap/Container";
@@ -13,15 +17,14 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import { Link, useParams, Component, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
-import { transferService } from "../../services/transfer";
+import { topUpService } from "../../services/topUp";
 
-const TransferConfirmation = () => {
+const TopUpConfirmation = () => {
 
   const amounts = localStorage.getItem("amount")
-  const notes = localStorage.getItem("notes")
-  const username = localStorage.getItem("userName")
   var balances = localStorage.getItem("balance")
   const  result = balances - amounts
+
 
   const navigate = useNavigate()
   const date = Date().toLocaleString()
@@ -44,71 +47,67 @@ const TransferConfirmation = () => {
   const [showModal, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const { id } = useParams();
-  const [account] = useState(listAccount[id - 1]);
 
-  const transfer = async () => {
+  const topUp = async () => {
     const userId = localStorage.getItem("userId") ;
     const data = {
         amount: amounts,
-        notes,
-        username,
         pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
     }
-    const response = await transferService(data, +userId);
+
+    const response = await topUpService(data, +userId);
     console.log(response);
-  }
+    const responseData = response.data.message;
+    if (response.status === 401) {
+    alert(responseData);
+    }
+    if (response.status === 201) {
+      alert(responseData);
+      navigate('/dashboard')
+      }
+}
 
   const handleSuccess = (e) => {
     e.preventDefault();
-    if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
-      navigate("/success-transfer/" + account.id);
-    }
-    if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
-      alert("PIN salah, silakkan masukkan ulang")
-    }
-    transfer();
+    localStorage.setItem("pin1", pin1)
+    localStorage.setItem("pin2", pin2)
+    localStorage.setItem("pin3", pin3)
+    localStorage.setItem("pin4", pin4)
+    localStorage.setItem("pin5", pin5)
+    localStorage.setItem("pin6", pin6)
+    // if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
+    //   navigate("/success-topup");
+    // }
+    // // if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
+    // //   alert("PIN salah, silahkan masukkan ulang")
+    // // }
+    topUp();
   };
 
   const handleFailed = (e) => {
     e.preventDefault();
-    navigate("/failed-transfer/" + account.id);
+    navigate("/dashboard");
+    alert("canceled");
   };
 
   return (
-<>
-      <Container>
+    <>
+            {/* Navbar Section */}
+            <NavbarComp />
+
+            <div className="App w-100 p-1">
+                <Container fluid className="w-100 p-5 Container-Section p-1">
+                    <Row>
+
+                        {/* Sidebar Section */}
+                        <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
+
+                        {/* TopUp Section */}
+                        <Col sm={8} className="Topup-Section p-4 ms-3 shadow-lg">
+                        <Container>
         <Row className="d-flex flex-column justify-content-center">
           <Col>
-            <h4>Transfer to</h4>
-          </Col>
-        </Row>
-        <Row className="d-flex flex-column justify-content-center">
-          <Col>
-            <Card key={account.id}>
-              <Card.Body>
-                <Container>
-                  <Row>
-                    <Col sm={2}>
-                      <Card.Img
-                        style={{ height: "70px", width: "70px" }}
-                        src={account.profilePic}
-                      />
-                    </Col>
-                    <Col sm={2}>
-                      <Card.Text>{account.name}</Card.Text>
-                      <Card.Text>{account.phone}</Card.Text>
-                    </Col>
-                    <Col></Col>
-                  </Row>
-                </Container>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="d-flex flex-column justify-content-center">
-          <Col>
-            <h4>Details</h4>
+            <h4>Top Up Detail</h4>
           </Col>
         </Row>
         <Row className="d-flex flex-column justify-content-center mt-2">
@@ -134,40 +133,8 @@ const TransferConfirmation = () => {
                 <Container>
                   <Row>
                     <Col>
-                      <Card.Text>Balance left</Card.Text>
-                      <Card.Text>{result}</Card.Text>
-                    </Col>
-                  </Row>
-                </Container>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="d-flex flex-column justify-content-center mt-2">
-          <Col>
-            <Card>
-              <Card.Body>
-                <Container>
-                  <Row>
-                    <Col>
                       <Card.Text>Date & Time</Card.Text>
                       <Card.Text>{date}</Card.Text>
-                    </Col>
-                  </Row>
-                </Container>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="d-flex flex-column justify-content-center mt-2">
-          <Col>
-            <Card>
-              <Card.Body>
-                <Container>
-                  <Row>
-                    <Col>
-                      <Card.Text>Notes</Card.Text>
-                      <Card.Text>{localStorage.getItem("notes")}</Card.Text>
                     </Col>
                   </Row>
                 </Container>
@@ -190,12 +157,12 @@ const TransferConfirmation = () => {
       </Container>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Enter PIN to Transfer</Modal.Title>
+          <Modal.Title>Enter PIN to Top Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
             Enter your 6 digits of PIN for confirmation <br />
-            to continue transferring the money
+            to continue top up the money
           </p>
           <PinInput className="d-flex pin-input">
             <PinInputField
@@ -249,8 +216,13 @@ const TransferConfirmation = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      </>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+            <Footer />
+        </>
   );
 };
 
-export default TransferConfirmation;
+export default TopUpConfirmation;

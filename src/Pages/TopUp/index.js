@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
+import listAccount from "../../Data/account";
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
 
 // Components
 import NavbarComp from "../../Components/Navbar";
@@ -13,8 +18,26 @@ import TopUpInstruction from "../../Components/TopUp";
 
 // CSS
 import '../../Styles/Pages/TopUp/TopUp.css'
+import { topUpService } from "../../services/topUp";
+import { Input, PinInputField, PinInput } from "@chakra-ui/react";
 
 const TopUp = () => {
+    const navigate = useNavigate();
+    const [amount , setAmount] = useState("");
+    const [error, setError] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (amount < 10000) {
+            // alert("Nominal tidak boleh kurang dari 10 k")
+            setError(true);
+        }else{
+            localStorage.setItem("amount", amount)
+            navigate("/topup-confirmation", { replace: true })
+        }
+       
+    }
+
     // Data Users
     const listParagraph = [
         {
@@ -47,40 +70,82 @@ const TopUp = () => {
         },
         {
             id: 8,
-            paragraph: "You can see your money in Zwallet within 3 hours.",
+            paragraph: "You can see your money in Paylens within 3 hours.",
         }
 
     ]
 
     return (
         <>
+
             {/* Navbar Section */}
             <NavbarComp />
-
+                
             <div className="App w-100 p-1">
                 <Container fluid className="w-100 p-5 Container-Section p-1">
                     <Row>
-
                         {/* Sidebar Section */}
                         <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
 
-                        {/* History Section */}
+                        {/* TopUp Section */}
                         <Col sm={8} className="Topup-Section p-4 ms-3 shadow-lg">
-                            <h4>How To Top Up</h4>
+                            <Dropdown>
+                                <Row className="ms-1">
+                                    <Col>
+                                        <h4>Top Up</h4>
+                                    </Col>
+                                    <Col className="text-end">
+                                        <Dropdown.Toggle id="dropdown-basic" className="instructions-toggle" variant="Secondary">
+                                            <h6 className="text-end">Instructions</h6>
+                                        </Dropdown.Toggle>
+                                    </Col>
+                                </Row>
 
-                            <Row className='User-Section'>
-                                <Col>
-                                    {listParagraph.map(topup => {
-                                        return (
-                                            <TopUpInstruction id={topup.id}
-                                                paragraph={topup.paragraph}
-                                            />
-                                        )
-                                    }
-                                    )}
+                                <Row className='User-Section'>
+                                    <Col>
+                                        <Dropdown.Menu className="instructions bg-transparent">
+                                            {listParagraph.map(topup => {
+                                                return (
+                                                    <TopUpInstruction id={topup.id}
+                                                        paragraph={topup.paragraph}
+                                                    />
+                                                )
+                                            }
+                                            )}
+                                        </Dropdown.Menu>
+                                    </Col>
+                                </Row>
+                            </Dropdown>
 
-                                </Col>
-                            </Row>
+                            <form onSubmit={handleSubmit}>
+
+                                <div className="add-amount">
+                                    <Row className="d-flex flex-column justify-content-center align-content-center ms-1">
+                                        <Col>
+                                            <p>Enter nominal top up</p>
+                                        </Col>
+                                    </Row>
+
+                                    <Row className="d-flex flex-column justify-content-center">
+                                        <Col>
+                                            <Form.Control id="amount" className="border-0" type="number" style={{ width: "150px" }}
+                                                placeholder="Rp 0.00" name="amount" onChange={(e) => setAmount(e.target.value)} />
+                                        </Col>
+                                    </Row>
+                                </div>
+                                
+                                <div className='error-message text-center'>
+                                                {error ?
+                                                <label>Minimal Nominal Top Up adalah 10k</label>:""}
+                                </div>
+                                <div className=" btn-addamount">
+                                <Row className="d-flex flex-column justify-content-center">
+                                    <Col>
+                                        <Button type='submit' className="rounded-3 py-2 px-5" style={{ background: '#6379F4' }}>Continue</Button>
+                                    </Col>
+                                </Row>
+                                </div>
+                            </form>
                         </Col>
                     </Row>
                 </Container>
