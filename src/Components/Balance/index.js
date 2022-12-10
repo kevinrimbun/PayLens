@@ -40,11 +40,11 @@ function BalanceComp() {
             const balance = await getBalance(userId)
 
             // console.log({balance})
-            if(balance[0] !== null){
-                setUserBalance(balance[0])
-            }else{
-                console.error(balance[1])
-            }
+            // if(balance[0] !== null){
+            //     setUserBalance(balance[0])
+            // }else{
+            //     console.error(balance[1])
+            // }
         }
         getUserBalance()
         

@@ -48,7 +48,8 @@ function Chart() {
             // console.log({balance})
             if(balance[0] !== null) {
                 setUserBalance(balance[0])
-            } else {
+            } 
+            else {
                 console.error(balance[1])
             }
         }
