@@ -6,7 +6,7 @@ export const getBalance = async (userId) => {
 
     try {
         const history = (await getHistoryService(userId))?.data
-        console.log({ history });
+        console.log("History data: " + history );
 
         if (history?.message !== "History available!") {
             return [null, `There is no history for user with userId = ${userId}`]

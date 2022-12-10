@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react'
 import { getDetailUserService } from "../../services/user";
 
 // Components
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -34,6 +34,7 @@ function NavbarComp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const navigate = useNavigate();
 
   const getDetailUser = useCallback (async () => {
     const detailUserId = localStorage.getItem("detailUserId") ;
@@ -58,10 +59,16 @@ function NavbarComp() {
       const  data = await getListTransactionHistory(userId)
       
       console.log(data, "data");
-      if(Array.isArray(data) && data.length > 0 && data ==! undefined){
-        console.log({data})
-        setListTransaction(data)
+      if (data?.status === 401) {
+        navigate("/login");
+      }else{
+        if(Array.isArray(data) && data.length > 0 && data ==! undefined){
+          console.log({data})
+          setListTransaction(data)
+        }
       }
+      
+      
     }
     getList()
   }, [userId])
