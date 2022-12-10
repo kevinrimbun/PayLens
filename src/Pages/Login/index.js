@@ -16,7 +16,6 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [error, setError] = useState(false)
 
     const [passwordShown1, setPasswordShown1] = useState(false);
     const togglePasswordVisiblity1 = () => {
@@ -32,6 +31,24 @@ const Login = () => {
         const response = await loginService(data);
         if (response.status !== 200) {
             toast.error(response.data.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) && toast.error(response.data.errors.email, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) && toast.error(response.data.errors.password, {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -56,7 +73,7 @@ const Login = () => {
             localStorage.setItem("fileId", fileId);
             navigate("/dashboard")
         }
-        console.log(response.data.message);
+        console.log(response.data);
         console.log(response.status);
     };
 
@@ -64,7 +81,6 @@ const Login = () => {
         e.preventDefault();
         login();
     }
-
 
     return <Auth>
         <div className='title-right-wrapper'>
@@ -123,6 +139,18 @@ const Login = () => {
             </div>
 
         </div>
+        <ToastContainer
+            position="bottom-right"
+            autoClose={3500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+        />
     </Auth>
 }
 

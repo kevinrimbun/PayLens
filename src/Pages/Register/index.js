@@ -14,7 +14,6 @@ const eye = <AiOutlineEye/>
 const eyeClose = <AiOutlineEyeInvisible/>
 
 const Register = () => {
-    // const notify = () => toast("Wow so easy!");
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -74,7 +73,6 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         register();
-        navigate('/create-pin', { replace : true })
     }
 
     const [passwordShown1, setPasswordShown1] = useState(false);

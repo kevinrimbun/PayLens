@@ -53,15 +53,10 @@ function NavbarComp() {
     const uuid = localStorage.getItem("fileId");
     const response = await getProfilePicture(uuid);
     const data = response.data;
-    console.log(response);
+    console.log(data.image);
     setFileId(uuid);
 
     setImage(data);
-    // if (response.status === 200) {
-    //     setIsFilePicked(true);
-    // } else {
-    //     setIsFilePicked(false);
-    // }
   }, []);
 
   useEffect(() => {
@@ -107,9 +102,16 @@ function NavbarComp() {
                 <Col className="m-0 p-0 me-5"></Col>
 
                 {/* User Section */}
-                <Col className="d-flex justify-content-center user-nav align-items-center mt-3  float-end">
-                  {/* <img src={Samuel} className="img-navbar rounded me-2" alt="..." /> */}
-                  <Avatar facebookId="100008343750912" size={50} className="img-navbar rounded me-2"/>
+                <Col className="d-flex justify-content-center user-nav align-items-center  float-end">
+                  {image ? (
+                    <div className='m-0 p-0'>
+                      <img src={`http://localhost:4000/paylens/backend/files/${fileId}`} className="ImgUser-Profile-Navbar rounded" alt="Profile" />
+                    </div>
+                  ) : (
+                    <div>
+                      <Avatar facebookId="100008343750912" size={50} round="10px"/>
+                    </div>
+                  )}
                   <div className="infouser-nav me-3">
                     <h6>{firstName} {lastName}</h6>
                     <p>{phoneNumber}</p>

@@ -50,7 +50,6 @@ const Profile = () => {
         const response = await profilePictureService(data, uuid, userId);
         console.log(response);
         if (response.status === 200) {
-            navigate('/dashboard', { replace : true })
             toast.success(response.data.message, {
                 position: "bottom-right",
                 autoClose: 5000,
@@ -95,21 +94,18 @@ const Profile = () => {
         const uuid = localStorage.getItem("fileId");
         const response = await getProfilePicture(uuid);
         const data = response.data;
-        console.log(response);
+        console.log(data.image);
         setFileId(uuid);
   
         setImage(data);
-        // if (response.status === 200) {
-        //     setIsFilePicked(true);
-        // } else {
-        //     setIsFilePicked(false);
-        // }
     }, []);
   
+    console.log(image);
     useEffect(() => {
       getDetailUser();
       getImage();
     }, [getDetailUser, getImage]);
+    console.log(image);
 
 
     // Data Button
@@ -135,12 +131,14 @@ const Profile = () => {
     
     const logout = (e) => {
         e.preventDefault();
-        localStorage.removeItem("username");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("fileId");
+        localStorage.removeItem("balance");
+        localStorage.removeItem("detailUserId");
         localStorage.removeItem("email");
-        localStorage.removeItem("password");
-        localStorage.removeItem("number");
-        console.log(localStorage.getItem("username"))
-        if (localStorage.getItem("username") === null && localStorage.getItem("email") === null && localStorage.getItem("password") === null) {
+        localStorage.removeItem("token");
+
+        if (localStorage.getItem("userId") === null && localStorage.getItem("fileId") === null && localStorage.getItem("balance") === null && localStorage.getItem("detailUserId") === null && localStorage.getItem("email") === null && localStorage.getItem("token") === null) {
             navigate("/", { replace: true })
         }
     }
@@ -161,14 +159,14 @@ const Profile = () => {
                         {/* Profile Section */}
                         <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center">
 
-                        {image !== null ? (
+                        {image ? (
                             <div className='m-0 p-0'>
                                 <img src={`http://localhost:4000/paylens/backend/files/${fileId}`} className="ImgUser-Profile rounded" alt="Profile" />
                             </div>
                             ) : (
-                            <>
+                            <div>
                                 <Avatar facebookId="100008343750912" size={90} round="10px"/>
-                            </>
+                            </div>
                         )}
                         <button className="file-input__show" for="file-input" onClick={handleShow}>
                             <span><Icon icon="ep:edit-pen" color="black" width="15" height="15"/>Edit</span>

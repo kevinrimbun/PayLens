@@ -19,6 +19,13 @@
   margin-left: -90%;
 }
 
+.ImgUser-Profile-Navbar {
+  width: 50px !important;
+  height: 50px !important;
+  margin-left: -25% !important;
+  margin-top: -50% !important;
+}
+
 .Logo-Section {
   color: #0275d8 !important;
   margin-right: -100% !important;
@@ -47,7 +54,7 @@
   -o-border-radius: 10px !important;
 }
 .user-nav {
-  margin-left: -15% !important;
+  margin-left: 40% !important;
 }
 .logo-navbar{
   padding-right: 10%;
@@ -57,7 +64,6 @@
 }
 .img-navbar {
   margin-top: -5%;
-  /* width: 20%; */
 }
 .bell-navbar {
   margin-top: -5%;
