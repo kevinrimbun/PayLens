@@ -15,10 +15,11 @@
     -o-border-radius: 25px;
 }
 
-.ImgUser-Profile { 
-    width: 100%;
-    margin-bottom: 0px !important;
-    height: 25%;
+.ImgUser-Profile {
+    margin-top: -15%;
+    width: 125px;
+    /* margin-bottom: 0px !important; */
+    height: 125px;
 }
 
 .btn-editPhoto {
