@@ -89,47 +89,7 @@ const TopUp = () => {
 
                         {/* TopUp Section */}
                         <Col sm={8} className="Topup-Section p-4 ms-3 shadow-lg">
-                        {/* <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                How to Top Up
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">{listParagraph.map(topup => {
-                                    return (
-                                    <TopUpInstruction id={topup.id}
-                                        paragraph={topup.paragraph}
-                                        />
-                                        )
-                                    }
-                                )}</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                            <Row className='User-Section'>
-                                <form onSubmit={handleSubmit}>
-                                    <Col>
-                                        <PinInput className='d-flex pin-input' >
-                                            <PinInputField className='pin-input text-center' name='pin1' onChange={(e) => setInput1(e.target.value)} />
-                                            <PinInputField className='pin-input text-center' name='pin2' onChange={(e) => setInput2(e.target.value)} />
-                                            <PinInputField className='pin-input text-center' name='pin3' onChange={(e) => setInput3(e.target.value)} />
-                                            <PinInputField className='pin-input text-center' name='pin4' onChange={(e) => setInput4(e.target.value)} />
-                                            <PinInputField className='pin-input text-center' name='pin5' onChange={(e) => setInput5(e.target.value)} />
-                                            <PinInputField className='pin-input text-center' name='pin6' onChange={(e) => setInput6(e.target.value)} />
-                                        </PinInput>
 
-                                        
-
-                                        <input type="text" name="amount" id="amount" onChange={e => setAmount(e.target.value)}/>
-                                        {/* <input type="text" name="pin" id="pin" onChange={e => setPin(e.target.value)}/> */}
-                                    
-                                        {/* <div className='error-message'> */}
-                                            {/* {error && pin[0] === null ? */}
-                                            {/* // <label>Input cannot be empty !</label>:""} */}
-                                        {/* </div> */}
-
-                                            {/* <button className="btn-auth" id='submit' type="submit" value="Enter" >Confirm</button> */}
-                                    {/* </Col> */}
-                                {/* </form> */}
-                            {/* </Row>  */}
                             <Dropdown>
                                 <Row className="ms-1">
                                     <Col>
@@ -158,26 +118,27 @@ const TopUp = () => {
                                 </Row>
                             </Dropdown>
 
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} className="border">
 
-                                <div className="add-amount">
-                                    <Row className="d-flex flex-column justify-content-center align-content-center ms-1">
+                                <div className="add-amount d-flex flex-column justify-content-center align-items-center">
+                                    <Row className="d-flex flex-column justify-content-center align-items-center ms-1">
                                         <Col>
                                             <p>Enter nominal top up</p>
                                         </Col>
                                     </Row>
 
-                                    <Row className="d-flex flex-column justify-content-center">
-                                        <Col>
-                                            <Form.Control id="amount" className="border-0" type="number" style={{ width: "150px" }}
-                                                placeholder="Rp 0.00" name="amount" onChange={(e) => setAmount(e.target.value)} />
+                                    <Row className="d-flex flex-column justify-content-center align-items-center">
+                                        <Col className="d-flex justify-content-center align-items-center me-5">
+                                        <p className="ms-0">Rp.</p>
+                                            <Form.Control id="amount" className="border-0 m-0" type="number" style={{ width: "150px" }}
+                                                placeholder="0.00" name="amount" onChange={(e) => setAmount(e.target.value)} />
                                         </Col>
                                     </Row>
                                 </div>
                                 
                                 <div className='error-message text-center'>
                                                 {error ?
-                                                <label>Minimal Nominal Top Up adalah 10k</label>:""}
+                                                <label>Minimum Top Up Amount is Rp 10.000,-</label>:""}
                                 </div>
                                 <div className=" btn-addamount">
                                 <Row className="d-flex flex-column justify-content-center">
