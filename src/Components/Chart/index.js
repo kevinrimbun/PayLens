@@ -64,11 +64,11 @@ function Chart() {
             }
 
             const listData = {
-                labels: data.map(item=> item.label),
+                labels: data?.map(item=> item.label),
                 datasets: [
                     {
                         label: "History Transaction",
-                        data: data.map(item=> item.amount),
+                        data: data?.map(item=> item.amount),
                         borderColor: 'gray',
                         borderWidth: 1,
                         backgroundColor: [

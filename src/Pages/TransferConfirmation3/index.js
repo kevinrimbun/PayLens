@@ -24,7 +24,7 @@ const TransferConfirmation3 = () => {
     const amounts = localStorage.getItem("nominalTransfer")
     const notes = localStorage.getItem("notes")
     const username = localStorage.getItem("userName")
-    var balances = localStorage.getItem("balance")
+    const balances = localStorage.getItem("balance")
     const  result = balances - amounts
 
   
@@ -84,6 +84,7 @@ const TransferConfirmation3 = () => {
       // localStorage.setItem("pin5", pin5)
       // localStorage.setItem("pin6", pin6)
       transfer();
+      localStorage.setItem("balance" , result)
     };
   
     return (

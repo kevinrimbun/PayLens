@@ -36,7 +36,7 @@ const LandingPage = () => {
                         <Col>
                             <div className="logintab d-flex">
                                 <Link to='/login'>
-                                    <Button variant="outline-primary" className='btn-login shadow'>Login</Button>
+                                    <Button className='btn-login shadow'>Login</Button>
                                 </Link>
                                 <Link to='/register'>
                                     <Button className='btn-signup shadow'>Sign Up</Button>
@@ -144,12 +144,12 @@ const LandingPage = () => {
                                 <Carousel.Item className="carousel">
                                     <img
                                         className="d-block"
-                                        src={profile2}
+                                        src= "https://assets.teenvogue.com/photos/613b5fd248eda7f19679403c/1:1/w_354%2Cc_limit/1235152164"
                                         alt="Second slide"
                                     />
 
                                     <Carousel.Caption>
-                                        <h3>Sherina chaw</h3>
+                                        <h3>Ariana chaw</h3>
                                         <p>“Since I’m using this app, I’m not going to move to another similar app. <br /> Thank you Paylens!!”</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>

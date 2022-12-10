@@ -29,7 +29,11 @@ const History = () => {
     const getList = async () => {
       const listTransaction = await getListTransactionHistory(userId)
 
-      setListUsers(listTransaction)
+      console.log(listTransaction, "listTransaction");
+      // if (listTransaction.history.history.status === 401) {
+        // alert("Harap Login Terlebih dahulu")
+      // }
+      setListUsers(listTransaction);
     }
     getList()
   },[userId])
@@ -81,6 +85,7 @@ const History = () => {
               <Row className='User-Section'>
                 <Col>
                   {listUsers.map(user => {
+                    console.log(user , "user")
                     return (
                       <UserTranscation picture={user.picture}
                         name={user.name}
