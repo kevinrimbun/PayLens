@@ -29,7 +29,7 @@ export const getListTransactionHistory = async (userId) => {
     // Top up
     if (data?.topUp) {
       return {
-        picture: "/avatar.png",
+        picture: "https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg",
         name: data.topUp.userId.username,
         transaction: "Top Up",
         nominal: new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(data.topUp.topAmount),
@@ -45,9 +45,9 @@ export const getListTransactionHistory = async (userId) => {
 
       if (isIncomingTransfer) {
         return {
-          picture: "/avatar.png",
+          picture: "https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg",
           name: transfer.user.username,
-          transaction: "Transfer ( Income )",
+          transaction: "Transfer",
           nominal: new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(transfer.amount),
           date: new Date(transfer.createdAt).toLocaleString('id-ID'),
           label: `Transfer from ${transfer.user.username}`
@@ -57,9 +57,9 @@ export const getListTransactionHistory = async (userId) => {
       // Transfer
       else {
         return {
-          picture: "/avatar.png",
+          picture: "https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg",
           name: transfer.userReceiver.username,
-          transaction: "Transfer ( Expense )",
+          transaction: "Transfer",
           nominal: new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(- transfer.amount),
           date: new Date(transfer.createdAt).toLocaleString('id-ID'),
           label: `Transfer to ${transfer.userReceiver.username}`
