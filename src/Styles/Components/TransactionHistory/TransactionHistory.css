@@ -7,6 +7,7 @@
 }
 
 .Transaction-Comp {
+  height: 32em !important;
   width: 120% !important;
   border-radius: 25px !important;
   -webkit-border-radius: 25px !important;

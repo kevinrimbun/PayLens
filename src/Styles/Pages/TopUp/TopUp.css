@@ -17,6 +17,7 @@
 
 .instructions {
   border: none !important;
+  /* overflow-y: scroll !important; */
 }
 
 .instructions-toggle {
