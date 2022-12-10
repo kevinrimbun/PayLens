@@ -25,6 +25,18 @@
     color: #6379F4 !important;
 }
 
+.btn-login{
+    background-color: #fff !important;
+    border-color: none !important;
+    color: #6379F4 !important;
+}
+
+.btn-login:hover {
+    background-color: #6379F4 !important;
+    border: 1px solid #fff  !important;
+    color: #fff !important;
+}
+
 .landingpage .leftside{
     width: 40%;
 }

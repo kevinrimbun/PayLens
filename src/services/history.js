@@ -1,18 +1,29 @@
-import fetchAPI from "../config/api";
+import { useNavigate } from "react-router-dom";
+import fetchAPI, { getHeaders } from "../config/api";
 
 // Services for history controller
 const ROOT_API_PAYLENS = process.env.REACT_APP_PAYLENS;
 
+
 // History service
 export const getHistoryService = async (userId) => {
   const url = `${ROOT_API_PAYLENS}/history/${userId}`;
-  const response = await fetchAPI({ url, method: "GET" });
-  return response;
+  const headers = getHeaders();
+  const response = await fetchAPI({ url, method: "GET", headers });
+  // console.log(response,"respon");
+  if (response.data.status >= 200 && response.data.status <= 300) {
+    return response
+  }else{
+    return response.data.status;
+  }
 };
 
 // History list
 export const getListTransactionHistory = async (userId) => {
+  const headers = getHeaders();
   const history = (await getHistoryService(userId))?.data
+  if (history ==! undefined) {
+    console.log(history,'history');
   const listTransaction = history.data.map(data => {
 
     // Top up
@@ -56,16 +67,18 @@ export const getListTransactionHistory = async (userId) => {
       }
     }
     return data
-  })
+  }, headers);
   return listTransaction
+  }
 }
 
 
 // Chart
 export const getListHistoryForChart = async (userId) => {
   const history = (await getHistoryService(userId))?.data
-
-  const listData = history.data.map(data => {
+  if (history ==! undefined) {
+    const headers = getHeaders();
+  const listData = history.data?.map(data => {
 
     // Top up
     if (data?.topUp) {
@@ -100,6 +113,8 @@ export const getListHistoryForChart = async (userId) => {
       }
     }
     else return data
-  })
+  },headers)
   return listData
+  }
+  
 }

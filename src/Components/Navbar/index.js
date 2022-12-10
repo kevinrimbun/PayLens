@@ -41,9 +41,9 @@ function NavbarComp() {
     const response = await getDetailUserService(detailUserId);
     console.log(response);
     const data = response.data.data;
-    setFirstName(data.firstName);
-    setLastName(data.lastName);
-    setPhoneNumber(data.phoneNumber);
+    setFirstName(data?.firstName);
+    setLastName(data?.lastName);
+    setPhoneNumber(data?.phoneNumber);
   }, []);
 
   useEffect(() => {
@@ -56,8 +56,9 @@ function NavbarComp() {
   useEffect(()=>{
     const getList = async () => {
       const  data = await getListTransactionHistory(userId)
-
-      if(Array.isArray(data) && data.length > 0){
+      
+      console.log(data, "data");
+      if(Array.isArray(data) && data.length > 0 && data ==! undefined){
         console.log({data})
         setListTransaction(data)
       }

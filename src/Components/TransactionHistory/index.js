@@ -76,7 +76,7 @@ function TransactionHistory() {
         const getList = async () => {
             const listTransaction = await getListTransactionHistory(userId)
 
-            console.log({listTransaction})
+            console.log(listTransaction)
             setListUsers(listTransaction)
 
         }
@@ -103,7 +103,7 @@ function TransactionHistory() {
                     {/* User Section */}
                     <Row className='User-Section'>
                         <Col>
-                            {listUsers.map((user,index) => {
+                            {listUsers?.map((user,index) => {
                                 return (
                                     <UserTranscation picture={user.picture}
                                         name={user.name}

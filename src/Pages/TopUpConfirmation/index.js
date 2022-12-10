@@ -22,9 +22,7 @@ import { topUpService } from "../../services/topUp";
 const TopUpConfirmation = () => {
 
   const amounts = localStorage.getItem("amount")
-  var balances = localStorage.getItem("balance")
-  const  result = balances - amounts
-
+  const balances = localStorage.getItem("balance")
 
   const navigate = useNavigate()
   const date = Date().toLocaleString()
@@ -69,12 +67,12 @@ const TopUpConfirmation = () => {
 
   const handleSuccess = (e) => {
     e.preventDefault();
-    localStorage.setItem("pin1", pin1)
-    localStorage.setItem("pin2", pin2)
-    localStorage.setItem("pin3", pin3)
-    localStorage.setItem("pin4", pin4)
-    localStorage.setItem("pin5", pin5)
-    localStorage.setItem("pin6", pin6)
+    // localStorage.setItem("pin1", pin1)
+    // localStorage.setItem("pin2", pin2)
+    // localStorage.setItem("pin3", pin3)
+    // localStorage.setItem("pin4", pin4)
+    // localStorage.setItem("pin5", pin5)
+    // localStorage.setItem("pin6", pin6)
     // if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
     //   navigate("/success-topup");
     // }
@@ -82,6 +80,8 @@ const TopUpConfirmation = () => {
     // //   alert("PIN salah, silahkan masukkan ulang")
     // // }
     topUp();
+    const result = parseInt(amounts) + parseInt(balances)
+    localStorage.setItem("balance" , result)
   };
 
   const handleFailed = (e) => {
