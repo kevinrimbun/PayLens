@@ -46,7 +46,7 @@ const ManagePhoneNum = () => {
       <Card style={{ width: '100%' }} className='shadow mt-3 CardPhone'>
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">Phone Number</Card.Subtitle>
-          <Card.Subtitle className="float-end Delete-Button"><i onClick={(e) => deletePhoneNumber(e)}> <BiTrashAlt /> </i>
+          <Card.Subtitle className="float-end Delete-Button"><i onClick={(e) => deletePhoneNumber(e)}> </i>
           </Card.Subtitle>
           <Card.Text>
             <div className="d-flex managenum-body">

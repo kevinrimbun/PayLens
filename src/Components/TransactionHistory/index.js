@@ -80,7 +80,7 @@ function TransactionHistory() {
                         <Col>
                             { Array.isArray(listUsers) && listUsers?.map((user,index) => {
                                 return (
-                                    <UserTranscation picture={user. picture}
+                                    <UserTranscation picture={user.picture}
                                         name={user.name}
                                         transaction={user.transaction}
                                         nominal={user.nominal} 

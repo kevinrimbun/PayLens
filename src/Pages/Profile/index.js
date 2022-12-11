@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useState, useEffect, useReducer } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { getDetailUserService } from "../../services/user";
 import { profilePictureService, getProfilePicture } from "../../services/files"
@@ -31,9 +31,7 @@ const Profile = () => {
     const [lastName, setLastName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [image, setImage] = useState(null);
-    const [isFilePicked, setIsFilePicked] = useState(false);
     const [fileId, setFileId] = useState(0);
-
     const [modal, setModal] = useState(false);
     const handleShow = () => setModal(true);
     const handleClose = () => setModal(false);
@@ -50,16 +48,8 @@ const Profile = () => {
         const response = await profilePictureService(data, uuid, userId);
         console.log(response);
         if (response.status === 200) {
-            toast.success(response.data.message, {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            })
+            handleClose();
+            window.location.reload();
         } else {
             toast.error(response.data.message, {
                 position: "bottom-right",
@@ -137,6 +127,10 @@ const Profile = () => {
         localStorage.removeItem("detailUserId");
         localStorage.removeItem("email");
         localStorage.removeItem("token");
+        localStorage.removeItem("amount");
+        localStorage.removeItem("notes");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("nominalTransfer")
 
         if (localStorage.getItem("userId") === null && localStorage.getItem("fileId") === null && localStorage.getItem("balance") === null && localStorage.getItem("detailUserId") === null && localStorage.getItem("email") === null && localStorage.getItem("token") === null) {
             navigate("/", { replace: true })
@@ -174,7 +168,7 @@ const Profile = () => {
 
                         <Modal show={modal} onHide={handleClose}>
                             <Modal.Header closeButton>
-                            <Modal.Title>Enter PIN to Transfer</Modal.Title>
+                            <Modal.Title>Edit your Image</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                             <div className='input-wrapper'>
@@ -186,7 +180,7 @@ const Profile = () => {
                             <Modal.Footer>
                             <Button
                                 variant="outline-light"
-                                // onClick={handleFailed}
+                                onClick={handleClose}
                                 className="m-2"
                                 style={{ background: "#6379F4" }}
                             >
