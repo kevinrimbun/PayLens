@@ -35,9 +35,9 @@ function NavbarComp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const navigate = useNavigate();
   const [image, setImage] = useState(null);
   const [fileId, setFileId] = useState(0);
-  const navigate = useNavigate();
 
   const getDetailUser = useCallback (async () => {
     const detailUserId = localStorage.getItem("detailUserId") ;
@@ -71,10 +71,14 @@ function NavbarComp() {
   useEffect(()=>{
     const getList = async () => {
       const  data = await getListTransactionHistory(userId)
-
-      if(Array.isArray(data) && data.length > 0){
-        console.log({data})
-        setListTransaction(data)
+      console.log(data, "data");
+      if (data === 401) {
+        navigate("/login");
+      }else{
+        if(Array.isArray(data) && data.length > 0){
+          console.log({data})
+          setListTransaction(data)
+        }
       }
     }
     getList()

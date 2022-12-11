@@ -159,7 +159,7 @@ const Profile = () => {
                         {/* Profile Section */}
                         <Col sm={8} className="Profile-Section p-4 ms-3 shadow-lg d-flex flex-column justify-content-center align-items-center">
 
-                        {image ? (
+                        {image? (
                             <div className='m-0 p-0'>
                                 <img src={`http://localhost:4000/paylens/backend/files/${fileId}`} className="ImgUser-Profile rounded" alt="Profile" />
                             </div>
