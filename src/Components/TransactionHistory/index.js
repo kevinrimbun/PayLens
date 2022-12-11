@@ -43,34 +43,9 @@ function TransactionHistory() {
     //userId
     const userId = localStorage.getItem("userId")
     // Data Users
-    const [listUsers,setListUsers] = useState([])
-    // const listUsers = [
-    //     // {
-    //     //     picture: "https://i.pravatar.cc/50?img=3",
-    //     //     name: "Samuel Suhi",
-    //     //     transaction: "Transfer",
-    //     //     nominal: "+ Rp 50.000"
-    //     // },
-    //     // {
-    //     //     picture: "https://i.pravatar.cc/50?img=4",
-    //     //     name: "IntelliJ",
-    //     //     transaction: "Subcription",
-    //     //     nominal: "- Rp 80.000"
-    //     // },
-    //     // {
-    //     //     picture: "https://i.pravatar.cc/50?img=1",
-    //     //     name: "Christine Mar...",
-    //     //     transaction: "Transfer",
-    //     //     nominal: "+ Rp 90.000"
-    //     // },
-    //     // {
-    //     //     picture: "https://i.pravatar.cc/50?img=2",
-    //     //     name: "Netflix",
-    //     //     transaction: "Subcription",
-    //     //     nominal: "+ Rp 30.000"
-    //     // }
+    const [listUsers, setListUsers] = useState([])
+    console.log(listUsers)
 
-    // ]
 
     useEffect(()=>{
         const getList = async () => {
@@ -103,9 +78,9 @@ function TransactionHistory() {
                     {/* User Section */}
                     <Row className='User-Section'>
                         <Col>
-                            {listUsers?.map((user,index) => {
+                            { Array.isArray(listUsers) && listUsers.map((user,index) => {
                                 return (
-                                    <UserTranscation picture={user.picture}
+                                    <UserTranscation picture={user. picture}
                                         name={user.name}
                                         transaction={user.transaction}
                                         nominal={user.nominal} 

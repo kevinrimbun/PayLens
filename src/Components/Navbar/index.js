@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import { getDetailUserService } from "../../services/user";
+import { getProfilePicture } from "../../services/files"
 
 // Components
 import { Link, Navigate, useNavigate } from 'react-router-dom';
@@ -35,6 +36,8 @@ function NavbarComp() {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
+  const [image, setImage] = useState(null);
+  const [fileId, setFileId] = useState(0);
 
   const getDetailUser = useCallback (async () => {
     const detailUserId = localStorage.getItem("detailUserId") ;
@@ -47,9 +50,25 @@ function NavbarComp() {
     setPhoneNumber(data?.phoneNumber);
   }, []);
 
+  const getImage = useCallback (async () => {
+    const uuid = localStorage.getItem("fileId");
+    const response = await getProfilePicture(uuid);
+    const data = response.data;
+    console.log(response);
+    setFileId(uuid);
+
+    setImage(data);
+    // if (response.status === 200) {
+    //     setIsFilePicked(true);
+    // } else {
+    //     setIsFilePicked(false);
+    // }
+  }, []);
+
   useEffect(() => {
     getDetailUser();
-  }, [getDetailUser]);
+    getImage();
+  }, [getDetailUser, getImage]);
 
   const [listTransaction, setListTransaction] = useState([])
   const userId = +localStorage.getItem("userId")
@@ -59,10 +78,10 @@ function NavbarComp() {
       const  data = await getListTransactionHistory(userId)
       
       console.log(data, "data");
-      if (data?.status === 401) {
+      if (data === 401) {
         navigate("/login");
       }else{
-        if(Array.isArray(data) && data.length > 0 && data ==! undefined){
+        if(Array.isArray(data) && data.length > 0){
           console.log({data})
           setListTransaction(data)
         }

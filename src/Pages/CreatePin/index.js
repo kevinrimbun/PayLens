@@ -58,7 +58,7 @@ const CreatePin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         createPin();
-        navigate("/success-pin", { replace: true })
+        // navigate("/success-pin", { replace: true })
     }
 
     return <Auth>

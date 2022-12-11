@@ -11,7 +11,12 @@ export const getHistoryService = async (userId) => {
   const headers = getHeaders();
   const response = await fetchAPI({ url, method: "GET", headers });
   console.log(response, "respon");
-  return response
+  if (response.data.status >= 200 && response.data.status < 401) {
+    return response
+  }else{
+    return response.data.status
+  }
+
 };
 
 // History list

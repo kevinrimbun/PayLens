@@ -47,11 +47,13 @@ const Login = () => {
             const userId = responseData.userId;
             const email = responseData.email;
             const detailUserId = responseData.detailUserId;
+            const fileId = responseData.fileId;
             localStorage.setItem("token", token);
             localStorage.setItem("email", email);
             localStorage.setItem("userId", userId);
             localStorage.setItem("detailUserId", detailUserId);
             localStorage.setItem("balance", (response.data.data.balance));
+            localStorage.setItem("fileId", fileId);
             navigate("/dashboard")
         }
         console.log(response.data.message);

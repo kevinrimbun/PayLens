@@ -8,7 +8,7 @@ function Footer() {
             <div className="container mb-3">
                 <small className='float-start'>&copy; 2022 PayLens</small>
                 <Link to='/contact' className='text-white'>
-                    <p className='float-end mx-4'> contact@paylens.com</p>
+                    <p className='float-end mx-4'> paylens123@gmail.com</p>
                 </Link>
                 <p className='float-end'>(0811) 1500998</p>
             </div>
