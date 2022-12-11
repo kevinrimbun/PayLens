@@ -25,7 +25,7 @@ const TransferConfirmation3 = () => {
     const notes = localStorage.getItem("notes")
     const username = localStorage.getItem("userName")
     const balances = localStorage.getItem("balance")
-    const  result = balances - amounts
+
 
   
     const navigate = useNavigate()
@@ -72,6 +72,8 @@ const TransferConfirmation3 = () => {
         if (response.status === 201) {
         // alert(responseData);
         navigate("/transaction-success")
+        const  result = balances - amounts
+        localStorage.setItem("balance" , result)
         }
       }
   
@@ -84,7 +86,7 @@ const TransferConfirmation3 = () => {
       // localStorage.setItem("pin5", pin5)
       // localStorage.setItem("pin6", pin6)
       transfer();
-      localStorage.setItem("balance" , result)
+
     };
   
     return (

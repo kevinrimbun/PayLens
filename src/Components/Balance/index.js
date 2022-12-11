@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
 // Iconify
@@ -13,6 +13,8 @@ import Col from 'react-bootstrap/Col';
 
 // Service
 import { getBalance } from '../../services/balance';
+import { getDetailUserService } from "../../services/user";
+
 // CSS
 import '../../Styles/Components/Balance/Balance.css'
 
@@ -22,6 +24,21 @@ function BalanceComp() {
     const [userBalance, setUserBalance] = useState({})
     const userId = +localStorage.getItem('userId')
     const balance = localStorage.getItem('balance');
+    const [phoneNumber, setPhoneNumber] = useState("");
+
+    const getDetailUser = useCallback (async () => {
+        const detailUserId = localStorage.getItem("detailUserId") ;
+    
+        const response = await getDetailUserService(detailUserId);
+        console.log(response);
+        const data = response.data.data;
+        setPhoneNumber(data?.phoneNumber);
+    }, []);
+
+    useEffect(() => {
+        getDetailUser();
+    }, [getDetailUser]);
+
 
     // localStorage.setItem("balance", 0)
     // var amount = localStorage.getItem("amount")
@@ -60,7 +77,7 @@ function BalanceComp() {
                         <Col className='d-flex flex-column justify-content-center Description-Section'>
                             <p className='text-start mt-1'>Balance</p>
                             <h4 className='text-start'>Rp. {balance}</h4>
-                            <p className='text-start mb-1'>+62 {localStorage.getItem('number')}</p>
+                            <p className='text-start mb-1'>{phoneNumber}</p>
                         </Col>
 
                         {/* Button Section */}

@@ -18,6 +18,8 @@ import Button from "react-bootstrap/Button";
 import { Link, useParams, Component, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
 import { topUpService } from "../../services/topUp";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TopUpConfirmation = () => {
 
@@ -46,48 +48,70 @@ const TopUpConfirmation = () => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  // Modal2
+  const [showModal2, setShow2] = useState(false);
+  const handleShow2 = () => setShow2(true);
+  const handleClose2 = () => setShow2(false);
+
   const topUp = async () => {
     const userId = localStorage.getItem("userId") ;
     const data = {
-        amount: amounts,
-        pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
+      amount: amounts,
+      pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
     }
 
     const response = await topUpService(data, +userId);
     console.log(response);
     const responseData = response.data.message;
     if (response.status === 401) {
-    alert(responseData);
+      toast.error(responseData, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    })
     }
     if (response.status === 201) {
-      alert(responseData);
-      navigate('/dashboard')
-      }
+      // alert(responseData);
+      const result = parseInt(amounts) + parseInt(balances)
+      localStorage.setItem("balance" , result)
+      handleClose();
+      handleShow2();
+    }
 }
 
   const handleSuccess = (e) => {
     e.preventDefault();
-    // localStorage.setItem("pin1", pin1)
-    // localStorage.setItem("pin2", pin2)
-    // localStorage.setItem("pin3", pin3)
-    // localStorage.setItem("pin4", pin4)
-    // localStorage.setItem("pin5", pin5)
-    // localStorage.setItem("pin6", pin6)
-    // if (pin1 === pinn1 && pin2 === pinn2 && pin3 === pinn3 && pin4 === pinn4 && pin5 === pinn5 && pin6 === pinn6) { 
-    //   navigate("/success-topup");
-    // }
-    // // if (pin1 != pinn1 || pin2 != pinn2 || pin3 != pinn3 || pin4 != pinn4 || pin5 != pinn5 || pin6 != pinn6) {
-    // //   alert("PIN salah, silahkan masukkan ulang")
-    // // }
     topUp();
-    const result = parseInt(amounts) + parseInt(balances)
-    localStorage.setItem("balance" , result)
   };
 
   const handleFailed = (e) => {
     e.preventDefault();
-    navigate("/dashboard");
-    alert("canceled");
+    handleClose();
+    toast.error("Canceled", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    })
+  };
+
+  const handleSuccess2 = (e) => {
+    e.preventDefault();
+    navigate('/dashboard')
+  };
+
+  const handleFailed2 = (e) => {
+    e.preventDefault();
+    handleClose2();
   };
 
   return (
@@ -216,12 +240,47 @@ const TopUpConfirmation = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* modal 2 */}
+      <Modal show={showModal2}>
+        <Modal.Header>
+          <Modal.Title>Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Top up success updated
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="outline-light"
+            onClick={handleSuccess2}
+            className="m-2"
+            style={{ background: "#6379F4" }}
+          >
+            Continue
+          </Button>
+        </Modal.Footer>
+      </Modal>
                         </Col>
                     </Row>
                 </Container>
             </div>
             <Footer />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </>
+        
   );
 };
 

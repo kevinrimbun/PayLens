@@ -85,7 +85,7 @@ const account = [
         {
             id: 1,
             profilePic: "https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg",
-            name: "Kevin Rimbun",
+            name: "Donovan Yoel",
             phone: "+62 813-8492-9994"
         }
     ]

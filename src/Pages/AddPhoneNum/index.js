@@ -81,7 +81,7 @@ const AddPhoneNum = () => {
             <div className='d-flex align-items-center justify-content-center addnum-body'>
               <form onSubmit={handlesubmit}>
                 <div className="">
-                  <BsTelephone /> <label htmlFor="">+62</label> <input type="number" onChange={(e) => setNumber(e.target.value)} style={{ outlineStyle: 'none' }} placeholder='Masukan nomor disini' />
+                  <BsTelephone style={{marginRight: "5px"}}/><input type="number" onChange={(e) => setNumber(e.target.value)} style={{ outlineStyle: 'none' }} placeholder='Masukan nomor disini' />
                   <hr />
                   <Button className='btn-addphonee' type='submit'>Add Number</Button>
                 </div>

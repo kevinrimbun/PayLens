@@ -9,6 +9,8 @@ import Col from 'react-bootstrap/Col';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Components
 import NavbarComp from "../../Components/Navbar";
@@ -30,7 +32,16 @@ const TopUp = () => {
         e.preventDefault();
         if (amount < 10000) {
             // alert("Nominal tidak boleh kurang dari 10 k")
-            setError(true);
+            toast.error("Minimum Top Up Amount is Rp 10.000,-", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
         }else{
             localStorage.setItem("amount", amount)
             navigate("/topup-confirmation", { replace: true })
@@ -153,6 +164,18 @@ const TopUp = () => {
                 </Container>
             </div>
             <Footer />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </>
     );
 };

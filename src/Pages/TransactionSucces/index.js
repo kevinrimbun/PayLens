@@ -82,7 +82,7 @@ const TransactionSuccess = () => {
                               <Row>
                                 <Col>
                                   <Card.Text>Balance left</Card.Text>
-                                  <Card.Text>Rp. {result}</Card.Text>
+                                  <Card.Text>Rp. {balances}</Card.Text>
                                 </Col>
                               </Row>
                             </Container>

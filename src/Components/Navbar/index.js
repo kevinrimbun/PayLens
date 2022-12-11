@@ -22,7 +22,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
 
 //Service
-import { getListTransactionHistory } from '../../services/history';
+import { getHistoryService, getListTransactionHistory } from '../../services/history';
 
 // CSS
 import '../../Styles/Components/Navbar/Navbar.css'
@@ -70,15 +70,17 @@ function NavbarComp() {
 
   useEffect(()=>{
     const getList = async () => {
+      const  response = await getHistoryService(userId)
+      console.log(response, "response navbar");
+      if (response === 401) {
+        navigate("/login")
+      }
       const  data = await getListTransactionHistory(userId)
+      
       console.log(data, "data");
-      if (data === 401) {
-        navigate("/login");
-      }else{
-        if(Array.isArray(data) && data.length > 0){
-          console.log({data})
-          setListTransaction(data)
-        }
+      if(Array.isArray(data) && data.length > 0){
+        console.log({data})
+        setListTransaction(data)
       }
     }
     getList()
