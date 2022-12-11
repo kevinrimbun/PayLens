@@ -118,9 +118,9 @@ const TopUp = () => {
                                 </Row>
                             </Dropdown>
 
-                            <form onSubmit={handleSubmit} className="border">
+                            <form onSubmit={handleSubmit} className="">
 
-                                <div className="add-amount d-flex flex-column justify-content-center align-items-center">
+                                <div className="add-amount d-flex flex-column justify-content-center align-items-center enter-section">
                                     <Row className="d-flex flex-column justify-content-center align-items-center ms-1">
                                         <Col>
                                             <p>Enter nominal top up</p>

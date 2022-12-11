@@ -20,6 +20,10 @@
   /* overflow-y: scroll !important; */
 }
 
+.enter-section {
+  margin-right: 300px !important;
+}
+
 .instructions-toggle {
   border: none !important;
 }

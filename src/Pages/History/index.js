@@ -84,7 +84,7 @@ const History = () => {
               {/* User Section */}
               <Row className='User-Section'>
                 <Col>
-                  {listUsers.map(user => {
+                  {Array.isArray(listUsers) && listUsers.map(user => {
                     console.log(user , "user")
                     return (
                       <UserTranscation picture={user.picture}

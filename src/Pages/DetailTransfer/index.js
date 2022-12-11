@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
 import listAccount from "../../Data/account";
 import '../../Styles/Pages/DetailTransfer/detailtransfer.css'
+// Service
+import { getBalance } from '../../services/balance';
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -20,6 +22,27 @@ import { Icon } from "@iconify/react";
 
 const DetailTransfer = () => {
 
+  // Data balance
+  const [userBalance, setUserBalance] = useState({})
+  const userId = +localStorage.getItem('userId')
+  const balance = localStorage.getItem('balance');
+
+  useEffect( ()=>{
+    const getUserBalance = async ()=> {
+        
+        const balance = await getBalance(userId)
+
+        // console.log({balance})
+        // if(balance[0] !== null){
+        //     setUserBalance(balance[0])
+        // }else{
+        //     console.error(balance[1])
+        // }
+    }
+    getUserBalance()
+    
+},[])
+
   var amounts = localStorage.getItem("amount")
   var balances = localStorage.getItem("balance")
   const  result = balances - amounts
@@ -35,7 +58,7 @@ const DetailTransfer = () => {
     e.preventDefault()
       localStorage.setItem("nominalTransfer", amount) 
       localStorage.setItem("notes", notes)
-      navigate('/transfer-confirmation', {replace : true})
+      navigate('/transfer-confirmation3', {replace : true})
   }
 
 
@@ -102,7 +125,7 @@ const DetailTransfer = () => {
             </Row>
             <Row className="d-flex flex-column justify-content-center">
               <Col>
-              <p>Rp {result} available</p>
+              <p>Rp {balance} available</p>
               </Col>
             </Row>
 
