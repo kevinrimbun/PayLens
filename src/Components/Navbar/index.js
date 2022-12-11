@@ -3,7 +3,7 @@ import { getDetailUserService } from "../../services/user";
 import { getProfilePicture } from "../../services/files"
 
 // Components
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 // Iconify
 import { Icon } from '@iconify/react';
@@ -37,6 +37,7 @@ function NavbarComp() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [image, setImage] = useState(null);
   const [fileId, setFileId] = useState(0);
+  const navigate = useNavigate();
 
   const getDetailUser = useCallback (async () => {
     const detailUserId = localStorage.getItem("detailUserId") ;
@@ -72,10 +73,16 @@ function NavbarComp() {
       const  data = await getListTransactionHistory(userId)
       
       console.log(data, "data");
-      if(Array.isArray(data) && data.length > 0 && data ==! undefined){
-        console.log({data})
-        setListTransaction(data)
+      if (data?.status === 401) {
+        navigate("/login");
+      }else{
+        if(Array.isArray(data) && data.length > 0 && data ==! undefined){
+          console.log({data})
+          setListTransaction(data)
+        }
       }
+      
+      
     }
     getList()
   }, [userId])
