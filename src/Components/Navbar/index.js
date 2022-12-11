@@ -22,7 +22,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
 
 //Service
-import { getListTransactionHistory } from '../../services/history';
+import { getHistoryService, getListTransactionHistory } from '../../services/history';
 
 // CSS
 import '../../Styles/Components/Navbar/Navbar.css'
@@ -75,19 +75,18 @@ function NavbarComp() {
 
   useEffect(()=>{
     const getList = async () => {
+      const  response = await getHistoryService(userId)
+      console.log(response, "response navbar");
+      if (response === 401) {
+        navigate("/login")
+      }
       const  data = await getListTransactionHistory(userId)
       
       console.log(data, "data");
-      if (data === 401) {
-        navigate("/login");
-      }else{
-        if(Array.isArray(data) && data.length > 0){
-          console.log({data})
-          setListTransaction(data)
-        }
+      if(Array.isArray(data) && data.length > 0){
+        console.log({data})
+        setListTransaction(data)
       }
-      
-      
     }
     getList()
   }, [userId])
@@ -127,7 +126,7 @@ function NavbarComp() {
 
               </Row>
             </Container>
-                  <Dropdown className='Dropdown-History'>
+            <Dropdown className='Dropdown-History'>
                     <Dropdown.Toggle className='Dropdown-Toggle'>
                       <Icon icon="ei:bell" width="30" height="30" color='#4D4B57' className="mx-1 bell-navbar" id="dropdown-basic" />
                     </Dropdown.Toggle>
@@ -175,7 +174,6 @@ function NavbarComp() {
                           })
                         }
                         {/* <Card.Subtitle className="mb-3 text-muted"><h6>Today</h6></Card.Subtitle>
-
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>
@@ -187,7 +185,6 @@ function NavbarComp() {
                             </div>
                           </Card.Body>
                         </Card>
-
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>
@@ -199,9 +196,7 @@ function NavbarComp() {
                             </div>
                           </Card.Body>
                         </Card>
-
                         <Card.Subtitle className="mb-3 mt-3 text-muted"><h6>This Week</h6></Card.Subtitle>
-
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>
@@ -213,7 +208,6 @@ function NavbarComp() {
                             </div>
                           </Card.Body>
                         </Card>
-
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>

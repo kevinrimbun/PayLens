@@ -78,7 +78,7 @@ function TransactionHistory() {
                     {/* User Section */}
                     <Row className='User-Section'>
                         <Col>
-                            { Array.isArray(listUsers) && listUsers.map((user,index) => {
+                            { Array.isArray(listUsers) && listUsers?.map((user,index) => {
                                 return (
                                     <UserTranscation picture={user. picture}
                                         name={user.name}

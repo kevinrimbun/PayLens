@@ -15,9 +15,9 @@
     -o-border-radius: 25px;
 }
 
-.ImgUser-Profile { 
+.ImgUser-Profile {
+    margin-top: -15%;
     width: 125px;
-    /* margin-top: -20% !importants; */
     /* margin-bottom: 0px !important; */
     height: 125px;
 }
