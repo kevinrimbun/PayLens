@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
 import listAccount from "../../Data/account";
 import '../../Styles/Pages/DetailTransfer/detailtransfer.css'
+// Service
+import { getBalance } from '../../services/balance';
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,9 +14,34 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from 'react-bootstrap/Button';
 
+import NavbarComp from "../../Components/Navbar";
+import Sidebar from "../../Components/Sidebar";
+import Footer from "../../Components/Footer";
+
 import { Icon } from "@iconify/react";
 
 const DetailTransfer = () => {
+
+  // Data balance
+  const [userBalance, setUserBalance] = useState({})
+  const userId = +localStorage.getItem('userId')
+  const balance = localStorage.getItem('balance');
+
+  useEffect( ()=>{
+    const getUserBalance = async ()=> {
+        
+        const balance = await getBalance(userId)
+
+        // console.log({balance})
+        // if(balance[0] !== null){
+        //     setUserBalance(balance[0])
+        // }else{
+        //     console.error(balance[1])
+        // }
+    }
+    getUserBalance()
+    
+},[])
 
   var amounts = localStorage.getItem("amount")
   var balances = localStorage.getItem("balance")
@@ -29,20 +56,28 @@ const DetailTransfer = () => {
 
   const handelSubmit = (e) => {
     e.preventDefault()
-    if (amount < localStorage.getItem("balance")) {
-      localStorage.setItem("amount", amount) 
+      localStorage.setItem("nominalTransfer", amount) 
       localStorage.setItem("notes", notes)
-      navigate('/transfer-confirmation/' + account.id, {replace : true})
-    } else if (amount.length == 0) {
-      setError(true)
-    }
+      navigate('/transfer-confirmation3', {replace : true})
   }
 
 
 
   return (
-    <Content>
-      <Container>
+    <>
+      {/* Navbar Section */}
+      <NavbarComp />
+
+      <div className="App w-100 p-1">
+        <Container fluid className="w-100 p-5 Container-Section p-1">
+          <Row>
+
+            {/* Sidebar Section */}
+            <Col sm={3} className="Sidebar-Section p-1"><Sidebar /></Col>
+
+            {/* History Section */}
+            <Col sm={8} className="History-Section p-4 ms-3 shadow-lg">
+            <Container>
         <Row className="d-flex flex-column justify-content-center">
           <Col >
             <h4>Transfer Money</h4>
@@ -90,7 +125,7 @@ const DetailTransfer = () => {
             </Row>
             <Row className="d-flex flex-column justify-content-center">
               <Col>
-              <p>Rp {result} available</p>
+              <p>Rp {balance} available</p>
               </Col>
             </Row>
 
@@ -119,7 +154,12 @@ const DetailTransfer = () => {
           </div>
         </form>
       </Container>
-    </Content>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Footer />
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from "react-router-dom";
 
 // Iconify
@@ -11,14 +11,62 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+// Service
+import { getBalance } from '../../services/balance';
+import { getDetailUserService } from "../../services/user";
+
 // CSS
 import '../../Styles/Components/Balance/Balance.css'
 
 function BalanceComp() {
-    localStorage.setItem("balance", 950000)
-    var amount = localStorage.getItem("amount")
-    var balance = localStorage.getItem("balance")
-    const  result = balance - amount
+
+    // Data balance
+    const [userBalance, setUserBalance] = useState({})
+    const userId = +localStorage.getItem('userId')
+    const balance = localStorage.getItem('balance');
+    const [phoneNumber, setPhoneNumber] = useState("");
+
+    const getDetailUser = useCallback (async () => {
+        const detailUserId = localStorage.getItem("detailUserId") ;
+    
+        const response = await getDetailUserService(detailUserId);
+        console.log(response);
+        const data = response.data.data;
+        setPhoneNumber(data?.phoneNumber);
+    }, []);
+
+    useEffect(() => {
+        getDetailUser();
+    }, [getDetailUser]);
+
+
+    // localStorage.setItem("balance", 0)
+    // var amount = localStorage.getItem("amount")
+    // var balance = localStorage.getItem("balance")
+
+    let  result
+    if(userBalance?.balance) {
+        result = userBalance.balance
+    } else {
+        result =0
+    }
+
+    useEffect( ()=>{
+        const getUserBalance = async ()=> {
+            
+            const balance = await getBalance(userId)
+
+            // console.log({balance})
+            // if(balance[0] !== null){
+            //     setUserBalance(balance[0])
+            // }else{
+            //     console.error(balance[1])
+            // }
+        }
+        getUserBalance()
+        
+    },[])
+    
     return (
         <Card className='shadow-lg Balance-Comp'>
             <Card.Body>
@@ -28,8 +76,8 @@ function BalanceComp() {
                     <Row className='d-flex justify-content-center'>
                         <Col className='d-flex flex-column justify-content-center Description-Section'>
                             <p className='text-start mt-1'>Balance</p>
-                            <h4 className='text-start'>Rp. {result}</h4>
-                            <p className='text-start mb-1'>+62 {localStorage.getItem('number')}</p>
+                            <h4 className='text-start'>Rp. {balance}</h4>
+                            <p className='text-start mb-1'>{phoneNumber}</p>
                         </Col>
 
                         {/* Button Section */}

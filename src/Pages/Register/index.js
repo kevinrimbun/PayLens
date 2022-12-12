@@ -5,37 +5,81 @@ import '../../Styles/Layout/Auth/auth.css';
 import { BsPerson } from 'react-icons/bs'
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
+import { registerService } from '../../services/auth';
+
 const eye = <AiOutlineEye/>
 const eyeClose = <AiOutlineEyeInvisible/>
 
 const Register = () => {
-    
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const register = async () => {
+        const data = {
+            username,
+            email,
+            password
+        };
+
+        const response = await registerService(data);
+        console.log(response);
+        if (response.status !== 201) {
+            toast.error(response.data.errors.username, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })  && toast.error(response.data.errors.email, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) && toast.error(response.data.errors.password, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) 
+        } else {
+            const responseData = response.data.data;
+            const userId = responseData.userId;
+            const detailUserId = responseData.detailUserId;
+            const fileId = responseData.fileId;
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("detailUserId", detailUserId);
+            localStorage.setItem("fileId", fileId);
+            navigate('/create-pin', { replace : true })
+            return responseData;
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        register();
+    }
 
     const [passwordShown1, setPasswordShown1] = useState(false);
     const togglePasswordVisiblity1 = () => {
         setPasswordShown1(passwordShown1 ? false : true);
     };
     
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState(false)
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        localStorage.setItem("username", username);
-        localStorage.setItem("email", email);
-        localStorage.setItem("password", password);
-        if (username.length === 0  || email.length === 0 || password.length === 0) {
-            setError(true)
-        } else if  (username.length !== 0  || email.length !== 0 || password.length !== 0) {
-            navigate('/create-pin', { replace : true })
-        }
-        const data = new FormData(e.target)
-        console.log(Object.fromEntries(data.entries()));
-    }
 
     return <Auth>
         <div className='title-right-wrapper'>
@@ -56,19 +100,11 @@ const Register = () => {
                         <BsPerson className='bi' />
                         <input autoComplete='off' type="text" className="form-control form-auth" id="username" placeholder="Enter your username" name="username" onChange={(e) => setUsername(e.target.value)} />
                     </div>
-                    <div className='error-message'>
-                        {error && username.length <= 0 ?
-                        <label>Username cannot be empty !</label>:""}
-                    </div>
 
                     {/* Email */}
                     <div className='mt-4 d-flex form-email'>
                         <BsEnvelope className='bi' />
                         <input autoComplete='off' type="email" className="form-control form-auth" id="email" placeholder="Enter your e-mail" name="email" onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className='error-message'>
-                        {error && email.length <= 0 ?
-                        <label>Email cannot be empty !</label>:""}
                     </div>
 
                     {/* Password */}
@@ -77,12 +113,8 @@ const Register = () => {
                         <input autoComplete='off' type={passwordShown1 ? "text" : "password"} className="form-control password form-auth" id="password" placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
                         <i onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible/> : <AiOutlineEye/> }</i>
                     </div>
-                    <div className='error-message'>
-                        {error && password.length <= 0 ?
-                        <label>Password cannot be empty !</label>:""}
-                    </div>
 
-                    <button className="btn-auth" id='submit' type="submit" value="Enter">Register</button>
+                    <button className="btn-auth" id='submit' type="submit" value="Enter" >Register</button>
 
                 </form>
 
@@ -93,6 +125,18 @@ const Register = () => {
             </div>
 
         </div>
+        <ToastContainer
+            position="bottom-right"
+            autoClose={3500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+        />
     </Auth>
 }
 

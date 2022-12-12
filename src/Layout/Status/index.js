@@ -26,7 +26,7 @@ const Status = (props) => {
   const  result = balances - amounts
 
   const navigate = useNavigate()
-  const { children } = props;
+  
   const date = Date().toLocaleString()
 
   const { id } = useParams();
@@ -36,6 +36,7 @@ const Status = (props) => {
     e.preventDefault();
     navigate("/dashboard", {replace : true});
   };
+  const { children } = props
 
   return (
     <>

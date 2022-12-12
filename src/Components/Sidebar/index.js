@@ -18,23 +18,18 @@ function Sidebar() {
 
     const deleteAll = (e) => {
         e.preventDefault();
-        localStorage.removeItem("username");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("fileId");
+        localStorage.removeItem("balance");
+        localStorage.removeItem("detailUserId");
         localStorage.removeItem("email");
-        localStorage.removeItem("password");
-        localStorage.removeItem("number");
-        localStorage.removeItem("pin1")
-        localStorage.removeItem("pin2")
-        localStorage.removeItem("pin3")
-        localStorage.removeItem("pin4")
-        localStorage.removeItem("pin5")
-        localStorage.removeItem("pin6")
-        localStorage.removeItem("amount")
-        localStorage.removeItem("balance")
-        localStorage.removeItem("notes")
+        localStorage.removeItem("token");
+        localStorage.removeItem("amount");
+        localStorage.removeItem("notes");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("nominalTransfer")
         console.log(localStorage.getItem("username"))
-        if (localStorage.getItem("username") === null && localStorage.getItem("email") === null && localStorage.getItem("password") === null && localStorage.getItem("pin1") === null && localStorage.getItem("pin2") === null && localStorage.getItem("pin3") === null && localStorage.getItem("pin4") === null && localStorage.getItem("pin5") === null && localStorage.getItem("pin6") === null && localStorage.getItem("amount") === null && localStorage.getItem("balance") === null && localStorage.getItem("notes") === null) {
-            navigate("/", { replace: true })
-        }
+        navigate("/", { replace: true })
     };
 
     return (

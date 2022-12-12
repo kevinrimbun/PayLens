@@ -5,36 +5,81 @@ import '../../Styles/Layout/Auth/auth.css';
 import { CiLock } from 'react-icons/ci';
 import {BsEnvelope} from 'react-icons/bs';
 import {AiFillLock,AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai"
-const eye = <AiOutlineEye/>
-const eyeClose = <AiOutlineEyeInvisible/>
+import { loginService } from '../../services/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// const eye = <AiOutlineEye/>
+// const eyeClose = <AiOutlineEyeInvisible/>
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const [passwordShown1, setPasswordShown1] = useState(false);
     const togglePasswordVisiblity1 = () => {
         setPasswordShown1(passwordShown1 ? false : true);
     };
 
-    const navigate = useNavigate();
+    const login = async () => {
+        const data = {
+            email,
+            password
+        };
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState(false)
+        const response = await loginService(data);
+        if (response.status !== 200) {
+            toast.error(response.data.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) && toast.error(response.data.errors.email, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }) && toast.error(response.data.errors.password, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+        } else {
+            const responseData = response.data.data;
+            const token = responseData.token;
+            const userId = responseData.userId;
+            const email = responseData.email;
+            const detailUserId = responseData.detailUserId;
+            const fileId = responseData.fileId;
+            localStorage.setItem("token", token);
+            localStorage.setItem("email", email);
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("detailUserId", detailUserId);
+            localStorage.setItem("balance", (response.data.data.balance));
+            localStorage.setItem("fileId", fileId);
+            navigate("/dashboard")
+        }
+        console.log(response.data);
+        console.log(response.status);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.getItem("email")
-        localStorage.getItem("password")
-        if (email.length === 0 || password.length === 0) {
-            setError(true)
-        } else if (email === localStorage.getItem("email") && password === localStorage.getItem("password")) {
-            // window.location.replace("/dashboard")
-            navigate("/dashboard", { replace: true })
-        } else {
-            setError(true)
-        }
-        const data = new FormData(e.target)
-        console.log(Object.fromEntries(data.entries()));
+        login();
     }
 
     return <Auth>
@@ -85,11 +130,6 @@ const Login = () => {
                             Forgot Your Password?
                         </Link>
                     </div>
-                    
-                    <div className='error-message'>
-                        {error && email !== localStorage.getItem("email") && password !== localStorage.getItem("password") ?
-                        <label>Email or Password Invalid !</label>:""}
-                    </div>
 
                     <button className="btn-auth" id='submit' type="submit" value="Enter">Login</button>
                 </form>
@@ -99,6 +139,18 @@ const Login = () => {
             </div>
 
         </div>
+        <ToastContainer
+            position="bottom-right"
+            autoClose={3500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+        />
     </Auth>
 }
 

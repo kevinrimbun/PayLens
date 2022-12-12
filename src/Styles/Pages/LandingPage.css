@@ -11,14 +11,30 @@
 }
 
 .landingpage .Wrapper{
-    display: flex;
-
     height: 100vh;
 }
 
 .btn-signup, .try {
     background-color: #6379F4 !important;
     border-color: none !important;
+}
+
+.btn-signup:hover {
+    background-color: #fff !important;
+    border: 1px solid #6379F4 !important;
+    color: #6379F4 !important;
+}
+
+.btn-login{
+    background-color: #fff !important;
+    border-color: none !important;
+    color: #6379F4 !important;
+}
+
+.btn-login:hover {
+    background-color: #6379F4 !important;
+    border: 1px solid #fff  !important;
+    color: #fff !important;
 }
 
 .landingpage .leftside{
@@ -134,14 +150,31 @@
     margin-top: 10%;
 }
 
-.Wrapper-feature .rightside{
+.Wrapper-feature .rightside-feature{
+    overflow: hidden;
     margin: auto;
 }
 
 
+.feature-explanation {
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.feature-explanation:hover{
+    -webkit-transform: translateX(10px) translateY(10px) translateZ(0px);
+    -moz-transform: translateX(20px) translateY(20px) translateZ(0px);
+    -ms-transform: translateX(20px) translateY(20px) translateZ(0px);
+    -o-transform: translateX(20px) translateY(20px) translateZ(0px);
+    transform:  translateX(20px) translateY(20px) translateZ(0px);
+}
+
 /* carousel */
 .Wrapper-carousel{
-    height: 60vh;
+    height: 80vh;
 }
 
 .carousel img{
@@ -177,4 +210,70 @@
 
 .Wrapper-rights p{
     margin: 20px 0 !important;
+}
+
+@media screen and (max-width: 476px) {
+    .landingpage img{
+        display: none;
+    }
+
+    .landingpage h1{
+        font-size: 45px !important;
+    }
+    
+}
+
+@media screen and (max-width: 770px) {
+    .landingpage .rightside{
+        margin: 21% 0 5% 0;
+    }
+
+    .landingpage .leftside{
+        margin-left: -6%;
+    }
+
+    .landingpage .Wrapper{
+        height: 85vh;
+    }
+
+    .landingpage .downside{
+        margin-top: -12%;
+    }
+
+    .landingpage .Wrapper-feature img{
+        margin: 0;
+        position: relative;
+        width: 300px;
+        height: 450px;
+        padding: 0;
+    }
+
+    .landingpage .Wrapper-feature .foto{
+        display: flex;
+        justify-content: center;
+        height: 10%;
+    }
+
+    .landingpage .Wrapper-feature .rightside-feature{
+        justify-content: center;
+        display: grid;
+        margin: auto;
+    }
+
+    .landingpage .Wrapper-carousel{
+        height: 50vh;
+    }
+
+    .landingpage .Wrapper-carousel .row-carousel{
+        height: 76%;
+    }
+
+    .landingpage .Wrapper-carousel .col-carousel{
+        margin: auto;
+    }
+
+    .landingpage .Wrapper-carousel .carousel img{
+        margin: 16% auto;
+    }
+
 }

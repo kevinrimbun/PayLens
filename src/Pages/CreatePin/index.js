@@ -1,39 +1,52 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PinInput, PinInputField } from '@chakra-ui/react';
 import Auth from '../../Layout/Auth';
+import { PinInput, PinInputField } from '@chakra-ui/react';
 import '../../Styles/Pages/auth.css';
-// import { CiLock } from 'react-icons/ci';
-// import {BsEnvelope} from 'react-icons/bs';
-
+import { createPinService } from '../../services/auth';
+import '../../Styles/Pages/CreatePin/CreatePin.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const CreatePin = () => {
     const navigate = useNavigate();
-
     const [pin1, setInput1] = useState("");
     const [pin2, setInput2] = useState("");
     const [pin3, setInput3] = useState("");
     const [pin4, setInput4] = useState("");
     const [pin5, setInput5] = useState("");
     const [pin6, setInput6] = useState("");
-    const [error, setError] = useState(false)
+
+
+    const createPin = async () => {
+        const detailUserId = localStorage.getItem("detailUserId") ;
+        const data = {
+            pin: pin1 + pin2 + pin3 + pin4 + pin5 + pin6
+        };
+
+        const response = await createPinService(data, +detailUserId);
+        console.log(response);
+        if (response.status !== 201) {
+            toast.error(response.data.errors.pin, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+        } else {
+            navigate('/success-pin', { replace : true })
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ) {
-            setError(true)
-        } else {
-            localStorage.setItem("pin1", pin1)
-            localStorage.setItem("pin2", pin2)
-            localStorage.setItem("pin3", pin3)
-            localStorage.setItem("pin4", pin4)
-            localStorage.setItem("pin5", pin5)
-            localStorage.setItem("pin6", pin6)
-            navigate('/success-pin',{ replace : true })
-        }
+        createPin();
     }
-
 
     return <Auth>
         <div className='title-right-wrapper'>
@@ -57,14 +70,22 @@ const CreatePin = () => {
                     <PinInputField className='pin-input text-center' name='pin5' onChange={(e) => setInput5(e.target.value)} />
                     <PinInputField className='pin-input text-center' name='pin6' onChange={(e) => setInput6(e.target.value)} />
                 </PinInput>
-                <div className='error-message'>
-                    {error && pin1.length === 0 && pin2.length === 0 && pin3.length === 0 && pin4.length === 0 && pin5.length === 0 && pin6.length === 0 ?
-                    <label>Input cannot be empty !</label>:""}
-                </div>
-                <button className="btn-auth" id='submit' type="submit" value="Enter">Confirm</button>
-                {/* <input type='submit'>Confirm</input> */}
+
+                <button className="btn-auth" id='submit' type="submit" value="Enter" >Confirm</button>
             </form>
         </div>
+        <ToastContainer
+            position="bottom-right"
+            autoClose={3500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+        />
 
   </Auth>
 }

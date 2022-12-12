@@ -1,10 +1,17 @@
+import React, { useCallback, useState, useEffect } from 'react'
+import { getDetailUserService } from "../../services/user";
+import { getProfilePicture } from "../../services/files"
+
 // Components
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 // Iconify
 import { Icon } from '@iconify/react';
+
 // IMG
-import PaylensLogo from '../../Assets/paylens1.png'
+// import PaylensLogo from '../../Assets/paylens1.png'
+import Avatar from 'react-avatar';
+import PaylensLogo from '../../Assets/paylens3.png'
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
@@ -14,6 +21,9 @@ import Nav from 'react-bootstrap/Nav';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
 
+//Service
+import { getHistoryService, getListTransactionHistory } from '../../services/history';
+
 // CSS
 import '../../Styles/Components/Navbar/Navbar.css'
 
@@ -22,14 +32,67 @@ import Navbar from 'react-bootstrap/Navbar';
 import Samuel from '../../Assets/account/samuelSuhi.svg'
 
 function NavbarComp() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const navigate = useNavigate();
+  const [image, setImage] = useState(null);
+  const [fileId, setFileId] = useState(0);
+
+  const getDetailUser = useCallback (async () => {
+    const detailUserId = localStorage.getItem("detailUserId") ;
+
+    const response = await getDetailUserService(detailUserId);
+    console.log(response);
+    const data = response.data.data;
+    setFirstName(data?.firstName);
+    setLastName(data?.lastName);
+    setPhoneNumber(data?.phoneNumber);
+  }, []);
+
+  const getImage = useCallback (async () => {
+    const uuid = localStorage.getItem("fileId");
+    const response = await getProfilePicture(uuid);
+    const data = response.data;
+    console.log(data.image);
+    setFileId(uuid);
+
+    setImage(data);
+  }, []);
+
+  useEffect(() => {
+    getDetailUser();
+    getImage();
+  }, [getDetailUser, getImage]);
+
+  const [listTransaction, setListTransaction] = useState([])
+  const userId = +localStorage.getItem("userId")
+
+  useEffect(()=>{
+    const getList = async () => {
+      const  response = await getHistoryService(userId)
+      console.log(response, "response navbar");
+      if (response === 401) {
+        navigate("/login")
+      }
+      const  data = await getListTransactionHistory(userId)
+      
+      console.log(data, "data");
+      if(Array.isArray(data) && data.length > 0){
+        console.log({data})
+        setListTransaction(data)
+      }
+    }
+    getList()
+  }, [userId])
   return (
 
-    <Navbar bg="light" expand="lg" className="border shadow-lg Navbar-Section">
+    <Navbar bg="light" expand="lg" className="shadow-lg Navbar-Section">
       <Container>
 
         {/* Logo Section */}
-        <Link to='/dashboard' className='text-decoration-none'>
-          <Navbar.Brand className="d-flex justify-content-center align-items-center Logo-Section">
+        <Link to='/dashboard' className='text-decoration-none my-0'>
+          <Navbar.Brand className="d-flex justify-content-center align-items-center Logo-Section my-0">
             <img src={PaylensLogo} className='logo-paylens' />
             <h4>PayLens</h4>
           </Navbar.Brand>
@@ -37,7 +100,7 @@ function NavbarComp() {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto me-auto p-1 d-flex justify-content-center align-items-center w-100">
+          <Nav className="me-auto me-auto d-flex justify-content-center align-items-center w-100">
             <Container fluid>
               <Row>
 
@@ -45,11 +108,19 @@ function NavbarComp() {
                 <Col className="m-0 p-0 me-5"></Col>
 
                 {/* User Section */}
-                <Col className="d-flex justify-content-center user-nav align-items-center mt-3  float-end">
-                  <img src={Samuel} className="img-navbar rounded me-2" alt="..." />
-                  <div className="infouser-nav me-3">
-                    <h6>{localStorage.getItem("username")}</h6>
-                    <p>+62 {localStorage.getItem('number')}</p>
+                <Col className="d-flex justify-content-center user-nav align-items-center  float-end">
+                  {image ? (
+                    <div className='m-0 p-0'>
+                      <img src={`http://localhost:4000/paylens/backend/files/${fileId}`} className="ImgUser-Profile-Navbar rounded" alt="Profile" />
+                    </div>
+                  ) : (
+                    <div>
+                      <Avatar facebookId="100008343750912" size={50} round="10px"/>
+                    </div>
+                  )}
+                  <div className="infouser-nav ms-1 me-3">
+                    <h6>{firstName} {lastName}</h6>
+                    <p>{phoneNumber}</p>
                   </div>
 
 
@@ -57,15 +128,54 @@ function NavbarComp() {
 
               </Row>
             </Container>
-                  <Dropdown className='Dropdown-History'>
+            <Dropdown className='Dropdown-History'>
                     <Dropdown.Toggle className='Dropdown-Toggle'>
-                      <Icon icon="ei:bell" width="30" height="30" color='#4D4B57' className="mx-1 bell-navbar" id="dropdown-basic" />
+                      <Icon icon="ei:bell" width="30" height="30" color='#4D4B57' className="mx-1 mb-4 bell-navbar" id="dropdown-basic" />
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className='shadow Dropdown-Menu'>
                       <Dropdown.Item>
-                        <Card.Subtitle className="mb-3 text-muted"><h6>Today</h6></Card.Subtitle>
+                        {
+                          listTransaction.map((data,index)=>{
+                            if(data?.transaction == 'Top Up' || data?.transaction == 'Transfer ( Income )'){
+                              return (
+                                <div key={index}>
+                                <Card.Subtitle className="mb-3 text-muted"><h6>{data?.date}</h6></Card.Subtitle>
 
+                                <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-down" color="green" width="25" height="25" className='' />
+                              <div key={index}>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">{data?.label}</Card.Subtitle>
+                                <p className='Text-Dropdown'>{data?.nominal}</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+                        </div>
+                              )
+                            }else if(data?.transaction == 'Transfer ( Expense )'){
+                              return(
+                                <div>
+                                <Card.Subtitle className="mb-3 text-muted"><h6>{data?.date}</h6></Card.Subtitle>
+                                <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
+                          <Card.Body className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center'>
+                              <Icon icon="akar-icons:arrow-up" color="red" width="25" height="25" className='' />
+                              <div>
+                                <Card.Subtitle className="mt-3 text-muted Text-Dropdown">{data?.label}</Card.Subtitle>
+                                <p className='Text-Dropdown'>{data?.nominal}</p>
+                              </div>
+                            </div>
+                          </Card.Body>
+                        </Card>
+                                </div>
+                              )
+                            }
+                          })
+                        }
+                        {/* <Card.Subtitle className="mb-3 text-muted"><h6>Today</h6></Card.Subtitle>
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>
@@ -77,7 +187,6 @@ function NavbarComp() {
                             </div>
                           </Card.Body>
                         </Card>
-
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>
@@ -89,9 +198,7 @@ function NavbarComp() {
                             </div>
                           </Card.Body>
                         </Card>
-
                         <Card.Subtitle className="mb-3 mt-3 text-muted"><h6>This Week</h6></Card.Subtitle>
-
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>
@@ -103,7 +210,6 @@ function NavbarComp() {
                             </div>
                           </Card.Body>
                         </Card>
-
                         <Card className='TopUpInstruction-Comp m-2 mt-3 shadow'>
                           <Card.Body className='d-flex align-items-center'>
                             <div className='d-flex align-items-center'>
@@ -114,7 +220,7 @@ function NavbarComp() {
                               </div>
                             </div>
                           </Card.Body>
-                        </Card>
+                        </Card> */}
 
 
 
