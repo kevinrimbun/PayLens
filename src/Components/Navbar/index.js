@@ -87,7 +87,7 @@ function NavbarComp() {
   }, [userId])
   return (
 
-    <Navbar bg="light" expand="lg" className="mx-0 my-0 shadow-lg Navbar-Section">
+    <Navbar bg="light" expand="lg" className="shadow-lg Navbar-Section">
       <Container>
 
         {/* Logo Section */}
@@ -100,7 +100,7 @@ function NavbarComp() {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto me-auto p-1 d-flex justify-content-center align-items-center w-100">
+          <Nav className="me-auto me-auto d-flex justify-content-center align-items-center w-100">
             <Container fluid>
               <Row>
 
@@ -118,7 +118,7 @@ function NavbarComp() {
                       <Avatar facebookId="100008343750912" size={50} round="10px"/>
                     </div>
                   )}
-                  <div className="infouser-nav me-3">
+                  <div className="infouser-nav ms-1 me-3">
                     <h6>{firstName} {lastName}</h6>
                     <p>{phoneNumber}</p>
                   </div>
@@ -130,7 +130,7 @@ function NavbarComp() {
             </Container>
             <Dropdown className='Dropdown-History'>
                     <Dropdown.Toggle className='Dropdown-Toggle'>
-                      <Icon icon="ei:bell" width="30" height="30" color='#4D4B57' className="mx-1 bell-navbar" id="dropdown-basic" />
+                      <Icon icon="ei:bell" width="30" height="30" color='#4D4B57' className="mx-1 mb-4 bell-navbar" id="dropdown-basic" />
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className='shadow Dropdown-Menu'>

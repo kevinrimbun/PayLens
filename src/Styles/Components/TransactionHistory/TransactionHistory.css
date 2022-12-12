@@ -7,7 +7,7 @@
 }
 
 .Transaction-Comp {
-  height: 32em !important;
+  height: 36rem !important;
   width: 120% !important;
   border-radius: 25px !important;
   -webkit-border-radius: 25px !important;
@@ -16,6 +16,7 @@
   -o-border-radius: 25px !important;
   margin-left: 5%;
   margin-bottom: 5% !important;
+  border: none !important;
   /* height: 90% !important; */
 }
 .Img-User {

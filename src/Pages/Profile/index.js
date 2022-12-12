@@ -131,10 +131,7 @@ const Profile = () => {
         localStorage.removeItem("notes");
         localStorage.removeItem("userName");
         localStorage.removeItem("nominalTransfer")
-
-        if (localStorage.getItem("userId") === null && localStorage.getItem("fileId") === null && localStorage.getItem("balance") === null && localStorage.getItem("detailUserId") === null && localStorage.getItem("email") === null && localStorage.getItem("token") === null) {
-            navigate("/", { replace: true })
-        }
+        navigate("/", { replace: true })
     }
 
     return (

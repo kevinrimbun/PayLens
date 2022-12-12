@@ -13,6 +13,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import { Link, useParams, Component, useNavigate } from "react-router-dom";
 import Content from "../../Layout/Content";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { transferService } from "../../services/transfer";
 import NavbarComp from "../../Components/Navbar";
 import Sidebar from "../../Components/Sidebar";
@@ -62,12 +64,39 @@ const TransferConfirmation3 = () => {
         console.log(response);
         const responseData = response.data.message;
         if (response.status === 401) {
-        alert(responseData);
+          toast.error(responseData, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
         }else
         if (response.status === 417) {
-          alert(responseData);
+            toast.error(responseData, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
         }else if (response.status === 404) {
-          alert(responseData);
+            toast.error(responseData, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
         }else
         if (response.status === 201) {
         // alert(responseData);
@@ -79,14 +108,7 @@ const TransferConfirmation3 = () => {
   
     const handleSuccess = (e) => {
       e.preventDefault();
-      // localStorage.setItem("pin1", pin1)
-      // localStorage.setItem("pin2", pin2)
-      // localStorage.setItem("pin3", pin3)
-      // localStorage.setItem("pin4", pin4)
-      // localStorage.setItem("pin5", pin5)
-      // localStorage.setItem("pin6", pin6)
       transfer();
-
     };
   
     return (
@@ -236,6 +258,18 @@ const TransferConfirmation3 = () => {
                   </Container>
               </div>
               <Footer />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
           </>
     );
   };

@@ -5,6 +5,8 @@ import {BsEnvelope} from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { changePasswordService } from '../../services/changePassword';
 import { sendEmailService } from '../../services/mail';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { Button } from '@chakra-ui/react';
 
 const ResetPass = () => {
@@ -19,6 +21,18 @@ const ResetPass = () => {
             recipient: email
         }
         const response = await sendEmailService(data);
+        if (response.status === 200) {
+            toast.success('Email sent successfully. Please check your email!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+        }
     }
 
     const handleSubmit = (e) => {
@@ -98,6 +112,18 @@ const ResetPass = () => {
             </div>
 
         </div>
+        <ToastContainer
+            position="bottom-right"
+            autoClose={3500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+        />
 
 
     </Auth>

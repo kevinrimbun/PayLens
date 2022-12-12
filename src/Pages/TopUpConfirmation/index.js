@@ -73,7 +73,7 @@ const TopUpConfirmation = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-    })
+      })
     }
     if (response.status === 201) {
       // alert(responseData);

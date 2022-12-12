@@ -56,10 +56,6 @@ const AddPhoneNum = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     addPhoneNumber();
-    // localStorage.setItem('number', number)
-    // alert("added succes")
-    // navigate('/manage-phone')
-    // console.log(number);
   }
   return <>
     {/* Navbar Section */}

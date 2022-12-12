@@ -15,6 +15,8 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // CSS
 import '../../Styles/Pages/Transfer/Transfer.css'
@@ -28,12 +30,20 @@ const Transfer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user === "") {
-      setError(true);
+      toast.error("Please enter the receiver's name", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
     }else{
       localStorage.setItem("userName", user);
       navigate('/transfer-detail2');
     }
-    
   }
 
   return (
@@ -70,10 +80,6 @@ const Transfer = () => {
                     </InputGroup>
 
                   </Col>
-                  <div className='error-message'>
-                        {error ?
-                        <label>User Belum di ketik</label>:""}
-                      </div>
                 </Row>
 
                 <Row className="d-flex flex-column justify-content-center">
@@ -108,6 +114,18 @@ const Transfer = () => {
         </Container>
       </div>
       <Footer />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };

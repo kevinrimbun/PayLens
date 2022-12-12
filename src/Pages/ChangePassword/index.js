@@ -10,7 +10,9 @@ import Col from 'react-bootstrap/Col';
 import "../../Styles/Pages/ChangePassword/changepassword.css";
 
 // React Icon
-import { AiFillLock, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import { AiFillLock, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Components
 import NavbarComp from "../../Components/Navbar";
@@ -49,22 +51,35 @@ const ChangePassword = () => {
         newPassword:newPassword1
     }
     const response = await changePasswordService(data,userId);
-}
+    if (response !== 200) {
+      toast.error(response.data.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+    }
+  }
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    changePassword();
 
-    if (newPassword1 === password) {
-      setError(true)
-    } else if (newPassword2 !== newPassword1) {
-      setError(true)
-    } else {
-      alert("Are you sure?")
-      changePassword();
-      // navigate('/dashboard')
-      // localStorage.setItem("password", newPassword2);
-    }
+    // if (newPassword1 === password) {
+    //   setError(true)
+    // } else if (newPassword2 !== newPassword1) {
+    //   setError(true)
+    // } else {
+    //   alert("Are you sure?")
+    //   changePassword();
+    //   // navigate('/dashboard')
+    //   // localStorage.setItem("password", newPassword2);
+    // }
 
   };
 
@@ -95,10 +110,6 @@ const ChangePassword = () => {
                     <input type={passwordShown1 ? "text" : "password"} style={{ outlineStyle: 'none' }} placeholder='Input Current Password' onChange={(e) => setPassword(e.target.value)} secureTextEntry />
                     <i className="ms-2" onClick={togglePasswordVisiblity1}>{passwordShown1 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</i>
                   </div>
-                  {/* <div className='error-message'>
-                    {error && password !== localStorage.getItem("password") ?
-                      <label>Password Invalid !</label> : ""}
-                  </div> */}
                 </Container>
 
 
@@ -134,6 +145,18 @@ const ChangePassword = () => {
       </Container>
     </div>
     <Footer />
+    <ToastContainer
+      position="bottom-right"
+      autoClose={3500}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+      />
   </>
 
 }
